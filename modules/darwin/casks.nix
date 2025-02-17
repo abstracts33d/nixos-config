@@ -10,7 +10,10 @@ _:
   "notion"
   "slack"
   "telegram"
-  "zoom"
+
+  # Organizational Tools
+  "notion"
+  "obsidian"
 
   # Utility Tools
   "syncthing"
@@ -19,8 +22,18 @@ _:
   "vlc"
 
   # Productivity Tools
+  "alt-tab"
   "raycast"
+  "karabiner-elements"
+  "maccy"
+  "rectangle"
+  "shortcat"
 
   # Browsers
-  "google-chrome"
+  # "google-chrome"
+  "zen-browser"
+
+  # Term
+  "iterm2"
+  "kitty"
 ]

@@ -216,17 +216,6 @@ let user = "s33d";
 
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
-
-    # Emacs runs as a daemon
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-unstable;
-    };
-  };
-
-  # When emacs builds from no cache, it exceeds the 90s timeout default
-  systemd.user.services.emacs = {
-    serviceConfig.TimeoutStartSec = "7min";
   };
 
   # Enable CUPS to print documents
@@ -287,7 +276,6 @@ let user = "s33d";
 
   fonts.packages = with pkgs; [
     dejavu_fonts
-    emacs-all-the-icons-fonts
     feather-font # from overlay
     jetbrains-mono
     font-awesome

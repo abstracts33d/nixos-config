@@ -4,6 +4,13 @@ let name = "abstracts33d";
     user = "s33d";
     email = "abstract.s33d@gmail.com"; in
 {
+
+  direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # Shared shell configuration
   zsh = {
     enable = true;
@@ -11,16 +18,17 @@ let name = "abstracts33d";
     cdpath = [ "~/.local/share/src" ];
     plugins = [
       {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./config;
-          file = "p10k.zsh";
+        name = "powerlevel10k-config";
+        src = lib.cleanSource ./config;
+        file = "p10k.zsh";
       }
     ];
+
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -38,15 +46,6 @@ let name = "abstracts33d";
       # Ripgrep alias
       alias search=rg -p --glob '!node_modules/*'  $@
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
-
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
@@ -60,7 +59,8 @@ let name = "abstracts33d";
       alias diff=difft
 
       # Always color ls and group directories
-      alias ls='ls --color=auto'
+      alias ls='exa'
+      alias l='ls -l'
     '';
   };
 
@@ -75,7 +75,7 @@ let name = "abstracts33d";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	    editor = "vim";
+	      editor = "vim";
         autocrlf = "input";
       };
       commit.gpgsign = true;
@@ -288,7 +288,6 @@ let name = "abstracts33d";
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      sensible
       yank
       prefix-highlight
       {
@@ -317,7 +316,7 @@ let name = "abstracts33d";
       }
     ];
     terminal = "screen-256color";
-    prefix = "C-x";
+    prefix = "C-a";
     escapeTime = 10;
     historyLimit = 50000;
     extraConfig = ''
