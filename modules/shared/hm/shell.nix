@@ -1,25 +1,31 @@
 { config, pkgs, lib, ... }:
 
-let name = "%NAME%";
-    user = "%USER%";
-    email = "%EMAIL%"; in
+let name = "abstracts33d";
+    user = "s33d";
+    email = "abstract.s33d@gmail.com"; in
 {
+
+  direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # Shared shell configuration
   zsh = {
     enable = true;
     autocd = false;
+    cdpath = [ "~/.local/share/src" ];
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./config;
-        file = "p10k.zsh";
-      }
     ];
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "marlonrichert/zsh-autocomplete"; }
+        { name = "zdharma/fast-syntax-highlighting";}
+      ];
+    };
 
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -35,26 +41,30 @@ let name = "%NAME%";
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
+      # Ripgrep alias
+      alias search=rg -p --glob '!node_modules/*'  $@
 
       # nix shortcuts
       shell() {
-          nix-shell '<nixpkgs>' -A "$1"
+        nix-shell '<nixpkgs>' -A "$1"
       }
+
+      # pnpm is a javascript package manager
+      alias pn=pnpm
+      alias px=pnpx
 
       # Use difftastic, syntax-aware diffing
       alias diff=difft
 
       # Always color ls and group directories
-      alias ls='ls --color=auto'
+      alias ls='exa'
+      alias l='ls -l'
     '';
+  };
+
+  starship = {
+    enable = true;
+    settings = pkgs.lib.importTOML config/starship.toml;
   };
 
   git = {
@@ -68,9 +78,10 @@ let name = "%NAME%";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	    editor = "vim";
+	      editor = "vim";
         autocrlf = "input";
       };
+      commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
     };
@@ -280,7 +291,6 @@ let name = "%NAME%";
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      sensible
       yank
       prefix-highlight
       {
@@ -309,7 +319,7 @@ let name = "%NAME%";
       }
     ];
     terminal = "screen-256color";
-    prefix = "C-x";
+    prefix = "C-a";
     escapeTime = 10;
     historyLimit = 50000;
     extraConfig = ''
