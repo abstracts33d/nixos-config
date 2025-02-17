@@ -22,7 +22,7 @@
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
       flake = false;
-    }; 
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +58,6 @@
         "create-keys" = mkApp "create-keys" system;
         "check-keys" = mkApp "check-keys" system;
         "install" = mkApp "install" system;
-        "install-with-secrets" = mkApp "install-with-secrets" system;
       };
       mkDarwinApps = system: {
         "apply" = mkApp "apply" system;
