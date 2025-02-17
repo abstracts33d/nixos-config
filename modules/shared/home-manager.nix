@@ -17,17 +17,15 @@ let name = "abstracts33d";
     autocd = false;
     cdpath = [ "~/.local/share/src" ];
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./config;
-        file = "p10k.zsh";
-      }
     ];
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "marlonrichert/zsh-autocomplete"; }
+        { name = "zdharma/fast-syntax-highlighting";}
+      ];
+    };
 
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -48,7 +46,7 @@ let name = "abstracts33d";
 
       # nix shortcuts
       shell() {
-          nix-shell '<nixpkgs>' -A "$1"
+        nix-shell '<nixpkgs>' -A "$1"
       }
 
       # pnpm is a javascript package manager
@@ -62,6 +60,11 @@ let name = "abstracts33d";
       alias ls='exa'
       alias l='ls -l'
     '';
+  };
+
+  starship = {
+    enable = true;
+    settings = pkgs.lib.importTOML config/starship.toml;
   };
 
   git = {
