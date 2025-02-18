@@ -31,7 +31,7 @@ in
       enableNixpkgsReleaseCheck = false;
       username = "${user}";
       homeDirectory = "/home/${user}";
-      packages = pkgs.callPackage ./packages.nix {};
+      packages = pkgs.callPackage ../packages.nix {};
       file = shared-files // import ../files.nix { inherit user; };
       stateVersion = "21.05";
     };
