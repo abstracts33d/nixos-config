@@ -4,7 +4,6 @@ let name = "abstracts33d";
     user = "s33d";
     email = "abstract.s33d@gmail.com"; in
 {
-  config = {
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -369,5 +368,4 @@ let name = "abstracts33d";
       bind-key -T copy-mode-vi 'C-\' select-pane -l
       '';
     };
-  };
 }
