@@ -117,7 +117,7 @@
                   ./modules/nixos/home-manager.nix
                   ./modules/shared/home-manager.nix
                 ];
-              }
+              };
             };
           }
           ./hosts/nixos
