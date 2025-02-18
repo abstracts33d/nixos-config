@@ -3,7 +3,6 @@
 let
   user = "%USER%";
   xdg_configHome  = "/home/${user}/.config";
-  shared-programs = import ../shared/home-manager.nix { inherit config pkgs lib; };
   shared-files = import ../shared/files.nix { inherit config pkgs; };
 
   # Nicely reload system units when changing configs
@@ -30,6 +29,10 @@ let
 
 in
 {
+  imports = [
+    ../shared/home-manager.Nix
+  ];
+
   home = {
     enableNixpkgsReleaseCheck = false;
     username = "${user}";
@@ -116,7 +119,4 @@ in
       };
     };
   };
-
-  programs = shared-programs // { gpg.enable = true; };
-
 }
