@@ -81,7 +81,6 @@ let user = "s33d";
       # '';
 
       # LightDM Display Manager
-      displayManager.defaultSession = "none+bspwm";
       displayManager.lightdm = {
         enable = true;
         greeters.slick.enable = true;
@@ -93,12 +92,18 @@ let user = "s33d";
         enable = true;
       };
 
-      # Turn Caps Lock into Ctrl
-      layout = "us";
-      xkbOptions = "ctrl:nocaps";
+      xkb: {
+        layout = "us";
+        # Turn Caps Lock into Ctrl
+        options = "ctrl:nocaps";
+      };
+    };
 
-      # Better support for general peripherals
-      libinput.enable = true;
+    displayManager.defaultSession = "none+bspwm";
+
+    # Better support for general peripherals
+    libinput: {
+      enable = true;
     };
 
     # Let's be able to SSH into this machine
@@ -228,7 +233,7 @@ let user = "s33d";
 
   # Video support
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     # nvidia.modesetting.enable = true;
 
     # Enable Xbox support
