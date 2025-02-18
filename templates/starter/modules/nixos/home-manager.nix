@@ -30,7 +30,7 @@ let
 in
 {
   imports = [
-    ../shared/home-manager.Nix
+    ../shared/home-manager.nix
   ];
 
   home = {

@@ -109,8 +109,8 @@
               useUserPackages = true;
               users.${user} = { ... }: {
                 imports = [
-                  ./modules/nixos/home-manager.nix,
-                  ./shared/home-manager.nix
+                  ./modules/nixos/home-manager.nix
+                  ./modules/shared/home-manager.nix
                 ];
               }
             };
