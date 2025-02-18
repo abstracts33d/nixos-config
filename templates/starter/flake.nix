@@ -107,6 +107,11 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              users.${user} = { ... }: {
+                imports = [
+                  ./home
+                ];
+              };
               users.${user} = import ./modules/nixos/home-manager.nix;
             };
           }
