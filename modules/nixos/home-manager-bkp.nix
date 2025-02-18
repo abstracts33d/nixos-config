@@ -1,5 +1,11 @@
 { config, pkgs, lib, ... }:
 
+# {
+#   imports = [
+#     ./hm/all.nix
+#   ];
+# }
+
 let
   user = "s33d";
   xdg_configHome  = "/home/${user}/.config";
