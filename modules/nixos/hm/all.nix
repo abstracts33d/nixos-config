@@ -6,7 +6,7 @@ let
   shared-files = import ../../shared/files.nix { inherit config pkgs; };
 
   polybar-user_modules = builtins.readFile (pkgs.substituteAll {
-    src = ./config/polybar/user_modules.ini;
+    src = ../config/polybar/user_modules.ini;
     packages = "${xdg_configHome}/polybar/bin/check-nixos-updates.sh";
     searchpkgs = "${xdg_configHome}/polybar/bin/search-nixos-updates.sh";
     launcher = "${xdg_configHome}/polybar/bin/launcher.sh";
