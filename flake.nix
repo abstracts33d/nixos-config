@@ -112,12 +112,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${user} = import ./modules/nixos/home-manager-bkp.nix;
-              #users.${user} = { ... }: {
-              #  imports = [
-              #    ./modules/shared/home-manager.nix
-              #    ./modules/nixos/home-manager.nix
-              #  ];
-              #};
             };
           }
           ./hosts/nixos
