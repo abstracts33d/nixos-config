@@ -20,9 +20,9 @@ let
     font1 = "feather:size=12;3"; # from overlay
   };
 
-  polybar-modules = builtins.readFile ./config/polybar/modules.ini;
-  polybar-bars = builtins.readFile ./config/polybar/bars.ini;
-  polybar-colors = builtins.readFile ./config/polybar/colors.ini;
+  polybar-modules = builtins.readFile ../config/polybar/modules.ini;
+  polybar-bars = builtins.readFile ../config/polybar/bars.ini;
+  polybar-colors = builtins.readFile ../config/polybar/colors.ini;
 
 in
 {
