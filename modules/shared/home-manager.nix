@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./programs/shell.nix
+    ./hm/shell.nix
   ];
 }
