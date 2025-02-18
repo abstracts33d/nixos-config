@@ -114,8 +114,8 @@
               # users.${user} = import ./modules/nixos/home-manager.nix;
               users.${user} = { ... }: {
                 imports = [
-                  ./modules/nixos/home-manager.nix
                   ./modules/shared/home-manager.nix
+                  ./modules/nixos/home-manager.nix
                 ];
               };
             };
