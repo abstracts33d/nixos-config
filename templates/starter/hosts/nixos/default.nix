@@ -92,7 +92,7 @@ let user = "%USER%";
         enable = true;
       };
 
-      xkb: {
+      xkbd: {
         layout = "us";
         # Turn Caps Lock into Ctrl
         options = "ctrl:nocaps";
