@@ -102,7 +102,7 @@ let user = "s33d";
     displayManager.defaultSession = "none+bspwm";
 
     # Better support for general peripherals
-    libinput: {
+    libinput= {
       enable = true;
     };
 
