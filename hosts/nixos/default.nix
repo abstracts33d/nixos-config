@@ -35,7 +35,7 @@ let user = "s33d";
   networking = {
     hostName = "yolo"; # Define your hostname.
     useDHCP = false;
-    interfaces."enp0s-1".useDHCP = true;
+    interfaces."enp0s1".useDHCP = true;
   };
 
   nix = {
