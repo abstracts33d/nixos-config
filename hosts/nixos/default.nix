@@ -81,7 +81,6 @@ let user = "s33d";
       # '';
 
       # LightDM Display Manager
-      displayManager.defaultSession = "none+bspwm";
       displayManager.lightdm = {
         enable = true;
         greeters.slick.enable = true;
@@ -93,12 +92,18 @@ let user = "s33d";
         enable = true;
       };
 
-      # Turn Caps Lock into Ctrl
-      layout = "us";
-      xkbOptions = "ctrl:nocaps";
+      xkb = {
+        layout = "us";
+        # Turn Caps Lock into Ctrl
+        options = "ctrl:nocaps";
+      };
+    };
 
-      # Better support for general peripherals
-      libinput.enable = true;
+    displayManager.defaultSession = "none+bspwm";
+
+    # Better support for general peripherals
+    libinput= {
+      enable = true;
     };
 
     # Let's be able to SSH into this machine
@@ -216,17 +221,6 @@ let user = "s33d";
 
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
-
-    # Emacs runs as a daemon
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-unstable;
-    };
-  };
-
-  # When emacs builds from no cache, it exceeds the 90s timeout default
-  systemd.user.services.emacs = {
-    serviceConfig.TimeoutStartSec = "7min";
   };
 
   # Enable CUPS to print documents
@@ -239,7 +233,7 @@ let user = "s33d";
 
   # Video support
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     # nvidia.modesetting.enable = true;
 
     # Enable Xbox support
@@ -287,7 +281,6 @@ let user = "s33d";
 
   fonts.packages = with pkgs; [
     dejavu_fonts
-    emacs-all-the-icons-fonts
     feather-font # from overlay
     jetbrains-mono
     font-awesome
