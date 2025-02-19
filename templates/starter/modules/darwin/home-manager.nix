@@ -54,7 +54,9 @@ in
         ];
         stateVersion = "23.11";
       };
-      programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
+      imports = [
+        ../shared/home-manager.nix
+      ];
     };
   };
 
