@@ -72,6 +72,26 @@ let user = "s33d";
     };
   };
 
+  # Enable Display Manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
+    # xdg
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];
+      # wlr.enable = true;
+    };
 
   services = {
     xserver = {
