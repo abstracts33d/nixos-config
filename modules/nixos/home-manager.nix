@@ -19,6 +19,6 @@ in
     stateVersion = "21.05";
   };
 
-  programs.kitty.enable = true; # required for the default Hyprland config
-  wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  # programs.kitty.enable = true; # required for the default Hyprland config
+  # wayland.windowManager.hyprland.enable = true; # enable Hyprland
 }
