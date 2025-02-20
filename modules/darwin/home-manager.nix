@@ -23,6 +23,7 @@ in
 
   homebrew = {
     enable = true;
+    brews = ["pinentry-mac"];
     casks = pkgs.callPackage ./casks.nix {};
     # onActivation.cleanup = "uninstall";
 

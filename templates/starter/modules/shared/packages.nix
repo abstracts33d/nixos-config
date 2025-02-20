@@ -15,7 +15,7 @@ with pkgs; [
   du-dust
   gcc
   killall
-  neofetch
+  fastfetch
   openssh
   pandoc
   sqlite

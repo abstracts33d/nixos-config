@@ -4,29 +4,40 @@ let name = "abstracts33d";
     user = "s33d";
     email = "abstract.s33d@gmail.com"; in
 {
-    programs.direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
     # Shared shell configuration
     programs.zsh = {
       enable = true;
-      autocd = false;
-      cdpath = [ "~/.local/share/src" ];
-      plugins = [
-      ];
+      # TODO check if better imported via pkgs
+#      plugins = [
+#          {
+#            # will source zsh-autosuggestions.plugin.zsh
+#            name = "zsh-autosuggestions";
+#            src = pkgs.fetchFromGitHub {
+#              owner = "zsh-users";
+#              repo = "zsh-autosuggestions";
+#              rev = "v0.4.0";
+#              sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+#            };
+#          }
+#      ];
+
+
       zplug = {
         enable = true;
         plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; }
-          { name = "marlonrichert/zsh-autocomplete"; }
-          { name = "zdharma/fast-syntax-highlighting";}
+           { name = "jeffreytse/zsh-vi-mode"; }
+           { name = "Aloxaf/fzf-tab"; }
+           { name = "zsh-users/zsh-completions"; }
+           { name = "zsh-users/zsh-syntax-highlighting"; }
+           { name = "zdharma/fast-syntax-highlighting";}
+           { name = "zsh-users/zsh-history-substring-search"; }
+           { name = "zsh-users/zsh-autosuggestions"; }
         ];
       };
 
       initExtraFirst = ''
+        # zmodload zsh/zprof
+
         if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
           . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
           . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -40,30 +51,50 @@ let name = "abstracts33d";
         # Remove history data we don't want to see
         export HISTIGNORE="pwd:ls:cd"
 
-        # Ripgrep alias
-        alias search=rg -p --glob '!node_modules/*'  $@
+      '';
 
-        # nix shortcuts
-        shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-        }
+      initExtra = ''
+        # source ~/.zsh/.zshrc
+        # source ~/.zsh/.aliases
+        # source ~/.zsh/.functions
 
-        # pnpm is a javascript package manager
-        alias pn=pnpm
-        alias px=pnpx
+        # zsh-autosuggestions
+        bindkey '\e\r' autosuggest-accept # Set Autosuggestions key binging to alt-enter
 
-        # Use difftastic, syntax-aware diffing
-        alias diff=difft
-
-        # Always color ls and group directories
-        alias ls='exa'
-        alias l='ls -l'
+        # zprof
       '';
     };
 
     programs.starship = {
       enable = true;
       settings = pkgs.lib.importTOML ../config/starship.toml;
+    };
+
+    programs.ssh = {
+      enable = true;
+      includes = [
+        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+          "/home/${user}/.ssh/config_external"
+        )
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+          "/Users/${user}/.ssh/config_external"
+        )
+      ];
+      addKeysToAgent = "yes";
+      # UseKeyChain yes # TODO not supported investigate this
+      matchBlocks = {
+        "github.com" = {
+          identitiesOnly = true;
+          identityFile = [
+            (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+              "/home/${user}/.ssh/id_github"
+            )
+            (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+              "/Users/${user}/.ssh/id_github"
+            )
+          ];
+        };
+      };
     };
 
     programs.git = {
@@ -80,7 +111,7 @@ let name = "abstracts33d";
           editor = "vim";
           autocrlf = "input";
         };
-        commit.gpgsign = true;
+        # commit.gpgsign = true; # TODO enable when prrperly configured
         pull.rebase = true;
         rebase.autoStash = true;
       };
@@ -257,31 +288,6 @@ let name = "abstracts33d";
             cyan = "0x5fb3b3";
             white = "0xd8dee9";
           };
-        };
-      };
-    };
-
-    programs.ssh = {
-      enable = true;
-      includes = [
-        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-          "/home/${user}/.ssh/config_external"
-        )
-        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-          "/Users/${user}/.ssh/config_external"
-        )
-      ];
-      matchBlocks = {
-        "github.com" = {
-          identitiesOnly = true;
-          identityFile = [
-            (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-              "/home/${user}/.ssh/id_github"
-            )
-            (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-              "/Users/${user}/.ssh/id_github"
-            )
-          ];
         };
       };
     };
