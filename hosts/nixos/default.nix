@@ -64,7 +64,7 @@ let user = "s33d";
     zsh.enable = true;
   };
 
-  services = {
+#  services = {
 #    xserver = {
 #      enable = true;
 #
@@ -98,36 +98,36 @@ let user = "s33d";
 #        options = "ctrl:nocaps";
 #      };
 #    };
-
+#
 #    displayManager.defaultSession = "none+bspwm";
-
-    # Better support for general peripherals
-    libinput= {
-      enable = true;
-    };
-
-    # Let's be able to SSH into this machine
-    openssh.enable = true;
-
-    # Sync state between machines
-    # Sync state between machines
-    syncthing = {
-      enable = true;
-      openDefaultPorts = true;
-      dataDir = "/home/${user}/.local/share/syncthing";
-      configDir = "/home/${user}/.config/syncthing";
-      user = "${user}";
-      group = "users";
-      guiAddress = "127.0.0.1:8384";
-      overrideFolders = true;
-      overrideDevices = true;
-
-      settings = {
-        devices = {};
-        options.globalAnnounceEnabled = false; # Only sync on LAN
-      };
-    };
-
+#
+#    # Better support for general peripherals
+#    libinput= {
+#      enable = true;
+#    };
+#
+#    # Let's be able to SSH into this machine
+#    openssh.enable = true;
+#
+#    # Sync state between machines
+#    # Sync state between machines
+#    syncthing = {
+#      enable = true;
+#      openDefaultPorts = true;
+#      dataDir = "/home/${user}/.local/share/syncthing";
+#      configDir = "/home/${user}/.config/syncthing";
+#      user = "${user}";
+#      group = "users";
+#      guiAddress = "127.0.0.1:8384";
+#      overrideFolders = true;
+#      overrideDevices = true;
+#
+#      settings = {
+#        devices = {};
+#        options.globalAnnounceEnabled = false; # Only sync on LAN
+#      };
+#    };
+#
 #    # Picom, my window compositor with fancy effects
 #    #
 #    # Notes on writing exclude rules:
