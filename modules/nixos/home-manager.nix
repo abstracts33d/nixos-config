@@ -2,7 +2,7 @@
 
 let
   user = "s33d";
-  shared-files = import ../../shared/files.nix { inherit user config pkgs; };
+  shared-files = import ../shared/files.nix { inherit user config pkgs; };
 in
 {
   imports = [
@@ -14,8 +14,8 @@ in
     enableNixpkgsReleaseCheck = false;
     username = "${user}";
     homeDirectory = "/home/${user}";
-    packages = pkgs.callPackage ../packages.nix {};
-    file = shared-files // import ../files.nix { inherit user config pkgs; };
+    packages = pkgs.callPackage ./packages.nix {};
+    file = shared-files // import ./files.nix { inherit user config pkgs; };
     stateVersion = "21.05";
   };
 }
