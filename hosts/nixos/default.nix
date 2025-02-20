@@ -62,14 +62,21 @@ let user = "s33d";
 
     # My shell
     zsh.enable = true;
-
-    hyprland.enable = true;
   };
 
-#  services = {
-#    xserver = {
-#      enable = true;
-#
+  # Enable Window Manager
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+  };
+
+
+  services = {
+    xserver = {
+      enable = true;
+
 #      # Uncomment these for AMD or Nvidia GPU
 #      # videoDrivers = [ "amdgpu" ];
 #      # videoDrivers = [ "nvidia" ];
@@ -99,15 +106,15 @@ let user = "s33d";
 #        # Turn Caps Lock into Ctrl
 #        options = "ctrl:nocaps";
 #      };
-#    };
-#
+    };
+
 #    displayManager.defaultSession = "none+bspwm";
-#
-#    # Better support for general peripherals
-#    libinput= {
-#      enable = true;
-#    };
-#
+
+    # Better support for general peripherals
+    libinput= {
+      enable = true;
+    };
+
 #    # Let's be able to SSH into this machine
 #    openssh.enable = true;
 #
@@ -129,7 +136,7 @@ let user = "s33d";
 #        options.globalAnnounceEnabled = false; # Only sync on LAN
 #      };
 #    };
-#
+
 #    # Picom, my window compositor with fancy effects
 #    #
 #    # Notes on writing exclude rules:
@@ -220,10 +227,10 @@ let user = "s33d";
 #        };
 #      };
 #    };
-#
-#    gvfs.enable = true; # Mount, trash, and other functionalities
-#    tumbler.enable = true; # Thumbnail support for images
-#  };
+
+    gvfs.enable = true; # Mount, trash, and other functionalities
+    tumbler.enable = true; # Thumbnail support for images
+  };
 
   # Enable CUPS to print documents
   # services.printing.enable = true;
