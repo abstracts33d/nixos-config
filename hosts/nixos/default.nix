@@ -62,6 +62,8 @@ let user = "s33d";
 
     # My shell
     zsh.enable = true;
+
+    hyprland.enable = true;
   };
 
 #  services = {
