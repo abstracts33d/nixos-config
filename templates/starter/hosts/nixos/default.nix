@@ -248,7 +248,7 @@ let user = "%USER%";
   virtualisation.docker.enable = true;
   virtualisation.docker.logDriver = "json-file";
 
-  # It's me, it's you, it's everyone
+  # It's me
   users.users = {
     ${user} = {
       isNormalUser = true;

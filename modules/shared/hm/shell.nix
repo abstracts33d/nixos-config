@@ -8,34 +8,22 @@ let name = "abstracts33d";
     programs.zsh = {
       enable = true;
       # TODO check if better imported via pkgs
-#      plugins = [
-#          {
-#            # will source zsh-autosuggestions.plugin.zsh
-#            name = "zsh-autosuggestions";
-#            src = pkgs.fetchFromGitHub {
-#              owner = "zsh-users";
-#              repo = "zsh-autosuggestions";
-#              rev = "v0.4.0";
-#              sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
-#            };
-#          }
-#      ];
-
-
       zplug = {
         enable = true;
         plugins = [
-           { name = "jeffreytse/zsh-vi-mode"; }
+           # TODO add fzf
            { name = "Aloxaf/fzf-tab"; }
+           { name = "jeffreytse/zsh-vi-mode"; }
            { name = "zsh-users/zsh-completions"; }
            { name = "zsh-users/zsh-syntax-highlighting"; }
            { name = "zdharma/fast-syntax-highlighting";}
-           { name = "zsh-users/zsh-history-substring-search"; }
+#           { name = "zsh-users/zsh-history-substring-search"; } # TODO NOT working need as: plugin
            { name = "zsh-users/zsh-autosuggestions"; }
         ];
       };
 
       initExtraFirst = ''
+        # Profiling
         # zmodload zsh/zprof
 
         if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -51,16 +39,27 @@ let name = "abstracts33d";
         # Remove history data we don't want to see
         export HISTIGNORE="pwd:ls:cd"
 
+        # Set editor default keymap to emacs (`-e`) or vi (`-v`)
+        bindkey -v
+
+        source ~/.zsh/.aliases
+        source ~/.zsh/.functions
       '';
 
       initExtra = ''
-        # source ~/.zsh/.zshrc
-        # source ~/.zsh/.aliases
-        # source ~/.zsh/.functions
-
         # zsh-autosuggestions
-        bindkey '\e\r' autosuggest-accept # Set Autosuggestions key binging to alt-enter
+        # set Autosuggestions key binging to alt-enter
+        bindkey '\e\r' autosuggest-accept
 
+        # Greetings
+        if [ -z "$TMUX" ]
+        then
+          fastfetch
+        else
+          echo ' ☠ Loaded ☠ '
+        fi
+
+        # Profiling
         # zprof
       '';
     };
@@ -111,8 +110,9 @@ let name = "abstracts33d";
           editor = "vim";
           autocrlf = "input";
         };
-        # commit.gpgsign = true; # TODO enable when prrperly configured
+        commit.gpgsign = true;
         pull.rebase = true;
+        push.autoSetupRemote = true;
         rebase.autoStash = true;
       };
     };

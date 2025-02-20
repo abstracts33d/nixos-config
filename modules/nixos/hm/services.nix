@@ -1,9 +1,9 @@
+
 { config, pkgs, lib, ... }:
 
 let
-  user = "%USER%";
+  user = "s33d";
   xdg_configHome  = "/home/${user}/.config";
-  shared-files = import ../../shared/files.nix { inherit user config pkgs; };
 
   polybar-user_modules = builtins.readFile (pkgs.substituteAll {
     src = ../config/polybar/user_modules.ini;
@@ -26,28 +26,6 @@ let
 
 in
 {
-  home = {
-    enableNixpkgsReleaseCheck = false;
-    username = "${user}";
-    homeDirectory = "/home/${user}";
-    packages = pkgs.callPackage ../packages.nix {};
-    file = shared-files // import ../files.nix { inherit user config pkgs; };
-    stateVersion = "21.05";
-  };
-
-  # Use a dark theme
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Adwaita-dark";
-      package = pkgs.adwaita-icon-theme;
-    };
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.adwaita-icon-theme;
-    };
-  };
-
   # Screen lock
   services = {
     screen-locker = {
