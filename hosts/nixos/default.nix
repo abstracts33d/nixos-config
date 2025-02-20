@@ -72,8 +72,6 @@ let user = "s33d";
     };
   };
 
-  programs.kitty.enable = true;
-
   services = {
     xserver = {
       enable = true;
