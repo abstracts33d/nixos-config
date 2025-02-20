@@ -106,9 +106,4 @@ with pkgs; [
   # pygments
   redis
   neovim
-
-
-
-
-  kitty
 ]
