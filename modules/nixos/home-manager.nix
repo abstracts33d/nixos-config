@@ -7,7 +7,7 @@ in
 {
   imports = [
     ./hm/gtk.nix
-    ./hm/services.nix
+#    ./hm/services.nix
   ];
 
   home = {
@@ -18,4 +18,7 @@ in
     file = shared-files // import ./files.nix { inherit user config pkgs; };
     stateVersion = "21.05";
   };
+
+  programs.kitty.enable = true; # required for the default Hyprland config
+  wayland.windowManager.hyprland.enable = true; # enable Hyprland
 }
