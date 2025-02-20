@@ -111,6 +111,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "_nbkp";
               users.${user} = { ... }: {
                 imports = [
                   ./modules/shared/home-manager.nix
