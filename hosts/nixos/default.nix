@@ -6,6 +6,7 @@ let user = "s33d";
   imports = [
     ../../modules/nixos/secrets.nix
     ../../modules/nixos/disk-config.nix
+    ../../modules/nixos/home-manager.nix
     ../../modules/shared
     agenix.nixosModules.default
   ];
