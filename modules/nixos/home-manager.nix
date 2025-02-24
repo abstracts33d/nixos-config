@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, home-manager, ... }:
 
 let
   user = "s33d";
