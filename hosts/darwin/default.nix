@@ -8,6 +8,7 @@ let user = "s33d"; in
     ../../modules/darwin/home-manager.nix
     ../../modules/darwin/nix-homebrew.nix
     ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/dock
     ../../modules/darwin/local.nix
     ../../modules/shared
      agenix.darwinModules.default

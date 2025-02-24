@@ -7,7 +7,6 @@ let
 in
 {
   imports = [
-   ./dock
    # ./hm/shell.nix
   ];
 
