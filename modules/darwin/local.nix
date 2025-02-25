@@ -15,10 +15,12 @@ in
         { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
         { path = "/Applications/Kitty.app/"; }
         { path = "/Applications/Visual Studio Code.app/"; }
+        { path = "/Applications/RubyMine.app/"; }
         { path = "/Applications/Safari.app/"; }
         { path = "/Applications/Google Chrome.app/"; }
         { path = "/Applications/Zen Browser.app/"; }
         { path = "/System/Applications/System Settings.app/"; }
+        { path = "/Applications/UTM.app/"; }
         {
           path = "${config.users.users.${user}.home}/.config/";
           section = "others";
