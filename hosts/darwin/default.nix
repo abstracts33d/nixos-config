@@ -1,6 +1,6 @@
 { agenix, config, pkgs, ... }:
 
-let user = "s33d"; in
+let user = "%USER%"; in
 
 {
   imports = [

@@ -1,7 +1,7 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  user = "s33d";
+  user = "%USER%";
   shared-files = import ../shared/files.nix { inherit user config pkgs; };
 in
 {

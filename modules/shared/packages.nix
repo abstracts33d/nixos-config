@@ -100,8 +100,6 @@ with pkgs; [
   fish
   git
   mise
-  # pinentry-mac
-  # pygments
   redis
   neovim
 ]

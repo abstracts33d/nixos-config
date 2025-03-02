@@ -1,6 +1,6 @@
 { config, inputs, pkgs, agenix, ... }:
 
-let user = "s33d";
+let user = "%USER%";
     keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
 {
   imports = [
@@ -34,9 +34,9 @@ let user = "s33d";
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking = {
-    hostName = "yolo"; # Define your hostname.
+    hostName = "%HOST%"; # Define your hostname.
     useDHCP = false;
-    interfaces."enp0s1".useDHCP = true;
+    interfaces."%INTERFACE%".useDHCP = true;
   };
 
   nix = {

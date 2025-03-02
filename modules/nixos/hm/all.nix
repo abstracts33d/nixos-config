@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  user = "s33d";
+  user = "%USER%";
   xdg_configHome  = "/home/${user}/.config";
   shared-files = import ../../shared/files.nix { inherit user config pkgs; };
 
