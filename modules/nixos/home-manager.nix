@@ -21,7 +21,6 @@ in
       imports = [
         ../shared/home-manager.nix
         ./hm/gtk.nix
-        # ./hm/services.nix
       ];
     };
   };
