@@ -76,7 +76,7 @@ After installation, open a new terminal session to make the `nix` executable ava
 ### 3. Initialize
 
 ```sh
-mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-features 'nix-command flakes' init -t github:abstracts33d/nixos-config
+mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-features 'nix-command flakes' clone github:abstracts33d/nixos-config --dest .
 ```
 
 ### 4. Make [apps](https://github.com/abstracts33d/nixos-config/tree/main/apps) executable
