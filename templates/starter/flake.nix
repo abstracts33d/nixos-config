@@ -80,19 +80,6 @@
           modules = [
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                inherit user;
-                enable = true;
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                };
-                mutableTaps = false;
-                autoMigrate = true;
-              };
-            }
             ./hosts/darwin
           ];
         }
@@ -103,18 +90,7 @@
         specialArgs = inputs;
         modules = [
           disko.nixosModules.disko
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = { ... }: {
-                imports = [
-                  ./modules/nixos/home-manager.nix
-                  ./modules/shared/home-manager.nix
-                ];
-              }
-            };
-          }
+          home-manager.nixosModules.home-manager
           ./hosts/nixos
         ];
      });

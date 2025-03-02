@@ -4,29 +4,28 @@ let name = "%NAME%";
     user = "%USER%";
     email = "%EMAIL%"; in
 {
-    programs.direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
     # Shared shell configuration
     programs.zsh = {
       enable = true;
-      autocd = false;
-      cdpath = [ "~/.local/share/src" ];
-      plugins = [
-      ];
+      # TODO check if better imported via pkgs
       zplug = {
         enable = true;
         plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; }
-          { name = "marlonrichert/zsh-autocomplete"; }
-          { name = "zdharma/fast-syntax-highlighting";}
+           # TODO add fzf
+           { name = "Aloxaf/fzf-tab"; }
+           { name = "jeffreytse/zsh-vi-mode"; }
+           { name = "zsh-users/zsh-completions"; }
+           { name = "zsh-users/zsh-syntax-highlighting"; }
+           { name = "zdharma/fast-syntax-highlighting";}
+#           { name = "zsh-users/zsh-history-substring-search"; } # TODO NOT working need as: plugin
+           { name = "zsh-users/zsh-autosuggestions"; }
         ];
       };
 
       initExtraFirst = ''
+        # Profiling
+        # zmodload zsh/zprof
+
         if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
           . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
           . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -40,30 +39,61 @@ let name = "%NAME%";
         # Remove history data we don't want to see
         export HISTIGNORE="pwd:ls:cd"
 
-        # Ripgrep alias
-        alias search=rg -p --glob '!node_modules/*'  $@
+        # Set editor default keymap to emacs (`-e`) or vi (`-v`)
+        bindkey -v
 
-        # nix shortcuts
-        shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-        }
+        source ~/.zsh/.aliases
+        source ~/.zsh/.functions
+      '';
 
-        # pnpm is a javascript package manager
-        alias pn=pnpm
-        alias px=pnpx
+      initExtra = ''
+        # zsh-autosuggestions
+        # set Autosuggestions key binging to alt-enter
+        bindkey '\e\r' autosuggest-accept
 
-        # Use difftastic, syntax-aware diffing
-        alias diff=difft
+        # Greetings
+        if [ -z "$TMUX" ]
+        then
+          fastfetch
+        else
+          echo ' ☠ Loaded ☠ '
+        fi
 
-        # Always color ls and group directories
-        alias ls='exa'
-        alias l='ls -l'
+        # Profiling
+        # zprof
       '';
     };
 
     programs.starship = {
       enable = true;
       settings = pkgs.lib.importTOML ../config/starship.toml;
+    };
+
+    programs.ssh = {
+      enable = true;
+      includes = [
+        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+          "/home/${user}/.ssh/config_external"
+        )
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+          "/Users/${user}/.ssh/config_external"
+        )
+      ];
+      addKeysToAgent = "yes";
+      # UseKeyChain yes # TODO not supported investigate this
+      matchBlocks = {
+        "github.com" = {
+          identitiesOnly = true;
+          identityFile = [
+            (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+              "/home/${user}/.ssh/id_github"
+            )
+            (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+              "/Users/${user}/.ssh/id_github"
+            )
+          ];
+        };
+      };
     };
 
     programs.git = {
@@ -82,6 +112,7 @@ let name = "%NAME%";
         };
         commit.gpgsign = true;
         pull.rebase = true;
+        push.autoSetupRemote = true;
         rebase.autoStash = true;
       };
     };
@@ -257,31 +288,6 @@ let name = "%NAME%";
             cyan = "0x5fb3b3";
             white = "0xd8dee9";
           };
-        };
-      };
-    };
-
-    programs.ssh = {
-      enable = true;
-      includes = [
-        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-          "/home/${user}/.ssh/config_external"
-        )
-        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-          "/Users/${user}/.ssh/config_external"
-        )
-      ];
-      matchBlocks = {
-        "github.com" = {
-          identitiesOnly = true;
-          identityFile = [
-            (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-              "/home/${user}/.ssh/id_github"
-            )
-            (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-              "/Users/${user}/.ssh/id_github"
-            )
-          ];
         };
       };
     };

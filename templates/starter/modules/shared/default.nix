@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./programs.nix
+  ];
 
   nixpkgs = {
     config = {

@@ -3,10 +3,13 @@
 let user = "%USER%"; in
 
 {
-
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
+    ../../modules/darwin/nix-homebrew.nix
+    ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/dock
+    ../../modules/darwin/local.nix
     ../../modules/shared
      agenix.darwinModules.default
   ];
@@ -14,6 +17,7 @@ let user = "%USER%"; in
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;
+    enable = false; # For nix-darwin to work with Determinate install
     settings = {
       trusted-users = [ "@admin" "${user}" ];
       substituters = [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
@@ -32,6 +36,14 @@ let user = "%USER%"; in
   environment.systemPackages = with pkgs; [
     agenix.packages."${pkgs.system}".default
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+
+  # It's me
+  users.users.${user} = {
+    name = "${user}";
+    home = "/Users/${user}";
+    isHidden = false;
+    shell = pkgs.zsh;
+  };
 
   system = {
     stateVersion = 4;

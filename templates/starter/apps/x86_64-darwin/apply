@@ -95,22 +95,6 @@ EOF
   rm "${FILE_PATH}.bak"
 }
 
-ask_for_star() {
-  _print "${YELLOW}Would you like to support my work by starring my GitHub repo? yes/no [yes]: ${NC}"
-  local response
-  read -r response
-  response=${response:-yes} # Set default response to 'yes' if input is empty
-  if [[ "$response" =~ ^[Yy](es)?$ ]] || [[ -z "$response" ]]; then
-    if [[ "$OS" == "Darwin" ]]; then
-      open "https://github.com/dustinlyons/nixos-config"
-    else
-      xdg-open "https://github.com/dustinlyons/nixos-config"
-    fi
-  fi
-}
-
-ask_for_star
-
 # Fetch username from the system
 export USERNAME=$(whoami)
 
@@ -191,15 +175,15 @@ confirm_details() {
   _prompt "${YELLOW}Is this correct? yes/no: ${NC}" choice
 
   case "$choice" in
-    [Nn] | [Nn][Oo] ) 
-      _print "${RED}Exiting script.${NC}" 
+    [Nn] | [Nn][Oo] )
+      _print "${RED}Exiting script.${NC}"
       exit 1
       ;;
-    [Yy] | [Yy][Ee][Ss] ) 
+    [Yy] | [Yy][Ee][Ss] )
       _print "${GREEN}Continuing...${NC}"
       ;;
-    * ) 
-      _print "${RED}Invalid option. Exiting script.${NC}" 
+    * )
+      _print "${RED}Invalid option. Exiting script.${NC}"
       exit 1
       ;;
   esac

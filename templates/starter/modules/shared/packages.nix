@@ -15,6 +15,7 @@ with pkgs; [
   du-dust
   gcc
   killall
+  kitty
   fastfetch
   openssh
   pandoc
@@ -80,17 +81,14 @@ with pkgs; [
   sesh
   shellcheck
   starship
+  thefuck
   tldr
   tmux
   tree
-  thefuck
-  tree
-  tmux
   unrar
   unzip
   yazi
   zoxide
-  zsh-powerlevel10k
 
   # Python packages
   black
@@ -102,8 +100,6 @@ with pkgs; [
   fish
   git
   mise
-  # pinentry-mac
-  # pygments
   redis
   neovim
 ]
