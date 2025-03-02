@@ -74,7 +74,7 @@
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
       templates.base = {
-          path = base;
+          path = ./;
           description = "General Purpose Nix Config for macOS + NixOS";
       };
 
