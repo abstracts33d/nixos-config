@@ -2,7 +2,7 @@
 {
   imports = [
     ../../nixos
-
+    ./disk-config.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -15,6 +15,5 @@
     networking = {
       interface = "enp0s3";
     };
-    disk = "sda";
   };
 }

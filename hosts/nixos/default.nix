@@ -6,7 +6,6 @@ let user = config.hostSpec.username;
   imports = [
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
-    ../../modules/nixos/disk-config.nix
     ../../modules/nixos/home-manager.nix
     ../../modules/shared
   ];
