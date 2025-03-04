@@ -95,32 +95,10 @@
       devShells = forAllSystems devShell;
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-#      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
-#        darwin.lib.darwinSystem {
-#          inherit system;
-#          specialArgs = inputs;
-#          modules = [
-#            home-manager.darwinModules.home-manager
-#            nix-homebrew.darwinModules.nix-homebrew
-#            ./hosts/darwin
-#          ];
-#        }
-#      );
-#
-#      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
-#        inherit system;
-#        specialArgs = inputs;
-#        modules = [
-#          disko.nixosModules.disko
-#          home-manager.nixosModules.home-manager
-#          ./hosts/nixos
-#        ];
-#     });
+      nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
+      darwinConfigurations = mkHostConfigs (readHosts "darwin") true;
 
-     nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
-     darwinConfigurations = mkHostConfigs (readHosts "darwin") true;
-
-     # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
   };
 }
