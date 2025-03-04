@@ -1,4 +1,10 @@
-{ config, pkgs, lib, home-manager, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  ...
+}:
 
 let
   user = config.hostSpec.username;
@@ -7,25 +13,32 @@ let
 in
 {
   imports = [
-   # ./hm/shell.nix
+    # ./hm/shell.nix
   ];
 
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }:{
-      home = {
-        enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix {};
-        file = lib.mkMerge [
-          sharedFiles
-          additionalFiles
+    users.${user} =
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }:
+      {
+        home = {
+          enableNixpkgsReleaseCheck = false;
+          packages = pkgs.callPackage ./packages.nix { };
+          file = lib.mkMerge [
+            sharedFiles
+            additionalFiles
+          ];
+          stateVersion = "23.11";
+        };
+        imports = [
+          ../shared/home-manager.nix
         ];
-        stateVersion = "23.11";
       };
-      imports = [
-        ../shared/home-manager.nix
-      ];
-    };
   };
 }

@@ -3,8 +3,8 @@
 {
   homebrew = {
     enable = true;
-    brews = ["pinentry-mac"];
-    casks = pkgs.callPackage ./casks.nix {};
+    brews = [ "pinentry-mac" ];
+    casks = pkgs.callPackage ./casks.nix { };
     # onActivation.cleanup = "uninstall";
 
     # These app IDs are from using the mas CLI app
