@@ -17,7 +17,7 @@ let name = config.hostSpec.githubUser;
            { name = "zsh-users/zsh-completions"; }
            { name = "zsh-users/zsh-syntax-highlighting"; }
            { name = "zdharma/fast-syntax-highlighting";}
-#           { name = "zsh-users/zsh-history-substring-search"; } # TODO NOT working need as: plugin
+           # { name = "zsh-users/zsh-history-substring-search"; } # TODO NOT working need as: plugin
            { name = "zsh-users/zsh-autosuggestions"; }
         ];
       };

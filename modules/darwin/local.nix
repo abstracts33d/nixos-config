@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  user = "s33d";
+  user = config.hostSpec.username;
 in
 {
   # Fully declarative dock using the latest from Nix Store

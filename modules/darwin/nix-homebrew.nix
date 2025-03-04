@@ -1,16 +1,16 @@
-{ config, pkgs, lib,  homebrew-core, homebrew-cask, homebrew-bundle, ... }:
+{ inputs, config, ... }:
 
 let
-  user = "s33d";
+  user = config.hostSpec.username;
 in
 {
   nix-homebrew = {
     inherit user;
     enable = true;
     taps = {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
     };
     mutableTaps = false;
     autoMigrate = true;
