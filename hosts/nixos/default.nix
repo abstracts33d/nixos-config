@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, agenix, ... }:
+{ inputs, config, pkgs, ... }:
 
 let user = config.hostSpec.username;
     keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
@@ -10,7 +10,6 @@ let user = config.hostSpec.username;
     ../../modules/nixos/disk-config.nix
     ../../modules/nixos/home-manager.nix
     ../../modules/shared
-    agenix.nixosModules.default
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -166,7 +165,6 @@ let user = config.hostSpec.username;
   ];
 
   environment.systemPackages = with pkgs; [
-    agenix.packages."${pkgs.system}".default # "x86_64-linux"
     gitAndTools.gitFull
     inetutils
   ];

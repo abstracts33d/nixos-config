@@ -1,4 +1,4 @@
-{ inputs, agenix, config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 let user = config.hostSpec.username; in
 
@@ -13,7 +13,6 @@ let user = config.hostSpec.username; in
     ../../modules/darwin/dock
     ../../modules/darwin/local.nix
     ../../modules/shared
-     agenix.darwinModules.default
   ];
 
   # Setup user, packages, programs
@@ -35,9 +34,7 @@ let user = config.hostSpec.username; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [
-    agenix.packages."${pkgs.system}".default
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = import ../../modules/shared/packages.nix { inherit pkgs; };
 
   # It's me
   users.users.${user} = {
