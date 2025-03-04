@@ -12,7 +12,7 @@
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
-      interface = "enp0s1";
+      interface = "enp0s3";
     };
     disk = "sda";
   };

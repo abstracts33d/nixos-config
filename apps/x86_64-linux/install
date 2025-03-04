@@ -58,7 +58,7 @@ install_nixos() {
   HOST=$(uname -n)
 
   sudo nixos-install --flake .#$HOST $@
-  sudo chmod -R 775 /mnt/etc/nixos
+#  sudo chmod -R 775 /mnt/etc/nixos
 }
 
 prompt_reboot() {
