@@ -1,7 +1,7 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  user = "%USER%";
+  user = config.hostSpec.username;
   shared-files = import ../shared/files.nix { inherit user config pkgs; };
 in
 {

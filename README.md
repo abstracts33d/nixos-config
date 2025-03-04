@@ -11,10 +11,9 @@
       - [2. Install Nix](#2-install-nix)
       - [3. Initialize the template](#3-initialize)
       - [4. Make apps executable](#4-make-apps-executable)
-      - [5. Apply your current user info](#5-apply-your-current-user-info)
-      - [6. Setup secrets](#6-setup-secrets)
-      - [7. Install configuration](#7-install-configuration)
-      - [8. Make changes](#8-make-changes)
+      - [5. Setup secrets](#5-setup-secrets)
+      - [6. Install configuration](#6-install-configuration)
+      - [7. Make changes](#7-make-changes)
     - [For NixOS](#for-nixos)
       - [1. Burn and use the latest ISO](#1-burn-and-use-the-latest-iso)
       - [2. Setup secrets](#2-setup-secrets)
@@ -76,31 +75,21 @@ After installation, open a new terminal session to make the `nix` executable ava
 ### 3. Initialize
 
 ```sh
+sudo hostname your-target-hostname
 mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-features 'nix-command flakes' clone github:abstracts33d/nixos-config --dest .
 ```
 
 ### 4. Make [apps](https://github.com/abstracts33d/nixos-config/tree/main/apps) executable
 ```sh
-find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name apply -o -name build -o -name build-switch -o -name create-keys -o -name copy-keys -o -name check-keys -o -name rollback \) -exec chmod +x {} \;
+find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name build -o -name build-switch -o -name create-keys -o -name copy-keys -o -name check-keys -o -name rollback \) -exec chmod +x {} \;
 ```
 
-### 5. Apply your current user info
-Run this Nix command to replace stub values with your system properties, username, full name, and email.
-> Your email is only used in the `git` configuration.
-```sh
-nix run .#apply
-```
-> [!NOTE]
-> If you're using a git repository, only files in the working tree will be copied to the [Nix Store](https://zero-to-nix.com/concepts/nix-store).
->
-> You must run `git add .` first.
+### 5. Setup secrets
 
-### 6. Setup secrets
-
-#### 8a. Create a private Github repo to hold your secrets
+#### 5a. Create a private Github repo to hold your secrets
 In Github, create a private [`nix-secrets`](https://github.com/abstracts33d/nix-secrets-example) repository with at least one file (like a `README`). You'll enter this name during installation.
 
-#### 8b. Install keys
+#### 5b. Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
 | Key Name            | Platform         | Description                                                                              |
@@ -134,7 +123,7 @@ If you're rolling your own, just check they are installed correctly.
 nix run .#check-keys
 ```
 
-### 7. Install configuration
+### 6. Install configuration
 Ensure the build works before deploying the configuration, run:
 ```sh
 nix run .#build
@@ -158,7 +147,7 @@ nix run .#build
 > ```
 > Backup and move the files out of the way and/or edit your Nix configuration before continuing.
 
-### 8. Make changes
+### 7. Make changes
 Finally, alter your system with this command:
 ```sh
 nix run .#build-switch
@@ -217,6 +206,7 @@ sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts
 > Running this will reformat your drive to the `ext4` filesystem.
 
 ```sh
+sudo hostname your-target-hostname
 sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install
 ```
 

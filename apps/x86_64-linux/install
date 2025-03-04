@@ -21,15 +21,6 @@ download_config() {
   cd nixos-config
 }
 
-run_apply() {
-  ./apps/x86_64-linux/apply
-  if [ ! -f /tmp/username.txt ]; then
-    echo -e "\e[1;31mError: /tmp/username.txt does not exist.\e[0m"
-    exit 1
-  fi
-  export USERNAME=$(cat /tmp/username.txt)
-}
-
 run_disko() {
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes \
     github:nix-community/disko -- --mode zap_create_mount ./modules/nixos/disk-config.nix
@@ -64,22 +55,9 @@ link_home_dir() {
 }
 
 install_nixos() {
-  ARCH=$(uname -m)
+  HOST=$(uname -n)
 
-  case "$ARCH" in
-    x86_64)
-      FLAKE_TARGET="x86_64-linux"
-      ;;
-    aarch64)
-      FLAKE_TARGET="aarch64-linux"
-      ;;
-    *)
-      echo -e "${RED}Unsupported architecture: $ARCH${CLEAR}"
-      exit 1
-      ;;
-  esac
-
-  sudo nixos-install --flake .#$FLAKE_TARGET $@
+  sudo nixos-install --flake .#$HOST $@
   sudo chmod -R 775 /mnt/etc/nixos
 }
 
@@ -94,7 +72,6 @@ prompt_reboot() {
 cleanup
 check_installer
 download_config
-run_apply
 run_disko
 setup_files
 setup_ssh_keys

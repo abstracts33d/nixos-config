@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let name = "%NAME%";
-    user = "%USER%";
-    email = "%EMAIL%"; in
+let name = config.hostSpec.githubUser;
+    user = config.hostSpec.username;
+    email = config.hostSpec.githubEmail; in
 {
     # Shared shell configuration
     programs.zsh = {

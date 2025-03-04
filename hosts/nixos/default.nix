@@ -1,9 +1,11 @@
-{ config, inputs, pkgs, agenix, ... }:
+{ inputs, config, inputs, pkgs, agenix, ... }:
 
-let user = "%USER%";
+let user = config.hostSpec.username;
     keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
 {
   imports = [
+    inputs.disko.nixosModules.disko
+    inputs.home-manager.nixosModules.home-manager
     ../../modules/nixos/secrets.nix
     ../../modules/nixos/disk-config.nix
     ../../modules/nixos/home-manager.nix
@@ -34,9 +36,9 @@ let user = "%USER%";
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking = {
-    hostName = "%HOST%"; # Define your hostname.
+    hostName = config.hostSpec.hostName; # Define your hostname.
     useDHCP = false;
-    interfaces."%INTERFACE%".useDHCP = true;
+    interfaces.config.hostSpec.networking.interface.useDHCP = true;
   };
 
   nix = {
