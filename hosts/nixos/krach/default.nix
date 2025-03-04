@@ -1,7 +1,7 @@
 { inputs, config, pkgs, agenix, ... }:
 {
   imports = [
-    "../nixos"
+    "../../nixos"
   ];
 
   hostSpec = {
