@@ -12,7 +12,7 @@
     networking = {
       interface = "enp0s1";
     };
-    disk = ""
+    disk = "sda";
   };
 }
 
