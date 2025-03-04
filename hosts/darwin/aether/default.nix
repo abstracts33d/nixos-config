@@ -1,4 +1,4 @@
-{ inputs, config, inputs, pkgs, agenix, ... }:
+{ inputs, config, pkgs, agenix, ... }:
 {
   imports = [
     "../darwin"
