@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hostSpec.nix
     ./programs.nix
   ];
 
