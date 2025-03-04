@@ -6,7 +6,6 @@ let user = config.hostSpec.username; in
   imports = [
     inputs.home-manager.darwinModules.home-manager
     inputs.nix-homebrew.darwinModules.nix-homebrew
-    ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/darwin/nix-homebrew.nix
     ../../modules/darwin/homebrew.nix
