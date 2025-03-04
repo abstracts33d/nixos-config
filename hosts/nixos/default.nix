@@ -36,7 +36,7 @@ let user = config.hostSpec.username;
   networking = {
     hostName = config.hostSpec.hostName; # Define your hostname.
     useDHCP = false;
-    interfaces.config.hostSpec.networking.interface.useDHCP = true;
+    interfaces."$config.hostSpec.networking.interface".useDHCP = true;
   };
 
   nix = {
