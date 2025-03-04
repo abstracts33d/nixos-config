@@ -1,8 +1,10 @@
-{ ... }:
+{ nixpkgs, ... }:
 {
   imports = [
     ../../nixos
   ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hostSpec = {
     hostName = "krach";
