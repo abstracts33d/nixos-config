@@ -16,10 +16,8 @@
       - [7. Make changes](#7-make-changes)
     - [For NixOS](#for-nixos)
       - [1. Burn and use the latest ISO](#1-burn-and-use-the-latest-iso)
-      - [2. Setup secrets](#2-setup-secrets)
-      - [3. Install configuration](#3-install-configuration)
-      - [4. Set user password](#4-set-user-password)
-  - [How to Create Secrets](#how-to-create-secrets)
+      - [2. Install configuration](#2-install-configuration)
+      - [3. Set user password](#3-set-user-password)
 
 
 ## Disclaimer
@@ -165,39 +163,7 @@ Download and burn [the minimal ISO image](https://nixos.org/download.html) to a 
 * [64-bit Intel/AMD](https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-x86_64-linux.iso)
 * [64-bit ARM](https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-aarch64-linux.iso)
 
-### 2. Setup secrets
-
-#### 2a. Create a private Github repo to hold your secrets
-
-#### 2b. Install keys
-Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
-
-| Key Name            | Platform         | Description                                                                              |
-|---------------------|------------------|------------------------------------------------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Not copied to host, used only during bootstrap. |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`.  |
-
-Run one of these commands:
-
-##### Copy keys from USB drive
-This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_ed25519` and `id_ed25519_agenix`.
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#copy-keys
-```
-
-##### Create new keys
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#create-keys
-```
-
-##### Check existing keys
-If you're rolling your own, just check they are installed correctly.
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#check-keys
-```
-
-### 3. Install configuration
+### 2. Install configuration
 
 > [!IMPORTANT]
 > For Nvidia cards, select the second option, `nomodeset`, when booting the installer, or you will see a blank screen.
@@ -210,82 +176,9 @@ sudo hostname your-target-hostname
 sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install
 ```
 
-### 4. Set user password
+### 3. Set user password
 On first boot at the login screen:
 - Use shortcut `Ctrl-Alt-F2` (or `Fn-Ctrl-Option-F2` if on a Mac) to move to a terminal session
 - Login as `root` using the password created during installation
 - Set the user password with `passwd <user>`
 - Go back to the login screen: `Ctrl-Alt-F7`
-
-## How to create secrets
-To create a new secret `secret.age`, first [create a `secrets.nix` file](https://github.com/ryantm/agenix#tutorial) at the root of your [`nix-secrets`](https://github.com/abstracts33d/nix-secrets-example) repository. Use this code:
-
-> [!NOTE]
-> `secrets.nix` is interpreted by the imperative `agenix` commands to pick the "right" keys for your secrets.
->
-> Think of this file as the config file for `agenix`. It's not part of your system configuration.
-
-**secrets.nix**
-```nix
-let
-  user1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0idNvgGiucWgup/mP78zyC23uFjYq0evcWdjGQUaBH";
-  users = [ user1 ];
-
-  system1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJDyIr/FSz1cJdcoW69R+NrWzwGK/+3gJpqD1t8L2zE";
-  systems = [ system1 ];
-in
-{
-  "secret.age".publicKeys = [ user1 system1 ];
-}
-```
-Values for `user1` should be your public key, or if you prefer to have keys attached to hosts, use the `system1` declaration.
-
-Now that we've configured `agenix` with our `secrets.nix`, it's time to create our first secret.
-
-Run the command below.
-
-```
-EDITOR=vim nix run github:ryantm/agenix -- -e secret.age
-```
-
-This opens an editor to accept, encrypt, and write your secret to disk.
-
-The command will look up the public key for `secret.age`, defined in your `secrets.nix`, and check for its private key in `~/.ssh/.`
-
-> To override the SSH path, provide the `-i` flag with a path to your `id_ed25519` key.
-
-Write your secret in the editor, save, and commit the file to your [`nix-secrets`](https://github.com/abstracts33d/nix-secrets-example) repo.
-
-Now we have two files: `secrets.nix` and our `secret.age`.
-
-Here's a more step-by-step example:
-
-## Secrets Example
-Let's say I wanted to create a new secret to hold my Github SSH key.
-
-I would `cd` into my [`nix-secrets`](https://github.com/abstracts33d/nix-secrets-example) repo directory, verify the `agenix` configuration (named `secrets.nix`) exists, then run
-```
-EDITOR=vim nix run github:ryantm/agenix -- -e github-ssh-key.age
-```
-
-This would start a `vim` session.
-
-I would enter insert mode `:i`, copy+paste the key, hit Esc and then type `:w` to save it, resulting in the creation of a new file, `github-ssh-key.age`.
-
-Then, I would edit `secrets.nix` to include a line specifying the public key to use for my new secret. I specify a user key, but I could just as easily specify a host key.
-
-**secrets.nix**
-```nix
-let
-  s33d = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0idNvgGiucWgup/mP78zyC23uFjYq0evcWdjGQUaBH";
-  users = [ s33d ];
-  systems = [ ];
-in
-{
-  "github-ssh-key.age".publicKeys = [ dustin ];
-}
-```
-
-Finally, I'd commit all changes to the [`nix-secrets`](https://github.com/abstracts33d/nix-secrets-example) repository, go back to my `nixos-config` and run `nix flake update` to update the lock file.
-
-The secret is now ready to use. Here's an [example](https://github.com/abstracts33d/nixos-config/blob/3b95252bc6facd7f61c6c68ceb1935481cb6b457/nixos/secrets.nix#L28) from my configuration. In the end, this creates a symlink to a decrypted file in the Nix Store that reflects my original file.
