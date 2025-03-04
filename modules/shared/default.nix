@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hostSpec.nix
+    ./host-spec.nix
     ./programs.nix
   ];
 
