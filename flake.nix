@@ -65,7 +65,7 @@
       mkHost = host: isDarwin: {
         ${host} =
           let
-            func = if isDarwin then inputs.nix-darwin.lib.darwinSystem else lib.nixosSystem;
+            func = if isDarwin then darwin.lib.darwinSystem else lib.nixosSystem;
             systemFunc = func;
           in
           systemFunc {
