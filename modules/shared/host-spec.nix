@@ -51,6 +51,10 @@
         in
         if pkgs.stdenv.isLinux then "/home/${user}" else "/Users/${user}";
     };
+    disk = lib.mkOption {
+      type = lib.types.str;
+      description = "The disk for the disko install";
+    };
     persistFolder = lib.mkOption {
       type = lib.types.str;
       description = "The folder to persist data if impermenance is enabled";
