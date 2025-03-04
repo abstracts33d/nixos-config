@@ -4,7 +4,7 @@
     ../../darwin
   ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   hostSpec = {
     hostName = "aether";

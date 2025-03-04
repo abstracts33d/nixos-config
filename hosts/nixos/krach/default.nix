@@ -4,7 +4,7 @@
     ../../nixos
   ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   hostSpec = {
     hostName = "krach";
