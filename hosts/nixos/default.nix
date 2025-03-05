@@ -84,17 +84,20 @@ in
     zsh.enable = true;
   };
 
-  # Enable Window Manager
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-  };
+#  # Enable Window Manager
+#  programs = {
+#    hyprland = {
+#      enable = true;
+#      xwayland.enable = true;
+#    };
+#  };
 
   services = {
     xserver = {
       enable = true;
+
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
 
       # Uncomment these for AMD or Nvidia GPU
       # videoDrivers = [ "amdgpu" ];
