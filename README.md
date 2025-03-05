@@ -36,7 +36,7 @@ Installing Nix on macOS will create an entirely separate volume. It may exceed m
 ```
 
 ## Installing
-## For macOS (January 2025)
+## For macOS
 This configuration supports both Intel and Apple Silicon Macs.
 
 ### 1. Install dependencies
@@ -78,7 +78,7 @@ mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-featu
 
 ### 4. Make [apps](https://github.com/abstracts33d/nixos-config/tree/main/apps) executable
 ```sh
-find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name build -o -name build-switch -o -name create-keys -o -name copy-keys -o -name check-keys -o -name rollback \) -exec chmod +x {} \;
+find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name build -o -name build-switch -o -name rollback \) -exec chmod +x {} \;
 ```
 
 ### 5. Install configuration
