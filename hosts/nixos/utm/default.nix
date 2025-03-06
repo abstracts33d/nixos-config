@@ -3,7 +3,7 @@
   imports = [
     ../../nixos
     ./disk-config.nix
-    ../../../../features/desktop/gnome
+    ../../../features/desktop/gnome
   ];
 
   nixpkgs.hostPlatform = "aarch64-linux";
