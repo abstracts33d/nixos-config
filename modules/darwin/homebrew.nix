@@ -3,7 +3,10 @@
 {
   homebrew = {
     enable = true;
-    brews = [ "pinentry-mac" ];
+    brews = [
+    "pinentry-mac"
+    "gmp" "libyaml" "openssl" "redis" "libxml2" "xz" # TODO REMOVE added for mise ruby (PostgressApp installed manually)
+    ];
     casks = pkgs.callPackage ./casks.nix { };
     # onActivation.cleanup = "uninstall";
 

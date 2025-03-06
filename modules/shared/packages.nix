@@ -89,6 +89,7 @@ with pkgs;
   unrar
   unzip
   yazi
+  zellij
   zoxide
 
   # Python packages
