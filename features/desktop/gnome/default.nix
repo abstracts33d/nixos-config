@@ -28,7 +28,6 @@
       gnome-photos
       gnome-tour
       cheese # webcam tool
-    ]) ++ (with pkgs.gnome; [
       gnome-music
       gedit # text editor
       epiphany # web browser
