@@ -84,14 +84,6 @@ in
     zsh.enable = true;
   };
 
-#  # Enable Window Manager
-#  programs = {
-#    hyprland = {
-#      enable = true;
-#      xwayland.enable = true;
-#    };
-#  };
-
   services = {
     xserver = {
       enable = true;
