@@ -1,6 +1,9 @@
 _:
 
 [
+  # WM
+  "nikitabobko/tap/aerospace"
+
   # Development Tools
   # "homebrew/cask/docker" # marked broken
   "visual-studio-code"
