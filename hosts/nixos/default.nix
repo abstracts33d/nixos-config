@@ -85,29 +85,6 @@ in
   };
 
   services = {
-    xserver = {
-      enable = true;
-
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-
-      # Uncomment these for AMD or Nvidia GPU
-      # videoDrivers = [ "amdgpu" ];
-      # videoDrivers = [ "nvidia" ];
-
-      # Uncomment this for Nvidia GPU
-      # This helps fix tearing of windows for Nvidia cards
-      # services.xserver.screenSection = ''
-      #   Option       "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-      #   Option       "AllowIndirectGLXProtocol" "off"
-      #   Option       "TripleBuffer" "on"
-      # '';
-
-      xkb = {
-        layout = "us";
-      };
-    };
-
     libinput.enable = true; # Better support for general peripherals
 
     openssh.enable = true; # Let's be able to SSH into this machine

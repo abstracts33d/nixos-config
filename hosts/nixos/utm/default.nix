@@ -6,15 +6,15 @@
     ../../../features/desktop/gnome
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = "aarch64-linux";
 
   hostSpec = {
-    hostName = "krach";
+    hostName = "utm";
     username = "s33d";
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
-      interface = "enp0s3";
+      interface = "enp0s1";
     };
   };
 }

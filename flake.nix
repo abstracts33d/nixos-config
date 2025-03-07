@@ -22,6 +22,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    nikitabobko-homebrew-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +39,7 @@
       homebrew-bundle,
       homebrew-core,
       homebrew-cask,
+      nikitabobko-homebrew-tap,
       home-manager,
       nixpkgs,
       disko,
