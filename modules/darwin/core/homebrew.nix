@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   homebrew = {
     enable = true;
-    brews = pkgs.callPackage ./brews.nix { };
-    casks = pkgs.callPackage ./casks.nix { };
+    brews = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/brews.nix") { };
+    casks = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/casks.nix") { };
     # onActivation.cleanup = "uninstall";
 
     # These app IDs are from using the mas CLI app

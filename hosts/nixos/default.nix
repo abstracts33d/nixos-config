@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 
@@ -10,11 +11,14 @@ let
   keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ];
 in
 {
-  imports = [
+  imports = lib.flatten [
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
-    ../../modules/nixos/home-manager.nix
-    ../../modules/shared
+    ./common
+    (map lib.custom.relativeToRoot [
+      "modules/nixos/home-manager.nix"
+      "modules/shared"
+    ])
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -41,7 +45,7 @@ in
   };
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Paris";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -50,27 +54,6 @@ in
     hostName = config.hostSpec.hostName; # Define your hostname.
     useDHCP = false;
     interfaces."${config.hostSpec.networking.interface}".useDHCP = true;
-  };
-
-  nix = {
-    nixPath = [ "nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos" ];
-    settings = {
-      allowed-users = [ "${user}" ];
-      trusted-users = [
-        "@admin"
-        "${user}"
-      ];
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org"
-      ];
-      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
-    };
-
-    package = pkgs.nix;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 
   # Manages keys and such
@@ -113,39 +96,6 @@ in
   # Add docker daemon
   virtualisation.docker.enable = true;
   virtualisation.docker.logDriver = "json-file";
-
-  # It's me
-  users.users = {
-    ${user} = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel" # Enable ‘sudo’ for the user.
-        "docker"
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = keys;
-    };
-
-    root = {
-      openssh.authorizedKeys.keys = keys;
-    };
-  };
-
-  # Don't require password for users in `wheel` group for these commands
-  security.sudo = {
-    enable = true;
-    extraRules = [
-      {
-        commands = [
-          {
-            command = "${pkgs.systemd}/bin/reboot";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-        groups = [ "wheel" ];
-      }
-    ];
-  };
 
   fonts.packages = with pkgs; [
     dejavu_fonts

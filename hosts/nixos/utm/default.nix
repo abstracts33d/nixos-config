@@ -1,9 +1,11 @@
-{ nixpkgs, ... }:
+{ nixpkgs, lib, ... }:
 {
-  imports = [
-    ../../nixos
+  imports = lib.flatten [
     ./disk-config.nix
-    ../../../features/desktop/gnome
+    (map lib.custom.relativeToRoot [
+      "hosts/nixos"
+      "modules/nixos/optional/desktop/gnome"
+    ])
   ];
 
   nixpkgs.hostPlatform = "aarch64-linux";
