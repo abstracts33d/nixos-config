@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   options = {
     hyprland = {
@@ -9,7 +9,7 @@
     };
   };
 
-  config = mkIf (config.hyprland.enable) {
+  config = lib.mkIf (config.hyprland.enable) {
     programs = {
       hyprland = {
         enable = true;

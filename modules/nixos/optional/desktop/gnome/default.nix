@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 {
   options = {
     gnome = {
@@ -9,7 +9,7 @@
     };
   };
 
-  config = mkIf (config.gnome.enable) {
+  config = lib.mkIf (config.gnome.enable) {
     services = {
       xserver = {
         enable = true;
