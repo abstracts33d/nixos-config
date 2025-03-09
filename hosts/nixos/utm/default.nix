@@ -4,7 +4,6 @@
     ./disk-config.nix
     (map lib.custom.relativeToRoot [
       "hosts/nixos"
-      "modules/nixos/optional/desktop/gnome"
     ])
   ];
 
@@ -19,4 +18,6 @@
       interface = "enp0s1";
     };
   };
+
+  gnome.enable = true;
 }

@@ -1,6 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  config = {
+  options = {
+    gnome = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
+  };
+
+  config = mkIf (config.gnome.enable) {
     services = {
       xserver = {
         enable = true;

@@ -16,7 +16,7 @@ in
     ./common
     (map lib.custom.relativeToRoot [
       "modules/darwin/core"
-      "modules/darwin/optional/dock.nix"
+      "modules/darwin/optional"
       "modules/shared"
     ])
   ];

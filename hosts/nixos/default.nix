@@ -8,7 +8,6 @@
 
 let
   user = config.hostSpec.username;
-  keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ];
 in
 {
   imports = lib.flatten [
@@ -16,7 +15,8 @@ in
     inputs.home-manager.nixosModules.home-manager
     ./common
     (map lib.custom.relativeToRoot [
-      "modules/nixos/home-manager.nix"
+      "modules/nixos/core"
+      "modules/nixos/optional"
       "modules/shared"
     ])
   ];
@@ -62,6 +62,9 @@ in
 
     # Needed for anything GTK related
     dconf.enable = true;
+
+    # No matter what environment we are in we want these tools for root, and the user(s)
+    programs.git.enable = true;
 
     # My shell
     zsh.enable = true;
