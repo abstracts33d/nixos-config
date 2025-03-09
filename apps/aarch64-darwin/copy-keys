@@ -45,8 +45,8 @@ setup_ssh_directory() {
 }
 
 set_keys() {
-  cp ${MOUNT_PATH}/id_ed25519_github.pub ${SSH_DIR}/id_ed25519.pub
-  cp ${MOUNT_PATH}/id_ed25519_github ${SSH_DIR}/id_ed25519
+  cp ${MOUNT_PATH}/id_ed25519.pub ${SSH_DIR}/id_ed25519.pub
+  cp ${MOUNT_PATH}/id_ed25519 ${SSH_DIR}/id_ed25519
   chmod 600 ${SSH_DIR}/id_ed25519
   chmod 644 ${SSH_DIR}/id_ed25519.pub
 }
