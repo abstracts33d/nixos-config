@@ -25,7 +25,7 @@ in
           username = "${user}";
           homeDirectory = "/home/${user}";
           packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/packages.nix") { };
-          file = shared-files // import ./files.nix { inherit user config pkgs; };
+          file = shared-files // import (lib.custom.relativeToRoot "modules/nixos/files.nix") { inherit user config pkgs; };
           stateVersion = "21.05";
         };
         imports = [ (lib.custom.relativeToRoot "modules/shared/home-manager.nix") ];
