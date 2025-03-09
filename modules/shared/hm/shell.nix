@@ -76,25 +76,6 @@ in
     settings = pkgs.lib.importTOML ../config/starship.toml;
   };
 
-  programs.ssh = {
-    enable = true;
-    includes = [
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/config_external")
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/config_external")
-    ];
-    addKeysToAgent = "yes";
-    # UseKeyChain yes # TODO not supported investigate this
-    matchBlocks = {
-      "github.com" = {
-        identitiesOnly = true;
-        identityFile = [
-          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/id_github")
-          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/id_github")
-        ];
-      };
-    };
-  };
-
   programs.git = {
     enable = true;
     ignores = [ "*.swp" ];

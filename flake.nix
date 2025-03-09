@@ -2,6 +2,7 @@
   description = "General Purpose Nix Config for macOS + NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -30,11 +31,16 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrets = {
+      url = "git+ssh://git@github.com/abstracts33d/nix-secrets.git";
+      flake = false;
+    };
   };
   outputs =
     {
       self,
       darwin,
+      agenix,
       nix-homebrew,
       homebrew-bundle,
       homebrew-core,
@@ -43,6 +49,7 @@
       home-manager,
       nixpkgs,
       disko,
+      secrets
     }@inputs:
     let
       inherit (self) outputs;
@@ -70,7 +77,6 @@
                 bashInteractive
                 git
                 age
-                age-plugin-yubikey
               ];
               shellHook = with pkgs; ''
                 export EDITOR=vim
@@ -90,11 +96,17 @@
       };
       mkLinuxApps = system: {
         "build-switch" = mkApp "build-switch" system;
+        "copy-keys" = mkApp "copy-keys" system;
+        "create-keys" = mkApp "create-keys" system;
+        "check-keys" = mkApp "check-keys" system;
         "install" = mkApp "install" system;
       };
       mkDarwinApps = system: {
         "build" = mkApp "build" system;
         "build-switch" = mkApp "build-switch" system;
+        "copy-keys" = mkApp "copy-keys" system;
+        "create-keys" = mkApp "create-keys" system;
+        "check-keys" = mkApp "check-keys" system;
         "rollback" = mkApp "rollback" system;
       };
 

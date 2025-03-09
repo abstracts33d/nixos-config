@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 let
   user = config.hostSpec.username;
+  home = config.hostSpec.home;
 in
 {
   nix = {
-    nixPath = [ "nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos" ];
+    nixPath = [ "nixos-config=${home}/.local/share/src/nixos-config:/etc/nixos" ];
     settings = {
       allowed-users = [ "${user}" ];
       trusted-users = [

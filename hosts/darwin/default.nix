@@ -13,6 +13,7 @@ in
   imports = lib.flatten [
     inputs.home-manager.darwinModules.home-manager
     inputs.nix-homebrew.darwinModules.nix-homebrew
+    inputs.agenix.darwinModules.default
     ./common
     (map lib.custom.relativeToRoot [
       "modules/darwin/core"
