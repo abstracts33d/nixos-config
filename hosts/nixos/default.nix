@@ -64,7 +64,7 @@ in
     dconf.enable = true;
 
     # No matter what environment we are in we want these tools for root, and the user(s)
-    programs.git.enable = true;
+    git.enable = true;
 
     # My shell
     zsh.enable = true;
