@@ -2,7 +2,7 @@
 {
   options = {
     hyprland = {
-      enable = mkOption {
+      enable = lib.mkOption {
         type = types.bool;
         default = false;
       };
