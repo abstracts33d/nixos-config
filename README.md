@@ -11,12 +11,14 @@
       - [2. Install Nix](#2-install-nix)
       - [3. Initialize the template](#3-initialize)
       - [4. Make apps executable](#4-make-apps-executable)
-      - [5. Install configuration](#5-install-configuration)
-      - [6. Make changes](#6-make-changes)
+      - [5. Setup secrets](#5-setup-secrets)
+      - [6. Install configuration](#6-install-configuration)
+      - [7. Make changes](#7-make-changes)
     - [For NixOS](#for-nixos)
       - [1. Burn and use the latest ISO](#1-burn-and-use-the-latest-iso)
-      - [2. Install configuration](#2-install-configuration)
-      - [3. Set user password](#3-set-user-password)
+      - [2. Setup secrets](#2-setup-secrets)
+      - [3. Install configuration](#3-install-configuration)
+      - [4. Set user password](#4-set-user-password)
 
 
 ## Disclaimer
@@ -81,7 +83,50 @@ mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-featu
 find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name build -o -name build-switch -o -name rollback \) -exec chmod +x {} \;
 ```
 
-### 5. Install configuration
+### 5. Setup secrets
+
+#### Install keys
+Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
+
+| Key Name            | Platform         | Description                                                                              |
+|---------------------|------------------|------------------------------------------------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Not copied to host, used only during bootstrap. |
+| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`.  |
+
+Run one of these commands:
+
+##### Copy keys from USB drive
+This command auto-detects a USB drive connected to the current system.
+> Keys must be named `id_ed25519` and `id_ed25519_agenix`.
+```sh
+nix run .#copy-keys
+```
+
+##### Create new keys
+```sh
+nix run .#create-keys
+```
+> [!NOTE]
+> If you choose this option, make sure to [save the value](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) of `id_ed25519.pub` to Github.
+>
+> ```sh
+> cat /Users/$USER/.ssh/id_ed25519.pub | pbcopy # Copy key to clipboard
+> ```
+
+##### Check existing keys
+If you're rolling your own, just check they are installed correctly.
+```sh
+nix run .#check-keys
+```
+
+> [!NOTE]
+> Upon updating the nix-secrets repository you should update your secret flake input with
+>
+> ```sh
+> nix flake update secrets
+> ```
+
+### 6. Install configuration
 Ensure the build works before deploying the configuration, run:
 ```sh
 nix run .#build
@@ -105,7 +150,7 @@ nix run .#build
 > ```
 > Backup and move the files out of the way and/or edit your Nix configuration before continuing.
 
-### 6. Make changes
+### 7. Make changes
 Finally, alter your system with this command:
 ```sh
 nix run .#build-switch
@@ -123,7 +168,37 @@ Download and burn [the minimal ISO image](https://nixos.org/download.html) to a 
 * [64-bit Intel/AMD](https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-x86_64-linux.iso)
 * [64-bit ARM](https://channels.nixos.org/nixos-23.05/latest-nixos-minimal-aarch64-linux.iso)
 
-### 2. Install configuration
+### 2. Setup secrets
+
+#### Install keys
+Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
+
+| Key Name            | Platform         | Description                                                                              |
+|---------------------|------------------|------------------------------------------------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Not copied to host, used only during bootstrap. |
+| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`.  |
+
+Run one of these commands:
+
+##### Copy keys from USB drive
+This command auto-detects a USB drive connected to the current system.
+> Keys must be named `id_ed25519` and `id_ed25519_agenix`.
+```sh
+sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#copy-keys
+```
+
+##### Create new keys
+```sh
+sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#create-keys
+```
+
+##### Check existing keys
+If you're rolling your own, just check they are installed correctly.
+```sh
+sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#check-keys
+```
+
+### 3. Install configuration
 
 > [!IMPORTANT]
 > For Nvidia cards, select the second option, `nomodeset`, when booting the installer, or you will see a blank screen.
@@ -136,7 +211,7 @@ sudo hostname your-target-hostname
 sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install
 ```
 
-### 3. Set user password
+### 4. Set user password
 On first boot at the login screen:
 - Use shortcut `Ctrl-Alt-F2` (or `Fn-Ctrl-Option-F2` if on a Mac) to move to a terminal session
 - Login as `root` using the password created during installation
