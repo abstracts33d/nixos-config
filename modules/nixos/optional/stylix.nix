@@ -3,9 +3,9 @@ let
   theme = import ../config/nix/theme.nix { inherit pkgs; };
 in
 {
-#  imports = [
-#    inputs.stylix.nixosModules.stylix
-#  ];
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
 
   options = {
     theme = {
@@ -16,5 +16,5 @@ in
     };
   };
 
-#  config = lib.mkIf (config.theme.enable) theme;
+  config = lib.mkIf (config.theme.enable) theme;
 }
