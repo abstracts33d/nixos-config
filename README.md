@@ -207,8 +207,7 @@ sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyo
 > Running this will reformat your drive to the `ext4` filesystem.
 
 ```sh
-sudo hostname your-target-hostname
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- "HOSTNAME" "USERNAME"
 ```
 
 ### 4. Set user password

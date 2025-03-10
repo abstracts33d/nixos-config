@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -exu
 
+export HOST=$1
+export USERNAME=$2
+
 check_installer() {
   if [ -e /etc/NIXOS ]; then
     echo -e "\e[1;32mRunning in the NixOS installer environment.\e[0m"
@@ -22,7 +25,7 @@ download_config() {
 }
 
 run_disko() {
-  HOST=$(uname -n)
+  # HOST=$(uname -n)
 
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes \
     github:nix-community/disko -- --mode zap_create_mount ./hosts/nixos/$HOST/disk-config.nix
@@ -70,7 +73,6 @@ prompt_reboot() {
   esac
 }
 
-export USERNAME=$1
 cleanup
 check_installer
 download_config
