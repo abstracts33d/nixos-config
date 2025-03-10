@@ -40,15 +40,11 @@ crust = "#181926"
 [ruby]
 symbol = ' '
 
-[character]
-# {{- if eq .chezmoi.os "darwin" }}
-success_symbol = '[](bold green) '
-error_symbol = '[](bold red) '
-# {{- else if eq .chezmoi.os "linux" }}
-# success_symbol = '[󰣇](bold green) '
-# error_symbol = '[󰣇](bold red) '
-# {{- end }}
-vimcmd_symbol = '[](bold blue) '
-
 [nodejs]
 symbol = ' '
+
+[character]
+success_symbol = '[❄️ ](bold green) '
+error_symbol = '[❄️ ](bold red) '
+vimcmd_symbol = '[](bold blue) '
+
