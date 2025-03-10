@@ -32,5 +32,5 @@
     };
   };
 
-  stylix.autoEnable = false;
+  # stylix.autoEnable = false;
 }

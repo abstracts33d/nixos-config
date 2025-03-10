@@ -21,7 +21,6 @@
 
   # Modules options
   gnome.enable = true;
-  theme.enable = true;
 
   # Qemu and Spice addons
   services.qemuGuest.enable = true;
