@@ -1,9 +1,10 @@
-{ nixpkgs, ... }:
+{ nixpkgs, lib, ... }:
 {
-  imports = [
-    ../../nixos
+  imports = lib.flatten [
     ./disk-config.nix
-    ../../../features/desktop/gnome
+    (map lib.custom.relativeToRoot [
+      "hosts/nixos"
+    ])
   ];
 
   nixpkgs.hostPlatform = "aarch64-linux";
@@ -17,4 +18,9 @@
       interface = "enp0s1";
     };
   };
+
+  gnome.enable = true;
+
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
 }

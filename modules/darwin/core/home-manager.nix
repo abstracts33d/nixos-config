@@ -7,9 +7,14 @@
 }:
 
 let
+  hostSpec = config.hostSpec;
   user = config.hostSpec.username;
-  sharedFiles = import ../shared/files.nix { inherit user config pkgs; };
-  additionalFiles = import ./files.nix { inherit user config pkgs; };
+  sharedFiles = import (lib.custom.relativeToRoot "modules/shared/files.nix") {
+    inherit user config pkgs;
+  };
+  additionalFiles = import (lib.custom.relativeToRoot "modules/darwin/files.nix") {
+    inherit user config pkgs;
+  };
 in
 {
   imports = [
@@ -27,18 +32,18 @@ in
         ...
       }:
       {
+        inherit hostSpec;
+
         home = {
           enableNixpkgsReleaseCheck = false;
-          packages = pkgs.callPackage ./packages.nix { };
+          packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/packages.nix") { };
           file = lib.mkMerge [
             sharedFiles
             additionalFiles
           ];
           stateVersion = "23.11";
         };
-        imports = [
-          ../shared/home-manager.nix
-        ];
+        imports = [ (lib.custom.relativeToRoot "modules/shared/home-manager.nix") ];
       };
   };
 }

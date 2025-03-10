@@ -1,9 +1,10 @@
-{ nixpkgs, ... }:
+{ nixpkgs, lib, ... }:
 {
-  imports = [
-    ../../nixos
+  imports = lib.flatten [
     ./disk-config.nix
-    ../../../features/desktop/gnome
+    (map lib.custom.relativeToRoot [
+      "hosts/nixos"
+    ])
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -17,4 +18,6 @@
       interface = "enp0s3";
     };
   };
+
+  gnome.enable = true;
 }

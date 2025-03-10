@@ -1,8 +1,6 @@
-{ nixpkgs, ... }:
+{ nixpkgs, lib, ... }:
 {
-  imports = [
-    ../../darwin
-  ];
+  imports = [ (lib.custom.relativeToRoot "hosts/darwin") ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 

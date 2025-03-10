@@ -11,6 +11,7 @@ HOST=$(uname -n)
 
 echo -e "${YELLOW}Starting...${NC}"
 
-sudo /run/current-system/sw/bin/nixos-rebuild switch --flake .#$HOST $@
+# We pass SSH from user to root so root can download secrets from our private Github
+sudo SSH_AUTH_SOCK=$SSH_AUTH_SOCK  /run/current-system/sw/bin/nixos-rebuild switch --flake .#$HOST $@
 
 echo -e "${GREEN}Switch to new generation complete!${NC}"
