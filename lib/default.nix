@@ -8,7 +8,11 @@
       builtins.attrNames (
         lib.attrsets.filterAttrs (
           path: _type:
-          (_type == "directory") # include directories
+          (
+            (_type == "directory") # include directories
+            && (path != "home-manager") # ignore home-manager
+            && (path != "config") # ignore config
+          )
           || (
             (path != "default.nix") # ignore default.nix
             && (lib.strings.hasSuffix ".nix" path) # include .nix files

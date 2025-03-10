@@ -7,6 +7,6 @@ let
 in
 {
   "${xdg_configHome}/karabiner/karabiner.json" = {
-    text = builtins.readFile ./config/karabiner/karabiner.json;
+    text = builtins.readFile ../karabiner/karabiner.json;
   };
 }

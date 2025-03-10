@@ -19,5 +19,7 @@
     };
   };
 
+  # Modules options
   gnome.enable = true;
+  theme.enable = true;
 }

@@ -4,6 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
+    stylix.url = "github:danth/stylix";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +48,7 @@
       homebrew-cask,
       nikitabobko-homebrew-tap,
       home-manager,
+      stylix,
       nixpkgs,
       disko,
       secrets
