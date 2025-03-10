@@ -1,6 +1,6 @@
 { inputs, config, lib, ... }:
 let
-  theme = import ../config/nix/theme.nix;
+  theme = import ../config/nix/theme.nix { inherit pkgs; };
 in
 {
   imports = [
