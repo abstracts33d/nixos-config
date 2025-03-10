@@ -50,8 +50,8 @@ copy_keys() {
 set_keys() {
   check_file_exists "/mnt/usb/id_ed25519.pub"
   check_file_exists "/mnt/usb/id_ed25519"
-  cp /mnt/usb/id_ed25519.pub $SSH_DIR/id_ed25519.pub
-  cp /mnt/usb/id_ed25519 $SSH_DIR/id_ed25519
+  cp /mnt/usb/id_main.pub $SSH_DIR/id_ed25519.pub
+  cp /mnt/usb/id_main $SSH_DIR/id_ed25519
   chmod 600 $SSH_DIR/id_ed25519
   chmod 644 $SSH_DIR/id_ed25519.pub
 }

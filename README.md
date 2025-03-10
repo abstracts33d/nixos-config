@@ -88,16 +88,16 @@ find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name build -o 
 #### Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
-| Key Name            | Platform         | Description                                                                              |
-|---------------------|------------------|------------------------------------------------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Not copied to host, used only during bootstrap. |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`.  |
+| Key Name            | Platform         | Description                                                                             |
+|---------------------|------------------|-----------------------------------------------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Copied over to host as `id_main`               |
+| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`. |
 
 Run one of these commands:
 
 ##### Copy keys from USB drive
 This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_ed25519` and `id_ed25519_agenix`.
+> Keys must be named `id_main` and `id_ed25519_agenix`.
 ```sh
 nix run .#copy-keys
 ```
@@ -173,10 +173,10 @@ Download and burn [the minimal ISO image](https://nixos.org/download.html) to a 
 #### Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
-| Key Name            | Platform         | Description                                                                              |
-|---------------------|------------------|------------------------------------------------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Not copied to host, used only during bootstrap. |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`.  |
+| Key Name            | Platform         | Description                                                                             |
+|---------------------|------------------|-----------------------------------------------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Copied over to host as `id_main`               |
+| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`. |
 
 Run one of these commands:
 
