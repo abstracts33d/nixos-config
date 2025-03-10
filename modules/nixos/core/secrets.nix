@@ -20,14 +20,14 @@ in
         group = "wheel";
       };
 
-#      "github-signing-key" = {
-#        symlink = false;
-#        path = "${home}/.ssh/pgp_github.key";
-#        file =  "${inputs.secrets}/github-signing-key.age";
-#        mode = "600";
-#        owner = "${user}";
-#        group = "wheel";
-#      };
+      "github-signing-key" = {
+        symlink = false;
+        path = "${home}/.ssh/pgp_github.key";
+        file =  "${inputs.secrets}/github-signing-key.age";
+        mode = "600";
+        owner = "${user}";
+        group = "wheel";
+      };
     };
   };
 }
