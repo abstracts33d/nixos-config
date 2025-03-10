@@ -74,6 +74,7 @@ After installation, open a new terminal session to make the `nix` executable ava
 ### 3. Initialize
 
 ```sh
+sudo hostname your-target-hostname
 mkdir -p nixos-config && cd nixos-config && nix flake --extra-experimental-features 'nix-command flakes' clone github:abstracts33d/nixos-config --dest .
 ```
 
