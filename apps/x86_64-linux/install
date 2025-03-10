@@ -70,6 +70,7 @@ prompt_reboot() {
   esac
 }
 
+export USERNAME=$1
 cleanup
 check_installer
 download_config
