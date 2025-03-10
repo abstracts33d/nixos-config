@@ -88,10 +88,10 @@ find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name apply -o 
 #### Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
-| Key Name            | Platform         | Description                                                                             |
-|---------------------|------------------|-----------------------------------------------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Copied over to host as `id_main`               |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`. |
+| Key Name            | Platform         | Description                                        |
+|---------------------|------------------|----------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`.           |
+| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. |
 
 Run one of these commands:
 
