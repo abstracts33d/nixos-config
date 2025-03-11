@@ -28,10 +28,6 @@
       dynamic_padding = true;
       decorations = "full";
       title = "Terminal";
-      class = {
-        instance = "Alacritty";
-        general = "Alacritty";
-      };
     };
   };
 }
