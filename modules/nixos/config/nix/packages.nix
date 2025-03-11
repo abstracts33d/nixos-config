@@ -8,7 +8,6 @@ shared-packages
 ++ [
   # Esditors
   vscode
-  ruby-mine
 
   # Security and authentication
   bitwarden-cli
