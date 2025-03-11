@@ -11,7 +11,7 @@ let
   email = config.hostSpec.githubEmail;
 in
 {
-#  # Shared shell configuration
+# TODO vim alacritty tmux
 
 #
 #  programs.vim = {
