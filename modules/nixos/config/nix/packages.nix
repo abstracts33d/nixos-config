@@ -6,10 +6,12 @@ let
 in
 shared-packages
 ++ [
+  # Esditors
+  vscode
+  ruby-mine
 
   # Security and authentication
-  yubikey-agent
-  keepassxc
+  bitwarden-cli
 
   # App and package management
   appimage-run
@@ -23,7 +25,6 @@ shared-packages
   font-manager
 
   # Productivity tools
-  bc # old school calculator
   galculator
 
   # Audio tools
@@ -31,8 +32,6 @@ shared-packages
 
   # Testing and development tools
   direnv
-  rofi
-  rofi-calc
   postgresql
 
   # Screenshot and recording tools
@@ -40,23 +39,15 @@ shared-packages
 
   # Text and terminal utilities
   feh # Manage wallpapers
-  screenkey
   tree
   unixtools.ifconfig
   unixtools.netstat
-  xorg.xwininfo # Provides a cursor to click and learn about windows
-  xorg.xrandr
 
   # File and system utilities
-  inotify-tools # inotifywait, inotifywatch - For file system events
-  i3lock-fancy-rapid
-  libnotify
-  pcmanfm # File browser
   sqlite
   xdg-utils
 
   # Other utilities
-  yad # yad-calendar is used with polybar
   xdotool
   google-chrome
 
@@ -64,5 +55,5 @@ shared-packages
   zathura
 
   # Music and entertainment
-  spotify
+  spotifyd
 ]
