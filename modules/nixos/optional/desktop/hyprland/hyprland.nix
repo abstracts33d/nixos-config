@@ -39,12 +39,9 @@ in
           ];
         };
 
-        exec-once = [];
-
-
-        plugins = [
-          # pkgs.hyprlandPlugins.hyperbars
-        ];
+        # plugins = [
+        #   pkgs.hyprlandPlugins.hyperbars
+        # ];
 
         # settings = {};
       };
