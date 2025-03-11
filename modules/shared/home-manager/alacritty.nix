@@ -24,8 +24,6 @@
       #  };
       #  size = 13;
       # };
-
-      decorations = "full";
     };
   };
 }
