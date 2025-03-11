@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   user = config.hostSpec.username;
+  home = config.hostSpec.home;
 in
 {
   nix = {
