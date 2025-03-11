@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  user = config.hostSpec.user;
+  user = config.hostSpec.username;
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
