@@ -17,13 +17,13 @@
       };
 
       # Handled by the theme module
-      # font = {
-      #  normal = {
-      #    family = "MesloLG NF";
-      #    style = "Regular";
-      #  };
-      #  size = 13;
-      # };
+      font = {
+       normal = {
+         family = "MesloLG NF";
+         style = "Monospace";
+       };
+       size = 13;
+      };
     };
   };
 }
