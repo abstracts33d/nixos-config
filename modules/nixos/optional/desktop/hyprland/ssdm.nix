@@ -28,6 +28,9 @@
     services = {
       displayManager = {
         sddm = {
+          # use Qt6 version for catppucin theme
+          package = pkgs.kdePackages.sddm;
+
           enable = true;
           wayland = {
             enable = true;
