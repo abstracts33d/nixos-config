@@ -1,4 +1,8 @@
 { config, lib, ... }:
+
+let
+  user = config.hostSpec.user;
+in
 {
   # todo filter and add dependencies
   # Required packages
@@ -15,10 +19,34 @@
   };
 
   config = lib.mkIf (config.hyprland.enable) {
-    programs = {
-      hyprland = {
+#    programs = {
+#      hyprland = {
+#        enable = true;
+#        xwayland.enable = true;
+#      };
+#    };
+
+    home-manager.users.${user} = {
+      wayland.windowManager.hyprland = {
         enable = true;
-        xwayland.enable = true;
+        systemd = {
+          enable = true;
+          variables = [ "--all" ]; # fix for https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
+          # Same as default, but stop the graphical session too
+          extraCommands = lib.mkBefore [
+            "systemctl --user stop graphical-session.target"
+            "systemctl --user start hyprland-session.target"
+          ];
+        };
+
+        exec-once = [];
+
+
+        plugins = [
+          # pkgs.hyprlandPlugins.hyperbars
+        ];
+
+        # settings = {};
       };
     };
   };
