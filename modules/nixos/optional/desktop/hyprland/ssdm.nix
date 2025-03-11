@@ -3,9 +3,9 @@
 {
   config = lib.mkIf (config.hyprland.enable) {
 
-    environment.systemPackages = [
-      pkgs.gnome-keyring
-      catpuccin-sddm
+    environment.systemPackages = with pkgs; [
+      gnome-keyring
+      catppuccin-sddm
     ];
 
     services = {
