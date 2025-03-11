@@ -34,5 +34,15 @@
         name = "Noto Color Emoji";
       };
     };
-  };
+
+    targets = {
+      firefox = {
+        colorTheme.enable = true;
+        firefoxGnomeTheme.enable = true;
+        profileNames = [ "my-profile" ];
+      };
+
+      vscode.profileNames = [ "my-profile" ];
+    };
+  ];
 }
