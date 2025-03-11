@@ -6,14 +6,8 @@
       displayManager = {
         sddm = {
           enable = true;
-          package = pkgs.kdePackages.sddm;
           wayland = {
             enable = true;
-          };
-          settings = {
-            Wayland = {
-              SessionDir = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
-            };
           };
 #          catppuccin = {
 #            enable = true;
@@ -28,3 +22,24 @@
     };
   };
 }
+
+#  environment.systemPackages = [
+#    pkgs.gnome-keyring
+#  ];
+#
+#  services = {
+#    gnome = {
+#      gnome-keyring.enable = true;
+#    };
+#  };
+#
+#  security.pam.services = {
+#    sddm.enableGnomeKeyring.enable = true;
+#  };
+
+
+
+#  home.packages = with pkgs; [
+#    qt5.qtwayland
+#    qt6.qtwayland
+#  ];
