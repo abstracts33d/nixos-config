@@ -51,7 +51,12 @@ shared-packages
   xdotool
 
   # Browsers
-  google-chrome
+  (google-chrome.override {
+        commandLineArgs = [
+          "--enable-features=UseOzonePlatform"
+          "--ozone-platform=wayland"
+        ];
+      })
   firefox
 
   # PDF viewer
