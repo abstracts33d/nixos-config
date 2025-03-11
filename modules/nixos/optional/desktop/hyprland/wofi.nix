@@ -1,14 +1,14 @@
-{ config, lib, ... }:
-
-let
-  user = config.hostSpec.user;
-in
-{
-  config = lib.mkIf (config.hyprland.enable) {
-    home-manager.users.${user} = {
-      programs.wofi = {
-        enable = true;
-      };
-    };
-  };
-}
+#{ config, lib, ... }:
+#
+#let
+#  user = config.hostSpec.user;
+#in
+#{
+#  config = lib.mkIf (config.hyprland.enable) {
+#    home-manager.users.${user} = {
+#      programs.wofi = {
+#        enable = true;
+#      };
+#    };
+#  };
+#}
