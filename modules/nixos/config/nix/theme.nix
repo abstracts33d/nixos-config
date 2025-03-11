@@ -1,7 +1,4 @@
-{ inputs, pkgs, config, ...  }:
-let
-  user = config.hostSpec.username;
-in
+{ pkgs }:
 {
   stylix = {
     enable = true;
@@ -39,5 +36,4 @@ in
       };
     };
   };
-
 }
