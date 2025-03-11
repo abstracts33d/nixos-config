@@ -113,7 +113,6 @@ in
   environment.systemPackages = with pkgs; [
     gitAndTools.gitFull
     inetutils
-    ruby-mine
   ];
 
   system.stateVersion = "21.05"; # Don't change this
