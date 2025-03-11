@@ -1,4 +1,7 @@
-{ pkgs, }:
+{ inputs, pkgs, config, ...  }:
+let
+  user = config.hostSpec.username;
+in
 {
   stylix = {
     enable = true;
@@ -34,15 +37,19 @@
         name = "Noto Color Emoji";
       };
     };
+  };
 
-    targets = {
-      firefox = {
-        colorTheme.enable = true;
-        firefoxGnomeTheme.enable = true;
-        profileNames = [ "my-profile" ];
+  inputs.home-manager.users.${user} = {
+    stylix = {
+      targets = {
+        firefox = {
+          colorTheme.enable = true;
+          firefoxGnomeTheme.enable = true;
+          profileNames = [ "my-profile" ];
+        };
+
+        vscode.profileNames = [ "my-profile" ];
       };
-
-      vscode.profileNames = [ "my-profile" ];
     };
   };
 }

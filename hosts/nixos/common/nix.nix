@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
-let
-  user = config.hostSpec.username;
+`let
+  user = config.hostSpec.username;`
   home = config.hostSpec.home;
 in
 {
