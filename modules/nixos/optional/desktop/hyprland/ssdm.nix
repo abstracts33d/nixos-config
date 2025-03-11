@@ -29,10 +29,12 @@ in
     };
 
     home-manager.users.${user} = {
+    home = {
       packages = with pkgs; [
-            qt5.qtwayland
-            qt6.qtwayland
-          ];
+                qt5.qtwayland
+                qt6.qtwayland
+              ];
+    };
     };
 
     services = {
