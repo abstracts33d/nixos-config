@@ -4,7 +4,6 @@ with pkgs;
 [
   # General packages for development and system management
   act
-  alacritty
   aspell
   aspellDicts.fr
   aspellDicts.en
@@ -16,7 +15,6 @@ with pkgs;
   du-dust
   gcc
   killall
-  kitty
   fastfetch
   openssh
   pandoc
