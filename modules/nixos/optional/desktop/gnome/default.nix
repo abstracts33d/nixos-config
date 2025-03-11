@@ -61,7 +61,7 @@
     ];
   };
 }
-
+# TODO add what's needed to HM here
 #gtk = {
 #  enable = true;
 #
