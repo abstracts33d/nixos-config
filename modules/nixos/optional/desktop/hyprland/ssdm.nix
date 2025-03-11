@@ -1,11 +1,21 @@
 { inputs, config, pkgs, lib, ... }:
 
+let
+  user = config.hostSpec.username;
+in
 {
   config = lib.mkIf (config.hyprland.enable) {
 
     environment.systemPackages = with pkgs; [
       gnome-keyring
-      catppuccin-sddm
+      catppuccin-cursors.mochaFlamingo
+      (catppuccin-sddm.override {
+          flavor = "mocha";
+#          font  = "Noto Sans";
+#          fontSize = "9";
+#          background = "${./wallpaper.png}";
+#          loginBackground = true;
+        })
     ];
 
     services = {
@@ -18,12 +28,12 @@
       sddm.enableGnomeKeyring.enable = true;
     };
 
-
-
-    #  home.packages = with pkgs; [
-    #    qt5.qtwayland
-    #    qt6.qtwayland
-    #  ];
+    home-manager.users.${user} = {
+      packages = with pkgs; [
+            qt5.qtwayland
+            qt6.qtwayland
+          ];
+    };
 
     services = {
       displayManager = {
