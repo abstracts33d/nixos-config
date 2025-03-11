@@ -17,10 +17,10 @@ in
   ".ssh/pgp_github.pub" = {
     text = builtins.readFile ../githubPublicSigningKey;
   };
-  #  "${xdg_configHome}/zsh/aliases.zsh" = {
-  #    text = builtins.readFile ../zsh/aliases.zsh;
-  #  };
-  #  "${xdg_configHome}/zsh/functions.zsh" = {
-  #    text = builtins.readFile ../zsh/functions.zsh;
-  #  };
+  "${xdg_configHome}/zsh/aliases.zsh" = {
+    text = builtins.readFile ../zsh/aliases.zsh;
+  };
+  "${xdg_configHome}/zsh/functions.zsh" = {
+    text = builtins.readFile ../zsh/functions.zsh;
+  };
 }
