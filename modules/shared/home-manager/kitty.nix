@@ -4,9 +4,10 @@
   programs = {
     kitty = {
       enable = true;
-      theme = "Catppuccin-Macchiato";
-
       # Handled by the theme
+
+      # theme = "Catppuccin-Macchiato";
+
       # font = {
       #  name = "MesloLG NF";
       #  package = pkgs.nerd-fonts.meslo-lg;
