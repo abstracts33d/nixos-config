@@ -32,14 +32,7 @@
           wayland = {
             enable = true;
           };
-#          catppuccin = {
-#            enable = true;
-#            assertQt6Sddm = true;
-#            flavor = "macchiato";
-#            font = "0xProto Nerd Font";
-#            fontSize = "12";
-#            loginBackground = true;
-#          };
+          theme = "catppuccin-mocha";
         };
       };
     };
