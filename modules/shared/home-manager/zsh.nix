@@ -40,6 +40,9 @@
       # Set editor default keymap to emacs (`-e`) or vi (`-v`)
       bindkey -v
 
+      # init zoxide
+      eval "$(zoxide init zsh)"
+
       source ~/.config/zsh/aliases.zsh
       source ~/.config/zsh/functions.zsh
     '';
