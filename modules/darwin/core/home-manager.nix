@@ -10,7 +10,7 @@ let
   hostSpec = config.hostSpec;
   user = config.hostSpec.username;
   sharedFiles = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
-    inherit user config pkgs;
+    inherit user config pkgs lib;
   };
   additionalFiles = import (lib.custom.relativeToRoot "modules/darwin/config/nix/files.nix") {
     inherit user config pkgs;

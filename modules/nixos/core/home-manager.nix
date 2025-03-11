@@ -11,7 +11,7 @@ let
   user = config.hostSpec.username;
   home = config.hostSpec.home;
   shared-files = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
-    inherit user config pkgs;
+    inherit user config pkgs lib;
   };
 in
 {
