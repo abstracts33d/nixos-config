@@ -19,12 +19,12 @@
       # Handled by the theme module
       # font = {
       #  normal = {
-      #    family = "MesloLG NF";
+      #    family = "MesloLGS NF";
       #    style = "Monospace";
       #  };
       #  size = 13;
       # };
-      font.normal.style = lib.mkForce "Monospace";
+      font.normal.family = lib.mkForce "MesloLGS NF";
     };
   };
 }
