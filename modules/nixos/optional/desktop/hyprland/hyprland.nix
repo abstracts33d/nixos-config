@@ -23,7 +23,7 @@ in
       hyprland = {
         enable = true;
         xwayland.enable = true;
-        withUWSM = true;
+        # withUWSM = true;
       };
     };
 
@@ -45,10 +45,12 @@ in
           bind = [
             # General
             "$mod, return, exec, $terminal"
+
             "$mod, a, exec, $launcher"
             "$mod, s, exec, $launcher_alt"
             "$mod, d, exec, $launcher2"
             "$mod, f, exec, $launcher2_alt"
+
             "$mod SHIFT, q, killactive"
             "$mod SHIFT, e, exit"
             "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
