@@ -44,5 +44,5 @@
 
       vscode.profileNames = [ "my-profile" ];
     };
-  ];
+  };
 }
