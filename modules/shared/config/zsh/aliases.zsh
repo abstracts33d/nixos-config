@@ -13,9 +13,16 @@ alias px=pnpx
 # Use difftastic, syntax-aware diffing
 alias diff=difft
 
+# File manager
+alias snaut='sudo naut'
+
 # Always color ls and group directories
 alias ls='exa'
 alias l='ls -l'
+alias ls='ls -a'
+alias ll='ls -ahl'
+alias lst='ls -a --tree -I .git'
+alias llt='ls -ahl --tree -I .git'
 
 # General
 alias ipv4="dig @resolver4.opendns.com myip.opendns.com +short -4"
