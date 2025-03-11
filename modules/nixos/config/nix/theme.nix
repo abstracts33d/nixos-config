@@ -40,17 +40,4 @@ in
     };
   };
 
-  inputs.home-manager.users.${user} = {
-    stylix = {
-      targets = {
-        firefox = {
-          colorTheme.enable = true;
-          firefoxGnomeTheme.enable = true;
-          profileNames = [ "my-profile" ];
-        };
-
-        vscode.profileNames = [ "my-profile" ];
-      };
-    };
-  };
 }
