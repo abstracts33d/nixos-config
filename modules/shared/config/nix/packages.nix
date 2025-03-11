@@ -41,6 +41,7 @@ with pkgs;
   docker-compose
 
   # Media-related packages
+  nerd-fonts.meslo-lg
   imagemagick
   dejavu_fonts
   ffmpeg

@@ -102,6 +102,7 @@ in
   virtualisation.docker.logDriver = "json-file";
 
   fonts.packages = with pkgs; [
+    nerd-fonts.meslo-lg
     dejavu_fonts
     jetbrains-mono
     font-awesome
