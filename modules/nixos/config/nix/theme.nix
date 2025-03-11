@@ -24,8 +24,8 @@
     };
 
     monospace = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans Mono";
+      package = pkgs.nerd-fonts.meslo-lg;
+      name = "MesloLG NF";
     };
 
     emoji = {

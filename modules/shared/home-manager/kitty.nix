@@ -6,7 +6,7 @@
       enable = true;
       theme = "Catppuccin-Macchiato";
       font = {
-        name = "MesloLGS NF";
+        name = "MesloLG NF";
         package = pkgs.nerd-fonts.meslo-lg;
         size = 13;
       };
