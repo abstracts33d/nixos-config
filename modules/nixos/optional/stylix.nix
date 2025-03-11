@@ -19,7 +19,7 @@ in
 
   config = lib.mkIf (config.theme.enable) theme;
 
-  config = lib.mkIf (config.theme.enable) {
+#  config = lib.mkIf (config.theme.enable) {
     home-manager.users.${user} = {
       stylix = {
         targets = {
@@ -33,5 +33,5 @@ in
         };
       };
     };
-  };
+#  };
 }
