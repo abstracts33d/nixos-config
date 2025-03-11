@@ -49,6 +49,9 @@
       # set Autosuggestions key binging to alt-enter
       bindkey '\e\r' autosuggest-accept
 
+     # init zoxide
+      eval "$(zoxide init zsh)"
+
       # Greetings
       if [ -z "$TMUX" ]
       then
