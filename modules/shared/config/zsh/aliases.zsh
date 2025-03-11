@@ -24,11 +24,6 @@ alias vim='nvim'
 alias vi='nvim'
 alias v="nvim"
 
-#ssh
-alias ssh_krach='ssh s33d@$KRACH_IP'
-alias wol_krach="wakeonlan $KRACH_MAC"
-
-
 # Chezmoi
 alias cmcd="cd $(chezmoi source-path)"
 alias cmed="chezmoi edit"
@@ -84,5 +79,5 @@ alias -s {md,markdown,rst,toml,json}=$EDITOR
 alias -s git="git clone" # Paste a repository URL in terminal, and have it cloned.
 
 # Linux specific
-alias keys='eval `keychain --eval --agents ssh,gpg ~/.keys/ssh/krach_ed25519 2AC7AC6AB7366D08`'
+alias keys='eval `keychain --eval --agents ssh,gpg ~/.keys/ssh/id_github_ed25519 77C21CC574933465`'
 alias k="keys"
