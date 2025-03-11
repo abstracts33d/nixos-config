@@ -49,7 +49,10 @@ shared-packages
 
   # Other utilities
   xdotool
+
+  # Browsers
   google-chrome
+  firefox
 
   # PDF viewer
   zathura
