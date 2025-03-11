@@ -8,6 +8,7 @@ shared-packages
 ++ [
   # Esditors
   vscode
+  jetbrains.ruby-mine
 
   # Security and authentication
   bitwarden-cli
