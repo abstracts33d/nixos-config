@@ -25,9 +25,7 @@
       #  size = 13;
       # };
 
-      dynamic_padding = true;
       decorations = "full";
-      title = "Terminal";
     };
   };
 }
