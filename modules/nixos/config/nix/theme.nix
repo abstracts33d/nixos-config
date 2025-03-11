@@ -6,7 +6,7 @@
   stylix.enable = true;
 
   stylix.image = pkgs.fetchurl {
-    url = "https://github.com/orangci/walls-catppuccin-mocha/blob/master/space.jpg";
+    url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/space.jpg";
     sha256 = "FIpu3jiFZs+ap87ejn43JfISCl1MTihjbO2RdbvR/z0=";
   };
 
