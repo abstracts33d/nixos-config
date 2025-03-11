@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   config = lib.mkIf (config.hyprland.enable) {
