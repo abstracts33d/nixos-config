@@ -10,4 +10,7 @@
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
   };
+
+  # Modules options
+  theme.enable = true;
 }
