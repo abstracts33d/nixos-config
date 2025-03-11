@@ -40,8 +40,8 @@
       # Set editor default keymap to emacs (`-e`) or vi (`-v`)
       bindkey -v
 
-      source ~/.config/zsh/.aliases
-      source ~/.config/zsh/.functions
+      source ~/.config/zsh/aliases.zsh
+      source ~/.config/zsh/functions.zsh
     '';
 
     initExtra = ''
