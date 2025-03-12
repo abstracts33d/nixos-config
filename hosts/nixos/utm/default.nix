@@ -23,6 +23,11 @@
   # gnome.enable = true;
   hyprland.enable = true;
 
+  hyprland = {
+   enable = true;
+   dm.greetd.enable = true;
+  };
+
   # Qemu and Spice addons
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
