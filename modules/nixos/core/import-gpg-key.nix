@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, lib, home-manager, ... }:
 let
   user = config.hostSpec.username;
   # These files are generated when secrets are decrypted at build time
