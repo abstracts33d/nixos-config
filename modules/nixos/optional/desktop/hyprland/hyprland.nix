@@ -40,6 +40,8 @@ in
     ];
 
     home-manager.users.${user} = {
+      xdg.enable = true;
+
       wayland.windowManager.hyprland = {
         enable = true;
         # TODO do this
