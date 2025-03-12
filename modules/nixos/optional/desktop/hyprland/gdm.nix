@@ -24,14 +24,13 @@ in
       accounts-daemon.enable = true;
       gnome = {
         sushi.enable = true; # Sushi, a quick previewer for nautilus
-        evolution-data-server.enable = true;
         glib-networking.enable = true;
-        gnome-keyring.enable = true;
+#        gnome-keyring.enable = true;
         gnome-online-accounts.enable = true;
       };
     };
 
-   xdg.portal = {
+    xdg.portal = {
       enable = true;
       wlr.enable = true;
       extraPortals = [pkgs.xdg-desktop-portal-gtk]; # gtk portal needed to make gtk apps happy
