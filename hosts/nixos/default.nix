@@ -84,22 +84,21 @@ in
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
 
-    # Enable PipeWire for sound
-    pulseaudio.enable = false;
-    rtkit.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
     # Disable CUPS printing
     printing.enable = false;
 
     # Enable devmon for device management
     devmon.enable = true;
+  };
+
+  # Enable PipeWire for sound
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true; # if not already enabled
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
 
   # Enable CUPS to print documents
