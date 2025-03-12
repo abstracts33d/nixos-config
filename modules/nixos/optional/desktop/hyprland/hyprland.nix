@@ -10,14 +10,6 @@ in
         type = lib.types.bool;
         default = false;
       };
-      dm.gdm.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-      dm.greetd.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
     };
   };
 

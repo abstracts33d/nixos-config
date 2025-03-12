@@ -9,7 +9,7 @@
     };
   };
 
-  config = lib.mkIf (config.dm.greetd.enable) {
+  config = lib.mkIf (config.gdm.enable) {
     services.xserver.displayManager.gdm.enable = true;
 
     services = {
@@ -25,5 +25,7 @@
         gnome-online-accounts.enable = true;
       };
     };
+
+    security.pam.services.gdm.enableGnomeKeyring = true;
   };
 }

@@ -22,11 +22,7 @@
   # Modules options
   # gnome.enable = true;
   hyprland.enable = true;
-
-  hyprland = {
-   enable = true;
-   dm.greetd.enable = true;
-  };
+  greetd.enable = true;
 
   # Qemu and Spice addons
   services.qemuGuest.enable = true;

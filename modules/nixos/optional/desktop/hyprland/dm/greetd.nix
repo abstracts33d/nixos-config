@@ -13,7 +13,7 @@ in
     };
   };
 
-  config = lib.mkIf (config.dm.greetd.enable) {
+  config = lib.mkIf (config.greetd.enable) {
     services.greetd = {
       enable = true;
       settings = {
@@ -40,5 +40,7 @@ in
     #  fish
     #  bash
     #'';
+
+    security.pam.services.greetd.enableGnomeKeyring = true;
   };
 }
