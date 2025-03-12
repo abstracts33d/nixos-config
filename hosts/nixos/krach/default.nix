@@ -20,6 +20,6 @@
   };
 
   # Modules options
-  gnome.enable = true;
-  # hyprland.enable = true;
+  # gnome.enable = true;
+  hyprland.enable = true;
 }
