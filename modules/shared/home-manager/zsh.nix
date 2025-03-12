@@ -1,26 +1,43 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
+    autocd = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+    history = {
+      size = 10000000;
+      save = 10000000;
+      ignoreSpace = true;
+      ignoreDups = true;
+      ignoreAllDups = true;
+      expireDuplicatesFirst = true;
+      extended = true;
+      share = true;
+    };
 
-    # TODO check if better imported via pkgs or plugins
+    profileExtra = ''
+      setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+      setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+      setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+      setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+    '';
+
+    # TODO check if better imported via pkgs
     # TODO add fzf
     zplug = {
       enable = true;
       plugins = [
         { name = "Aloxaf/fzf-tab"; }
         { name = "jeffreytse/zsh-vi-mode"; }
-        { name = "zsh-users/zsh-completions"; }
-        { name = "zsh-users/zsh-syntax-highlighting"; }
-        { name = "zdharma/fast-syntax-highlighting"; }
-        { name = "zsh-users/zsh-autosuggestions"; }
+        {
+          name = "zsh-users/zsh-history-substring-search";
+          tags = [ "as:plugin" ];
+        }
       ];
     };
-
-    # TODO zsh-users/zsh-history-substring-search
-    # { name = "zsh-users/zsh-history-substring-search"; } # NOT working need as: plugin
-    interactiveShellInit = "source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh";
 
     initExtraFirst = ''
       # Profiling
@@ -42,20 +59,23 @@
       # Set editor default keymap to emacs (`-e`) or vi (`-v`)
       bindkey -v
 
-      # init zoxide
-      eval "$(zoxide init zsh)"
-
       source ~/.config/zsh/aliases.zsh
       source ~/.config/zsh/functions.zsh
     '';
 
     initExtra = ''
+      # init zoxide
+      eval "$(zoxide init zsh)"
+
+      # zsh-history-substring-search
+      bindkey '^[[A' history-substring-search-up
+      bindkey '^[OA' history-substring-search-up
+      bindkey '^[[B' history-substring-search-down
+      bindkey '^[OB' history-substring-search-down
+
       # zsh-autosuggestions
       # set Autosuggestions key binging to alt-enter
       bindkey '\e\r' autosuggest-accept
-
-      # init zoxide
-      eval "$(zoxide init zsh)"
 
       # Greetings
       if [ -z "$TMUX" ]

@@ -22,8 +22,11 @@ in
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-        editor = "vim";
+        editor = "nvim";
         autocrlf = "input";
+      };
+      color = {
+        ui = true;
       };
       pull.rebase = true;
       push.autoSetupRemote = true;
