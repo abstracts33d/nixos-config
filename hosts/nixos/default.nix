@@ -72,12 +72,34 @@ in
   };
 
   services = {
+    # X11 settings
+    services.xserver = {
+      xkb.layout = "us";
+    };
+
     libinput.enable = true; # Better support for general peripherals
 
     openssh.enable = true; # Let's be able to SSH into this machine
 
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
+
+    # Enable PipeWire for sound
+    pulseaudio.enable = false;
+    rtkit.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
+    # Disable CUPS printing
+    printing.enable = false;
+
+    # Enable devmon for device management
+    devmon.enable = true;
   };
 
   # Enable CUPS to print documents

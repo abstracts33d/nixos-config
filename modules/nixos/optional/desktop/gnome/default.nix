@@ -26,10 +26,6 @@
         #   Option       "AllowIndirectGLXProtocol" "off"
         #   Option       "TripleBuffer" "on"
         # '';
-
-        xkb = {
-          layout = "us";
-        };
       };
     };
 

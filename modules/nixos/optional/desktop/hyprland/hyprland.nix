@@ -35,6 +35,8 @@ in
 
       brightnessctl
       networkmanagerapplet
+      pavucontrol
+      wf-recorder
     ];
 
     home-manager.users.${user} = {
