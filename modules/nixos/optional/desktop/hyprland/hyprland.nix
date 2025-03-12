@@ -22,6 +22,22 @@ in
       };
     };
 
+    # Enable Ozone Wayland support in Chromium and Electron based applications
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      XCURSOR_SIZE = "24";
+    };
+
+    environment.systemPackages = with pkgs; [
+      file-roller # archive manager
+      nautilus # file manager
+      totem # Video player
+
+      brightnessctl
+      networkmanagerapplet
+    ];
+
     home-manager.users.${user} = {
       wayland.windowManager.hyprland = {
         enable = true;

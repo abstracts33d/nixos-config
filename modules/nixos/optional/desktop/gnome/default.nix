@@ -33,24 +33,46 @@
       };
     };
 
+    # Remove decorations for QT applications
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    };
+
     environment.gnome.excludePackages = (
       with pkgs;
       [
+        gedit
+        gnome-connections
+        gnome-console
         gnome-photos
         gnome-tour
-        cheese # webcam tool
-        gnome-music
-        gedit # text editor
-        epiphany # web browser
-        geary # email reader
-        gnome-characters
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
+        snapshot
         atomix # puzzle game
-        yelp # Help view
+        # baobab # disk usage analyzer
+        cheese # webcam tool
+        epiphany # web browser
+        evince # document viewer
+        geary # email reader
+        gnome-calendar
+        gnome-characters
+        gnome-clocks
         gnome-contacts
+        # gnome-disk-utility
+        # gnome-font-viewer
         gnome-initial-setup
+        gnome-logs
+        gnome-maps
+        gnome-music
+        # gnome-shell-extensions
+        # gnome-system-monitor
+        gnome-terminal
+        gnome-weather
+        hitori # sudoku game
+        iagno # go game
+        simple-scan
+        tali # poker game
+        yelp # help viewer
       ]
     );
 
