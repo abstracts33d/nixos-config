@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ...}:
+{ inputs, config, pkgs, lib, home-manager, ...}:
  let
   user = config.hostSpec.username;
 in
