@@ -30,10 +30,18 @@ in
       };
     };
 
+    programs.seahorse.enable = true;
+    programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
+
+
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk]; # gtk portal needed to make gtk apps happy
+      extraPortals = [
+        # pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+      ];
     };
   };
 }
