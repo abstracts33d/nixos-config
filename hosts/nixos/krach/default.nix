@@ -20,6 +20,10 @@
   };
 
   # Modules options
+
   # gnome.enable = true;
+
   hyprland.enable = true;
+  # greetd.enable =  true;
+  # gdm.enable = true;
 }
