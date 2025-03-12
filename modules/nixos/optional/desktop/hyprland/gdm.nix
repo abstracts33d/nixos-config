@@ -6,6 +6,6 @@ let
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
-    services.xserver.displayManager.gdm = true;
+    services.xserver.displayManager.gdm.enable = true;
   };
 }
