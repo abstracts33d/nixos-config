@@ -1,15 +1,15 @@
 { config, lib, ... }:
 {
-  options = {
-    gdm = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.gdm.enable) {
+#  options = {
+#    gdm = {
+#      enable = lib.mkOption {
+#        type = lib.types.bool;
+#        default = false;
+#      };
+#    };
+#  };
+#
+#  config = lib.mkIf (config.gdm.enable) {
     services.xserver.displayManager.gdm.enable = true;
 
     services = {
@@ -26,6 +26,6 @@
       };
     };
 
-    security.pam.services.gdm.enableGnomeKeyring = true;
-  };
+#    security.pam.services.gdm.enableGnomeKeyring = true;
+#  };
 }
