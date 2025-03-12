@@ -77,12 +77,17 @@ in
       xkb.layout = "us";
     };
 
-    libinput.enable = true; # Better support for general peripherals
+    # Better support for general peripherals
+    libinput.enable = true;
 
-    openssh.enable = true; # Let's be able to SSH into this machine
+    # Let's be able to SSH into this machine
+    openssh.enable = true;
 
-    gvfs.enable = true; # Mount, trash, and other functionalities
-    tumbler.enable = true; # Thumbnail support for images
+    # Mount, trash, and other functionalities
+    gvfs.enable = true;
+
+    # Thumbnail support for images
+    tumbler.enable = true;
 
     # Disable CUPS printing
     printing.enable = false;
@@ -100,10 +105,6 @@ in
     pulse.enable = true;
     jack.enable = true;
   };
-
-  # Enable sound
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
 
   # Video support
   hardware = {
@@ -131,8 +132,6 @@ in
     gitAndTools.gitFull
     inetutils
   ];
-
-  # Modules options
 
   system.stateVersion = "21.05"; # Don't change this
 }

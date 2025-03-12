@@ -30,6 +30,4 @@ in
   hostSpec = {
     isDarwin = true;
   };
-
-  # Modules options
 }
