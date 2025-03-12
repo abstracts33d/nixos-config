@@ -48,8 +48,10 @@
       default =
         let
           user = config.hostSpec.username;
+          home = config.hostSpec.home;
+          isDarwin = config.hostSpec.isDarwin;
         in
-        if pkgs.stdenv.isLinux then "/home/${user}" else "/Users/${user}";
+        if isDarwin then "/Users/${user}" else "/home/${user}";
     };
     persistFolder = lib.mkOption {
       type = lib.types.str;

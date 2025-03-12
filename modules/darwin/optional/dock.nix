@@ -10,13 +10,14 @@
 with lib;
 let
   cfg = config.local.dock;
+  isDarwin = config.hostSpec.isDarwin;
   inherit (pkgs) stdenv dockutil;
 in
 {
   options = {
     local.dock.enable = mkOption {
       description = "Enable dock";
-      default = stdenv.isDarwin;
+      default = isDarwin;
       example = false;
     };
 

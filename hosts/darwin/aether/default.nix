@@ -12,5 +12,5 @@
   };
 
   # Modules options
-  theme.enable = true;
+  aerospace.enable = true;
 }
