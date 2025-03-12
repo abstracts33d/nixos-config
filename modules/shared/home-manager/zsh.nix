@@ -52,7 +52,7 @@
       # set Autosuggestions key binging to alt-enter
       bindkey '\e\r' autosuggest-accept
 
-     # init zoxide
+      # init zoxide
       eval "$(zoxide init zsh)"
 
       # Greetings
