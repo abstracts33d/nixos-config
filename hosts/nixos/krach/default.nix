@@ -22,5 +22,4 @@
   # Modules options
   gnome.enable = true;
   # hyprland.enable = true;
-  theme.enable = true;
 }
