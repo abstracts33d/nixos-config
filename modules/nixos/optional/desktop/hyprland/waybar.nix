@@ -11,7 +11,6 @@ in
         systemd.enable = true;
         settings = {
           settings = {
-            mainBar = {
               layer = "top";
               position = "top";
               exclusive = true;
@@ -190,7 +189,6 @@ in
                 interval = 1;
                 on-click = "screen-recorder";
               };
-            };
           };
         };
       };
