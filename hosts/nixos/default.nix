@@ -73,7 +73,7 @@ in
 
   services = {
     # X11 settings
-    services.xserver = {
+    xserver = {
       xkb.layout = "us";
     };
 
@@ -100,10 +100,6 @@ in
     pulse.enable = true;
     jack.enable = true;
   };
-
-  # Enable CUPS to print documents
-  # services.printing.enable = true;
-  # services.printing.drivers = [ pkgs.brlaser ]; # Brother printer driver
 
   # Enable sound
   # sound.enable = true;
