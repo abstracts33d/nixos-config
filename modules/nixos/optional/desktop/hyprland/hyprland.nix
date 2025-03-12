@@ -31,8 +31,8 @@ in
 
           "$terminal" = "kitty";
           "$browser" = "firefox";
-          "$launcher" = "tofi-drun -c ~/.config/tofi/tofi.launcher.conf";
-          "$launcher_alt" = "tofi-run -c ~/.config/tofi/tofi.launcher.conf";
+          "$launcher" = "tofi-drun";
+          "$launcher_alt" = "tofi-run";
           "$launcher2" = "wofi --show drun -n";
           "$launcher2_alt" = "wofi --show run -n";
           "$editor" = "code";
