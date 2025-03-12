@@ -4,9 +4,8 @@
   programs.zsh = {
     enable = true;
 
-    # TODO check if better imported via pkgs
+    # TODO check if better imported via pkgs or plugins
     # TODO add fzf
-    # TODO zsh-users/zsh-history-substring-search NOT working need as: plugin
     zplug = {
       enable = true;
       plugins = [
@@ -15,10 +14,13 @@
         { name = "zsh-users/zsh-completions"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "zdharma/fast-syntax-highlighting"; }
-        # { name = "zsh-users/zsh-history-substring-search"; }
         { name = "zsh-users/zsh-autosuggestions"; }
       ];
     };
+
+    # TODO zsh-users/zsh-history-substring-search
+    # { name = "zsh-users/zsh-history-substring-search"; } # NOT working need as: plugin
+    interactiveShellInit = "source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh";
 
     initExtraFirst = ''
       # Profiling
