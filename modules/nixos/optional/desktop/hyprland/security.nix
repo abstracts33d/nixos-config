@@ -6,6 +6,7 @@
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs; [
-    seahorse # keyring manager
+    gnome.keyring
+    gnome.seahorse
   ];
 }
