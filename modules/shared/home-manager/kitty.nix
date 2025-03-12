@@ -20,6 +20,7 @@
         enable_audio_bell no
         scrollback_lines 250000
 
+        # TODO FIX ON MACOS
         map cmd+s send_text all \x01\x53
         map cmd+1 send_text all \x011
         map cmd+2 send_text all \x012
