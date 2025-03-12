@@ -34,6 +34,9 @@ in
       {
         inherit hostSpec;
 
+        # Nicely reload system units when changing configs
+        systemd.user.startServices = "sd-switch";
+
         home = {
           enableNixpkgsReleaseCheck = false;
           packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/packages.nix") { };
