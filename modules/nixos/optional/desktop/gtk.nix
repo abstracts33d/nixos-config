@@ -6,7 +6,7 @@ in
 {
   config = lib.mkIf (config.hyprland.enable) {
     home-manager.users.${user} = {
-      programs.gtk = {
+      gtk = {
         enable = true;
       };
     };
