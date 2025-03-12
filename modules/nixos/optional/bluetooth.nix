@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
   # Enables support for Bluetooth
   hardware.bluetooth = {
