@@ -6,9 +6,6 @@ in
   home-manager.users.${user} = {
     programs.firefox = {
       enable = true;
-        profiles = {
-          my-profile.extensions.force = true;
-        };
     };
   };
 }

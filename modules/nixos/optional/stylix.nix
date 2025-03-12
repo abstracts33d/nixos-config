@@ -58,6 +58,10 @@ in
     };
 
     home-manager.users.${user} = {
+      programs.firefox.profiles = {
+        my-profile.extensions.force = true;
+      };
+
       stylix = {
         targets = {
           firefox = {

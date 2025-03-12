@@ -5,42 +5,13 @@ let
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
-
-    environment.systemPackages = with pkgs; [
-      gnome-keyring
-      catppuccin-cursors.mochaFlamingo
-      (catppuccin-sddm.override {
-          flavor = "mocha";
-#          font  = "Noto Sans";
-#          fontSize = "9";
-#          background = "${./wallpaper.png}";
-#          loginBackground = true;
-        })
-    ];
-
-    services = {
-      gnome = {
-        gnome-keyring.enable = true;
-      };
-    };
-
-    security.pam.services = {
-      sddm.enableGnomeKeyring.enable = true;
-    };
-
-    home-manager.users.${user} = {
-    home = {
-      packages = with pkgs; [
-                qt5.qtwayland
-                qt6.qtwayland
-              ];
-    };
-    };
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.sddm.enableGnomeKeyring.enable = true;
 
     services = {
       displayManager = {
         sddm = {
-          # use Qt6 version for catppucin theme
+          # use Qt6 version for catppuccin theme
           package = pkgs.kdePackages.sddm;
 
           enable = true;
@@ -49,6 +20,27 @@ in
           };
           theme = "catppuccin-mocha";
         };
+      };
+    };
+
+    environment.systemPackages = with pkgs; [
+      gnome-keyring
+      catppuccin-cursors.mochaFlamingo
+      (catppuccin-sddm.override {
+          flavor = "mocha";
+          # font  = "Noto Sans";
+          # fontSize = "9";
+          # background = "${./wallpaper.png}";
+          # loginBackground = true;
+        })
+    ];
+
+    home-manager.users.${user} = {
+      home = {
+        packages = with pkgs; [
+          qt5.qtwayland
+          qt6.qtwayland
+        ];
       };
     };
   };
