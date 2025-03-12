@@ -19,9 +19,6 @@ in
   ".ssh/pgp_github.pub" = {
     text = builtins.readFile ../githubPublicSigningKey;
   };
-  ".gnupg/gpg-agent.conf" = {
-    text = builtins.readFile (lib.custom.relativeToRoot "modules/${if isDarwin then "darwin" else "nixos"}/config/gpg-agent.conf");
-  };
   "${xdg_configHome}/zsh/aliases.zsh" = {
     text = builtins.readFile ../zsh/aliases.zsh;
   };

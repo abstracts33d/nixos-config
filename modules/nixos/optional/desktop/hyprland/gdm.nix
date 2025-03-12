@@ -8,6 +8,12 @@ in
   config = lib.mkIf (config.hyprland.enable) {
     services.xserver.displayManager.gdm.enable = true;
 
+    programs.gnupg.agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
+      enableSSHSupport = true;
+    };
+
     security.polkit.enable = true;
     services = {
       gvfs.enable = true; # Nautilus
