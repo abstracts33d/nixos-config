@@ -13,9 +13,6 @@ alias px=pnpx
 # Use difftastic, syntax-aware diffing
 alias diff=difft
 
-# File manager
-alias snaut='sudo naut'
-
 # Always color ls and group directories
 alias ls='eza --icons'
 alias l='ls  -l'
