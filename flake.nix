@@ -42,6 +42,7 @@
       self,
       darwin,
       nixpkgs,
+      ...
     }@inputs:
     let
       inherit (self) outputs;
