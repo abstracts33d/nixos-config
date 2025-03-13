@@ -13,7 +13,7 @@ in
       "github.com" = {
         identitiesOnly = true;
         identityFile = [
-          "${home}/.ssh/id_github_ed25519"
+          "${home}/.ssh/id_main"
         ];
       };
     };
