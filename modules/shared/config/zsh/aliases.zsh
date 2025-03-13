@@ -59,7 +59,6 @@ alias ws="cd $WORKSPACE"
 alias std="bundle exec standardrb --fix"
 
 # Coloured output, aliases and good defaults.
-alias ls='eza --icons'
 alias du='du -csh'
 alias df='df -h'
 alias grep='grep --color=auto'
