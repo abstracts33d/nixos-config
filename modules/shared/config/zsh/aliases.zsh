@@ -17,12 +17,11 @@ alias diff=difft
 alias snaut='sudo naut'
 
 # Always color ls and group directories
-alias ls='exa'
-alias l='ls -l'
-alias ls='ls -a'
-alias ll='ls -ahl'
-alias lst='ls -a --tree -I .git'
-alias llt='ls -ahl --tree -I .git'
+alias l='ls --icons -l'
+alias ls='ls --icons -a'
+alias ll='ls --icons -ahl'
+alias lst='ls --icons -a --tree -I .git'
+alias llt='ls --icons -ahl --tree -I .git'
 
 # General
 alias ipv4="dig @resolver4.opendns.com myip.opendns.com +short -4"
@@ -59,6 +58,7 @@ alias ws="cd $WORKSPACE"
 alias std="bundle exec standardrb --fix"
 
 # Coloured output, aliases and good defaults.
+alias ls='eza --icons'
 alias du='du -csh'
 alias df='df -h'
 alias grep='grep --color=auto'
