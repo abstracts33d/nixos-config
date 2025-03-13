@@ -6,6 +6,8 @@
     # Turn off NIX_PATH warnings now that we're using flakes
     checks.verifyNixPath = false;
 
+    startup.chime = false;
+
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
@@ -30,6 +32,12 @@
       };
 
       finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        # Change the default finder view. “icnv” = Icon view, “Nlsv” = List view, “clmv” = Column View, “Flwv” = Gallery View The default is icnv.
+        # FXPreferredViewStyle
+        ShowPathbar = true;
+        _FXSortFoldersFirst = true;
         _FXShowPosixPathInTitle = false;
       };
 
