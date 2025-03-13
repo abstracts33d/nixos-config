@@ -1,4 +1,10 @@
-{ config, pkgs, lib, home-manager, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  ...
+}:
 let
   user = config.hostSpec.username;
   # These files are generated when secrets are decrypted at build time
@@ -18,15 +24,19 @@ in
 
       Service = {
         Type = "oneshot";
-        ExecStart = toString (pkgs.writeScript "gpg-import-keys" ''
-          #! ${pkgs.runtimeShell} -el
-          ${lib.optionalString (gpgKeys!= []) ''
-          ${pkgs.gnupg}/bin/gpg --import ${lib.concatStringsSep " " gpgKeys}
-          ''}
-        '');
+        ExecStart = toString (
+          pkgs.writeScript "gpg-import-keys" ''
+            #! ${pkgs.runtimeShell} -el
+            ${lib.optionalString (gpgKeys != [ ]) ''
+              ${pkgs.gnupg}/bin/gpg --import ${lib.concatStringsSep " " gpgKeys}
+            ''}
+          ''
+        );
       };
 
-      Install = { WantedBy = [ "default.target" ]; };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }

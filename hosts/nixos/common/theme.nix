@@ -1,5 +1,12 @@
-{ inputs, config, pkgs, lib, home-manager, ...}:
- let
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  ...
+}:
+let
   user = config.hostSpec.username;
 in
 {

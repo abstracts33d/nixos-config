@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   user = config.hostSpec.username;
@@ -55,7 +60,6 @@ in
           "$launcher2" = "wofi --show drun -n";
           "$launcher2_alt" = "wofi --show run -n";
           "$editor" = "code";
-
 
           bind = [
             # General

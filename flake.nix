@@ -51,7 +51,7 @@
       stylix,
       nixpkgs,
       disko,
-      secrets
+      secrets,
     }@inputs:
     let
       inherit (self) outputs;

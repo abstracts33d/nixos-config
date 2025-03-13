@@ -1,4 +1,10 @@
-{ config, pkgs, agenix, inputs, ... }:
+{
+  config,
+  pkgs,
+  agenix,
+  inputs,
+  ...
+}:
 
 let
   user = config.hostSpec.username;
@@ -14,7 +20,7 @@ in
       "github-ssh-key" = {
         symlink = true;
         path = "${home}/.ssh/id_github_ed25519";
-        file =  "${inputs.secrets}/github-ssh-key.age";
+        file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
         owner = "${user}";
         group = "staff";
@@ -23,7 +29,7 @@ in
       "github-signing-key" = {
         symlink = false;
         path = "${home}/.ssh/pgp_github.key";
-        file =  "${inputs.secrets}/github-signing-key.age";
+        file = "${inputs.secrets}/github-signing-key.age";
         mode = "600";
         owner = "${user}";
       };

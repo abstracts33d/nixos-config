@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";

@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     aerospace = {
@@ -10,7 +15,7 @@
   };
 
   config = lib.mkIf (config.aerospace.enable) {
-    services.aerospace= {
+    services.aerospace = {
       enable = true;
     };
   };
