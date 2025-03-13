@@ -19,6 +19,7 @@
       - [2. Setup secrets](#2-setup-secrets)
       - [3. Install configuration](#3-install-configuration)
       - [4. Set user password](#4-set-user-password)
+  - [Secrets](#secrets-managements)
 
 
 ## Disclaimer
@@ -182,20 +183,20 @@ Run one of these commands:
 
 ##### Copy keys from USB drive
 This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_ed25519` and `id_ed25519_agenix`.
+> Keys must be named `id_main` and `id_ed25519_agenix`.
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#copy-keys
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#copy-keys
 ```
 
 ##### Create new keys
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#create-keys
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#create-keys
 ```
 
 ##### Check existing keys
 If you're rolling your own, just check they are installed correctly.
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:dustinlyons/nixos-config#check-keys
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#check-keys
 ```
 
 ### 3. Install configuration
@@ -216,3 +217,24 @@ On first boot at the login screen:
 - Login as `root` using the password created during installation
 - Set the user password with `passwd <user>`
 - Go back to the login screen: `Ctrl-Alt-F7`
+
+# Secrets managements
+
+From a mac from inside secrets repository
+```
+EDITOR="cp binary_file_path" agenix -i ~/.ssh/id_ed25519_agenix -e outptut.age
+EDITOR="nvim" agenix -i ~/.ssh/id_ed25519_agenix -e outptut.age
+```
+
+From a nix inside secrets repository
+```
+EDITOR="cp binary_file_path" agenix -e outptut.age
+EDITOR="nvim" agenix -e outptut.age
+```
+
+> [!NOTE]
+> Upon updating the nix-secrets repository you should update your secret flake input with
+>
+> ```sh
+> nix flake update secrets
+> ```
