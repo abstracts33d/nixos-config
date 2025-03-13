@@ -11,7 +11,7 @@ with lib;
 let
   cfg = config.local.dock;
   isDarwin = config.hostSpec.isDarwin;
-  inherit (pkgs) stdenv dockutil;
+  inherit (pkgs) dockutil;
 in
 {
   options = {

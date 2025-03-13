@@ -41,17 +41,7 @@
     {
       self,
       darwin,
-      agenix,
-      nix-homebrew,
-      homebrew-bundle,
-      homebrew-core,
-      homebrew-cask,
-      nikitabobko-homebrew-tap,
-      home-manager,
-      stylix,
       nixpkgs,
-      disko,
-      secrets,
     }@inputs:
     let
       inherit (self) outputs;
@@ -129,7 +119,7 @@
               # ========== Extend lib with lib.custom ==========
               # NOTE: This approach allows lib.custom to propagate into hm
               # see: https://github.com/nix-community/home-manager/pull/3454
-              lib = nixpkgs.lib.extend (self: super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
+              lib = nixpkgs.lib.extend (_self: _super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
 
             };
             modules = [ ./hosts/${if isDarwin then "darwin" else "nixos"}/${host} ];

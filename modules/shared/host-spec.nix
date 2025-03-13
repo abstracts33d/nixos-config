@@ -1,7 +1,6 @@
 # Specifications For Differentiating Hosts
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -48,7 +47,6 @@
       default =
         let
           user = config.hostSpec.username;
-          home = config.hostSpec.home;
           isDarwin = config.hostSpec.isDarwin;
         in
         if isDarwin then "/Users/${user}" else "/home/${user}";

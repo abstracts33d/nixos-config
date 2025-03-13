@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  home-manager,
   ...
 }:
 
@@ -32,7 +31,6 @@ in
     users.${user} =
       {
         pkgs,
-        config,
         lib,
         ...
       }:

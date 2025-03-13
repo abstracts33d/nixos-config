@@ -1,4 +1,4 @@
-{ nixpkgs, lib, ... }:
+{ lib, ... }:
 {
   imports = lib.flatten [
     ./disk-config.nix

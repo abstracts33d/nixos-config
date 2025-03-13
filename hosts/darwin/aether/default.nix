@@ -1,4 +1,4 @@
-{ nixpkgs, lib, ... }:
+{ lib, ... }:
 {
   imports = [ (lib.custom.relativeToRoot "hosts/darwin") ];
 

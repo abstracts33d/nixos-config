@@ -2,7 +2,6 @@
 
 let
   name = config.hostSpec.githubUser;
-  user = config.hostSpec.username;
   email = config.hostSpec.githubEmail;
 in
 {

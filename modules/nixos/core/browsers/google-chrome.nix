@@ -1,7 +1,5 @@
 {
   config,
-  pkgs,
-  home-manager,
   ...
 }:
 let

@@ -6,9 +6,6 @@
   ...
 }:
 
-let
-  user = config.hostSpec.username;
-in
 {
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
