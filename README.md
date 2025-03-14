@@ -33,6 +33,9 @@ Installing Nix on macOS will create an entirely separate volume. It may exceed m
 ```
 .
 ├── apps         # Nix commands used to bootstrap and build configuration
+├── home         # Homemanager configuration
+├── iso          # Live image with ssh key
+├── lib          # Custom library
 ├── hosts        # Host-specific configuration
 ├── modules      # macOS and nix-darwin, NixOS, and shared configuration
 ├── overlays     # Drop an overlay file in this dir, and it runs. So far, mainly patches.

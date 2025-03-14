@@ -1,11 +1,22 @@
-{ ... }:
+{ config, lib, ... }:
 {
-  # Enables support for Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+  options = {
+    bluetooth = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
+    };
   };
 
-  # Enable Bluetooth support
-  services.blueman.enable = true;
+  config = lib.mkIf (config.bluetooth.enable) {
+    # Enables support for Bluetooth
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+
+    # Enable Bluetooth support
+    services.blueman.enable = true;
+  };
 }

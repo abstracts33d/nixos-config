@@ -8,17 +8,6 @@
 let
   hostSpec = config.hostSpec;
   user = config.hostSpec.username;
-  sharedFiles = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
-    inherit
-      user
-      config
-      pkgs
-      lib
-      ;
-  };
-  additionalFiles = import (lib.custom.relativeToRoot "modules/darwin/config/nix/files.nix") {
-    inherit user config pkgs;
-  };
 in
 {
   # Enable home-manager
@@ -41,13 +30,14 @@ in
           packages =
             pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/packages.nix")
               { };
-          file = lib.mkMerge [
-            sharedFiles
-            additionalFiles
-          ];
           stateVersion = "23.11";
         };
-        imports = [ (lib.custom.relativeToRoot "modules/shared/home-manager") ];
+        imports = (
+          map lib.custom.relativeToRoot [
+            "home/common"
+            "home/darwin"
+          ]
+        );
       };
   };
 }
