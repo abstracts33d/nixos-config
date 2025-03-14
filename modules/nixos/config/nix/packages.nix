@@ -2,13 +2,13 @@
 
 with pkgs;
 let
-  shared-packages = import ../../../shared/config/nix/packages.nix { inherit pkgs; };
+  commonPackages = import ../../../common/config/nix/packages.nix { inherit pkgs; };
 in
-shared-packages
+commonPackages
 ++ [
   # Esditors
   vscode
-  jetbrains.ruby-mine
+  # jetbrains.ruby-mine
 
   # Security and authentication
   bitwarden-cli

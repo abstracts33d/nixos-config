@@ -16,9 +16,8 @@
     }
     ./common
     (map lib.custom.relativeToRoot [
-      "modules/nixos/core"
-      "modules/nixos/optional"
-      "modules/shared"
+      "modules/common"
+      "modules/nixos"
     ])
   ];
 

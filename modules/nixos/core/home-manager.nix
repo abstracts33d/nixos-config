@@ -9,14 +9,6 @@ let
   hostSpec = config.hostSpec;
   user = config.hostSpec.username;
   home = config.hostSpec.home;
-  shared-files = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
-    inherit
-      user
-      config
-      pkgs
-      lib
-      ;
-  };
 in
 {
   home-manager = {
@@ -36,14 +28,14 @@ in
           username = "${user}";
           homeDirectory = "${home}";
           packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") { };
-          file =
-            shared-files
-            // import (lib.custom.relativeToRoot "modules/nixos/config/nix/files.nix") {
-              inherit user config pkgs;
-            };
           stateVersion = "21.05";
         };
-        imports = [ (lib.custom.relativeToRoot "modules/shared/home-manager") ];
+        imports = (
+          map lib.custom.relativeToRoot [
+            "home/common"
+            "home/nixos"
+          ]
+        );
       };
   };
 }
