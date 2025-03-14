@@ -16,7 +16,6 @@ alias diff=difft
 # Always color ls and group directories
 alias ls='eza --icons'
 alias l='ls  -l'
-alias ls='ls -a'
 alias ll='ls -ahl'
 alias lst='ls --tree -I .git'
 alias llt='ls -ahl --tree -I .git'
