@@ -6,7 +6,7 @@ let
 in
 shared-packages
 ++ [
-  # Esditors
+  # Editors
   vscode
   jetbrains.ruby-mine
 

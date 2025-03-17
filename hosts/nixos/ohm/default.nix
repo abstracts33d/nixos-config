@@ -15,10 +15,10 @@
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
-      interface = "enp0s3";
+      interface = "enp2s0";
     };
   };
 
   # Modules options
-  gnome.enable = true;
+  # gnome.enable = true;
 }
