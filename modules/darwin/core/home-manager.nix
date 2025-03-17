@@ -21,10 +21,6 @@ let
   };
 in
 {
-  imports = [
-    # ./hm/shell.nix
-  ];
-
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
