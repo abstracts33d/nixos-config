@@ -9,14 +9,14 @@
 
 with lib;
 let
-  cfg = config.local.dock;
+  hS = config.local.dock;
   inherit (pkgs) dockutil;
 in
 {
   options = {
     local.dock.enable = mkOption {
       description = "Enable dock";
-      default = cfg.isDarwin;
+      default = hS.isDarwin;
       example = false;
     };
 
@@ -41,7 +41,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable (
+  config = mkIf hS.enable (
     let
       normalize = path: if hasSuffix ".app" path then path + "/" else path;
       entryURI =
@@ -74,11 +74,11 @@ in
           ]
           (normalize path)
         );
-      wantURIs = concatMapStrings (entry: "${entryURI entry.path}\n") cfg.entries;
+      wantURIs = concatMapStrings (entry: "${entryURI entry.path}\n") hS.entries;
       createEntries = concatMapStrings (
         entry:
         "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}\n"
-      ) cfg.entries;
+      ) hS.entries;
     in
     {
       system.activationScripts.postUserActivation.text = ''

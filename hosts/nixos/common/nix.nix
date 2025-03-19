@@ -1,15 +1,15 @@
 { config, pkgs, ... }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
   nix = {
-    nixPath = [ "nixos-config=${cfg.home}/.local/share/src/nixos-config:/etc/nixos" ];
+    nixPath = [ "nixos-config=${hS.home}/.local/share/src/nixos-config:/etc/nixos" ];
     settings = {
-      allowed-users = [ "${cfg.username}" ];
+      allowed-users = [ "${hS.username}" ];
       trusted-users = [
         "@admin"
-        "${cfg.username}"
+        "${hS.username}"
       ];
       substituters = [
         "https://nix-community.cachix.org"

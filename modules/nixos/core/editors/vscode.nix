@@ -3,7 +3,7 @@
   ...
 }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
   #  environment.systemPackages = with pkgs; [
@@ -23,7 +23,7 @@ in
   #    })
   #  ];
 
-  home-manager.users.${cfg.username} = {
+  home-manager.users.${hS.username} = {
     programs.vscode = {
       enable = true;
     };

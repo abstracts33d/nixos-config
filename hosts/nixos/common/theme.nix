@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
   imports = [
@@ -48,7 +48,7 @@ in
       };
     };
   };
-  home-manager.users.${cfg.username} = {
+  home-manager.users.${hS.username} = {
     programs.firefox.profiles = {
       my-profile.extensions.force = true;
     };

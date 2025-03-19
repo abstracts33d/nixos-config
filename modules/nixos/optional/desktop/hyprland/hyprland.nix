@@ -6,7 +6,7 @@
 }:
 
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
   options = {
@@ -44,7 +44,7 @@ in
       wf-recorder
     ];
 
-    home-manager.users.${cfg.username} = {
+    home-manager.users.${hS.username} = {
       xdg.enable = true;
 
       wayland.windowManager.hyprland = {

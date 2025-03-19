@@ -5,15 +5,15 @@
   ...
 }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
   # These files are generated when secrets are decrypted at build time
   gpgKeys = [
-    "${cfg.home}/.ssh/pgp_github.key"
-    "${cfg.home}/.ssh/pgp_github.pub"
+    "${hS.home}/.ssh/pgp_github.key"
+    "${hS.home}/.ssh/pgp_github.pub"
   ];
 in
 {
-  home-manager.users.${cfg.username} = {
+  home-manager.users.${hS.username} = {
     # This installs my GPG signing keys for Github
     systemd.user.services.gpg-import-keys = {
       Unit = {

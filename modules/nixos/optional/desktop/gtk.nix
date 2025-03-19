@@ -1,10 +1,10 @@
 { config, ... }:
 
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
-  home-manager.users.${cfg.username} = {
+  home-manager.users.${hS.username} = {
     gtk = {
       enable = true;
     };

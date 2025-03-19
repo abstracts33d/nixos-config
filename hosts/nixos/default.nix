@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
   imports = lib.flatten [
@@ -54,9 +54,9 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking = {
-    hostName = cfg.hostName; # Define your hostname.
+    hostName = hS.hostName; # Define your hostname.
     useDHCP = false;
-    interfaces."${cfg.networking.interface}".useDHCP = true;
+    interfaces."${hS.networking.interface}".useDHCP = true;
   };
 
   # Manages keys and such

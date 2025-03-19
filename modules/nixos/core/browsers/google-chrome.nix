@@ -3,10 +3,10 @@
   ...
 }:
 let
-  cfg = config.hostSpec;
+  hS = config.hostSpec;
 in
 {
-  home-manager.users.${cfg.username} = {
+  home-manager.users.${hS.username} = {
     programs.google-chrome = {
       enable = true;
     };
