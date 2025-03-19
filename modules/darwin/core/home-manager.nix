@@ -24,7 +24,7 @@ in
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user.username} =
+    users.${user} =
       {
         pkgs,
         lib,
