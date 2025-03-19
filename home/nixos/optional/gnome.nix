@@ -1,16 +1,16 @@
 { config, lib,... }:
 {
-  options = {
-    gnome = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.gnome.enable) {
-  };
+#  options = {
+#    gnome = {
+#      enable = lib.mkOption {
+#        type = lib.types.bool;
+#        default = false;
+#      };
+#    };
+#  };
+#
+#  config = lib.mkIf (config.gnome.enable) {
+#  };
 }
 # TODO add what's needed to HM here
 #gtk = {

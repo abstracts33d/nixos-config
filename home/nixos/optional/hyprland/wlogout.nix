@@ -5,9 +5,9 @@
 }:
 
 {
-  config = lib.mkIf (config.hyprland.enable) {
+#  config = lib.mkIf (config.hyprland.enable) {
     programs.wlogout = {
       enable = true;
     };
-  };
+#  };
 }

@@ -6,16 +6,16 @@
 }:
 
 {
-  options = {
-    hyprland = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.hyprland.enable) {
+#  options = {
+#    hyprland = {
+#      enable = lib.mkOption {
+#        type = lib.types.bool;
+#        default = false;
+#      };
+#    };
+#  };
+#
+#  config = lib.mkIf (config.hyprland.enable) {
     xdg.enable = true;
 
     wayland.windowManager.hyprland = {
@@ -47,5 +47,5 @@
         ];
       };
     };
-  };
+#  };
 }
