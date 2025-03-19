@@ -17,8 +17,7 @@
     networking = {
       interface = "enp2s0";
     };
-  };
 
-  # Modules options
-  # gnome.enable = true;
+    useGnome = true;
+  };
 }

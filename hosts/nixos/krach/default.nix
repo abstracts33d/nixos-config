@@ -17,13 +17,10 @@
     networking = {
       interface = "enp0s3";
     };
+
+    useGnome = false;
+    useHyperland = true;
+    useGgm = true;
+    useGreetd = false;
   };
-
-  # Modules options
-
-  # gnome.enable = true;
-
-  hyprland.enable = true;
-  # greetd.enable =  true;
-  # gdm.enable = true;
 }

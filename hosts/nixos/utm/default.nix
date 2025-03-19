@@ -17,17 +17,14 @@
     networking = {
       interface = "enp0s1";
     };
+
+    useGnome = false;
+    useHyperland = true;
+    useGgm = true;
+    useGreetd = false;
   };
 
   # Qemu and Spice addons
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
-
-  # Modules options
-
-  # gnome.enable = true;
-
-  hyprland.enable = true;
-  # greetd.enable = true;
-  gdm.enable = true;
 }

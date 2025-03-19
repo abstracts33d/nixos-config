@@ -9,8 +9,7 @@
     username = "s33d";
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
-  };
 
-  # Modules options
-  aerospace.enable = true;
+    useAerospace = true;
+  };
 }
