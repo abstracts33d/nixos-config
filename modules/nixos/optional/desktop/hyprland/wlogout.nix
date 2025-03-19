@@ -9,7 +9,7 @@ let
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
-    home-manager.users.${cfg.user} = {
+    home-manager.users.${cfg.username} = {
       programs.wlogout = {
         enable = true;
       };
