@@ -19,7 +19,7 @@
     };
 
     useGnome = false;
-    useHyperland = true;
+    useHyprland = true;
     useGdm = true;
     useGreetd = false;
   };

@@ -9,7 +9,7 @@ let
   hS = config.hostSpec;
 in
 {
-  config = lib.mkIf (hS.useHyperland) {
+  config = lib.mkIf (hS.useHyprland) {
     xdg.enable = true;
 
     wayland.windowManager.hyprland = {
