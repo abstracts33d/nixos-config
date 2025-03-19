@@ -6,7 +6,7 @@
 }:
 
 let
-  cfg = config.hostSpec;
+  hostSpec = config.hostSpec;
   user = config.hostSpec.username;
   sharedFiles = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
     inherit
