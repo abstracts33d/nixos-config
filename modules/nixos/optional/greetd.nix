@@ -6,19 +6,11 @@
 }:
 
 let
+  hS = config.hostSpec;
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in
 {
-  options = {
-    greetd = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.greetd.enable) {
+  config = lib.mkIf (hS.useGreetd) {
     services.greetd = {
       enable = true;
       settings = {

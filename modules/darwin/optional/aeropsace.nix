@@ -3,17 +3,12 @@
   lib,
   ...
 }:
-{
-  options = {
-    aerospace = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
 
-  config = lib.mkIf (config.aerospace.enable) {
+let
+  hS = config.hostSpec;
+in
+{
+  config = lib.mkIf (hS.useAerospace) {
     services.aerospace = {
       enable = true;
     };

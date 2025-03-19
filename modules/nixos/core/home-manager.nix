@@ -6,16 +6,15 @@
 }:
 
 let
+  hS = config.hostSpec;
   hostSpec = config.hostSpec;
-  user = config.hostSpec.username;
-  home = config.hostSpec.home;
 in
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "_nbkp";
-    users.${user} =
+    users.${hS.username} =
       { ... }:
       {
         inherit hostSpec;
@@ -25,8 +24,8 @@ in
 
         home = {
           enableNixpkgsReleaseCheck = false;
-          username = "${user}";
-          homeDirectory = "${home}";
+          username = "${hS.username}";
+          homeDirectory = "${hS.home}";
           packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") { };
           stateVersion = "21.05";
         };

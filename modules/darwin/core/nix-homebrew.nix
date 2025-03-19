@@ -1,7 +1,8 @@
 { inputs, config, ... }:
 
 let
-  user = config.hostSpec.username;
+  hS = config.hostSpec;
+  user = hS.username;
 in
 {
   nix-homebrew = {

@@ -1,15 +1,9 @@
 { config, lib, ... }:
+let
+  hS = config.hostSpec;
+in
 {
-  options = {
-    gdm = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.gdm.enable) {
+  config = lib.mkIf (hS.useGdm) {
     services.xserver.displayManager.gdm.enable = true;
 
     services = {

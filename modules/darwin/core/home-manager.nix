@@ -7,13 +7,12 @@
 
 let
   hostSpec = config.hostSpec;
-  user = config.hostSpec.username;
 in
 {
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} =
+    users.${hostSpec.username} =
       {
         pkgs,
         lib,

@@ -5,17 +5,11 @@
   ...
 }:
 
+let
+  hS = config.hostSpec;
+in
 {
-#  options = {
-#    hyprland = {
-#      enable = lib.mkOption {
-#        type = lib.types.bool;
-#        default = false;
-#      };
-#    };
-#  };
-#
-#  config = lib.mkIf (config.hyprland.enable) {
+  config = lib.mkIf (hS.useHyperland) {
     xdg.enable = true;
 
     wayland.windowManager.hyprland = {
@@ -47,5 +41,5 @@
         ];
       };
     };
-#  };
+  };
 }

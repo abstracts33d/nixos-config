@@ -20,19 +20,6 @@
       type = lib.types.attrsOf lib.types.anything;
       description = "An attribute set of networking information";
     };
-    wifi = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Used to indicate if a host has wifi";
-    };
-    domain = lib.mkOption {
-      type = lib.types.str;
-      description = "The domain of the host";
-    };
-    userFullName = lib.mkOption {
-      type = lib.types.str;
-      description = "The full name of the user";
-    };
     githubUser = lib.mkOption {
       type = lib.types.str;
       description = "The handle of the user";
@@ -72,16 +59,47 @@
       default = false;
       description = "Used to indicate a server host";
     };
-    # Sometimes we can't use pkgs.stdenv.isLinux due to infinite recursion
     isDarwin = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Used to indicate a host that is darwin";
     };
-    useWindowManager = lib.mkOption {
+    isGraphical = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a window manager";
+    };
+    useGnome = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Used to indicate a host that uses a window manager";
+      description = "Used to indicate a host that uses a Gnome";
+    };
+    useHyperland = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a Hyperland";
+    };
+    useGdm = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a GDM";
+    };
+    useGreetd = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a Ggreetd";
+    };
+    useAerospace = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Used to indicate a host that uses a aerospace";
+    };
+
+    # Hardware Configuration Settings
+    hasBluetooth = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that has bluetooth capabilities";
     };
   };
 }

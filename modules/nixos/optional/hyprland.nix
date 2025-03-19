@@ -6,19 +6,10 @@
 }:
 
 let
-  user = config.hostSpec.username;
+  hS = config.hostSpec;
 in
 {
-  options = {
-    hyprland = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.hyprland.enable) {
+  config = lib.mkIf (hS.useHyprland) {
     programs = {
       hyprland = {
         enable = true;

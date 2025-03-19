@@ -4,10 +4,13 @@
   ...
 }:
 
+let
+  hS = config.hostSpec;
+in
 {
-#  config = lib.mkIf (config.hyprland.enable) {
+  config = lib.mkIf (hS.useHyperland) {
     programs.wlogout = {
       enable = true;
     };
-#  };
+  };
 }

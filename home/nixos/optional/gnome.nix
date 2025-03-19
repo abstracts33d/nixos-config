@@ -1,16 +1,11 @@
 { config, lib,... }:
+
+let
+  hS = config.hostSpec;
+in
 {
-#  options = {
-#    gnome = {
-#      enable = lib.mkOption {
-#        type = lib.types.bool;
-#        default = false;
-#      };
-#    };
-#  };
-#
-#  config = lib.mkIf (config.gnome.enable) {
-#  };
+  config = lib.mkIf (hS.useGnome) {
+  };
 }
 # TODO add what's needed to HM here
 #gtk = {

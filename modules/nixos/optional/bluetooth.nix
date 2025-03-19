@@ -1,15 +1,9 @@
 { config, lib, ... }:
+let
+  hS = config.hostSpec;
+in
 {
-  options = {
-    bluetooth = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf (config.bluetooth.enable) {
+  config = lib.mkIf (hS.hasBluetooth) {
     # Enables support for Bluetooth
     hardware.bluetooth = {
       enable = true;

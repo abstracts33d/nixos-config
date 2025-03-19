@@ -4,17 +4,12 @@
   lib,
   ...
 }:
-{
-  options = {
-    gnome = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
 
-  config = lib.mkIf (config.gnome.enable) {
+let
+  hS = config.hostSpec;
+in
+{
+  config = lib.mkIf (hS.useGnome) {
     services = {
       xserver = {
         enable = true;
