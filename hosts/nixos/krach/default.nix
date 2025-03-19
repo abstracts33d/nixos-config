@@ -20,7 +20,7 @@
 
     useGnome = false;
     useHyperland = true;
-    useGgm = true;
+    useGdm = true;
     useGreetd = false;
   };
 }
