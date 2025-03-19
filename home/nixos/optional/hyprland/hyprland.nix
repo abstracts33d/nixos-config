@@ -5,9 +5,6 @@
   ...
 }:
 
-let
-  user = config.hostSpec.username;
-in
 {
   options = {
     hyprland = {

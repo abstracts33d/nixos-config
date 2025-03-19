@@ -4,15 +4,15 @@
   ...
 }:
 let
-  home = config.hostSpec.home;
+  hS = config.hostSpec;
 in
 {
   home.file = lib.mkMerge [
     {
-      "${home}/.ssh/id_github_ed25519.pub" = {
+      "${hS.home}/.ssh/id_github_ed25519.pub" = {
         text = builtins.readFile ../config/githubPublicKey;
       };
-      "${home}/.ssh/pgp_github.pub" = {
+      "${hS.home}/.ssh/pgp_github.pub" = {
         text = builtins.readFile ../config/githubPublicSigningKey;
       };
     }

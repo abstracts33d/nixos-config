@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
-  home = config.hostSpec.home;
-  xdg_configHome = "${home}/.config";
+  hS = config.hostSpec;
+  xdg_configHome = "${hS.home}/.config";
 in
 {
   home.file = lib.mkMerge [
