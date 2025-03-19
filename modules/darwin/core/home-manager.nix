@@ -6,7 +6,6 @@
 }:
 
 let
-  hostSpec = config.hostSpec;
   user = config.hostSpec.username;
   sharedFiles = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
     inherit
@@ -31,8 +30,6 @@ in
         ...
       }:
       {
-        inherit hostSpec;
-
         # Nicely reload system units when changing configs
         systemd.user.startServices = "sd-switch";
 
