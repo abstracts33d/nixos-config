@@ -16,7 +16,7 @@ in
     secrets = {
       "github-ssh-key" = {
         symlink = false;
-        path = "${home}/.ssh/id_github_ed25519";
+        path = "${cfg.home}/.ssh/id_github_ed25519";
         file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
         owner = "${cfg.username}";
