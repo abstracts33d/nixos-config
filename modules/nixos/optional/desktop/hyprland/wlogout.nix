@@ -5,11 +5,11 @@
 }:
 
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
-    home-manager.users.${user} = {
+    home-manager.users.${cfg.user} = {
       programs.wlogout = {
         enable = true;
       };

@@ -46,10 +46,9 @@
       description = "The home directory of the user";
       default =
         let
-          user = config.hostSpec.username;
-          isDarwin = config.hostSpec.isDarwin;
+          cfg = config.hostSpec;
         in
-        if isDarwin then "/Users/${user}" else "/home/${user}";
+        if cfg.isDarwin then "/Users/${cfg.username}" else "/home/${cfg.username}";
     };
     persistFolder = lib.mkOption {
       type = lib.types.str;

@@ -1,19 +1,19 @@
 { config, ... }:
 let
-  home = config.hostSpec.home;
+  cfg = config.hostSpec;
 in
 {
   programs.ssh = {
     enable = true;
     includes = [
-      "${home}/.ssh/config_external"
+      "${cfg.home}/.ssh/config_external"
     ];
     addKeysToAgent = "yes";
     matchBlocks = {
       "github.com" = {
         identitiesOnly = true;
         identityFile = [
-          "${home}/.ssh/id_github_ed25519"
+          "${cfg.home}/.ssh/id_github_ed25519"
         ];
       };
     };

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
   # Fully declarative dock using the latest from Nix Store
@@ -22,17 +22,17 @@ in
         { path = "/System/Applications/System Settings.app/"; }
         { path = "/Applications/UTM.app/"; }
         {
-          path = "${config.users.users.${user}.home}/.config/";
+          path = "${config.users.users.${cfg.username}.home}/.config/";
           section = "others";
           options = "--sort name --view grid --display folder";
         }
         {
-          path = "${config.users.users.${user}.home}/.local/share/";
+          path = "${config.users.users.${cfg.username}.home}/.local/share/";
           section = "others";
           options = "--sort name --view grid --display folder";
         }
         {
-          path = "${config.users.users.${user}.home}/Downloads";
+          path = "${config.users.users.${cfg.username}.home}/Downloads";
           section = "others";
           options = "--sort name --view grid --display stack";
         }

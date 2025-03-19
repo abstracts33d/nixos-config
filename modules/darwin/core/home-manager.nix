@@ -6,7 +6,7 @@
 }:
 
 let
-  hostSpec = config.hostSpec;
+  cfg = config.hostSpec;
   user = config.hostSpec.username;
   sharedFiles = import (lib.custom.relativeToRoot "modules/shared/config/nix/files.nix") {
     inherit
@@ -24,7 +24,7 @@ in
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} =
+    users.${user.username} =
       {
         pkgs,
         lib,

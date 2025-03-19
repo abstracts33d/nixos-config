@@ -5,7 +5,9 @@
   lib,
   ...
 }:
-
+let
+  cfg = config.hostSpec;
+in
 {
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
@@ -52,9 +54,9 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking = {
-    hostName = config.hostSpec.hostName; # Define your hostname.
+    hostName = cfg.hostName; # Define your hostname.
     useDHCP = false;
-    interfaces."${config.hostSpec.networking.interface}".useDHCP = true;
+    interfaces."${cfg.networking.interface}".useDHCP = true;
   };
 
   # Manages keys and such

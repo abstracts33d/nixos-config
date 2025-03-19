@@ -1,15 +1,14 @@
 { config, ... }:
 
 let
-  name = config.hostSpec.githubUser;
-  email = config.hostSpec.githubEmail;
+  cfg = config.hostSpec;
 in
 {
   programs.git = {
     enable = true;
     ignores = [ "*.swp" ];
-    userName = name;
-    userEmail = email;
+    userName = cfg.githubUser;
+    userEmail = cfg.githubEmail;
     signing = {
       format = "openpgp";
       signByDefault = true;

@@ -5,12 +5,12 @@
 }:
 
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
-  users.users.${user} = {
-    name = "${user}";
-    home = "/Users/${user}";
+  users.users.${cfg.username} = {
+    name = "${cfg.username}";
+    home = "${cfg.home}";
     isHidden = false;
     shell = pkgs.zsh;
   };

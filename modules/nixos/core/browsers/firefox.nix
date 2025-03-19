@@ -3,10 +3,10 @@
   ...
 }:
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${cfg.username} = {
     programs.firefox = {
       enable = true;
     };

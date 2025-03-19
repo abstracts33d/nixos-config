@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
   nix = {
@@ -9,7 +9,7 @@ in
     settings = {
       trusted-users = [
         "@admin"
-        "${user}"
+        "${cfg.username}"
       ];
       substituters = [
         "https://nix-community.cachix.org"

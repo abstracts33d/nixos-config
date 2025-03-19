@@ -5,13 +5,13 @@
   ...
 }:
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
   keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB+qnpVT15QebM41WFgwktTMP6W/KXymb8gxNV0bu5dw" ];
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
   users.users = {
-    ${user} = {
+    ${cfg.username} = {
       isNormalUser = true;
       extraGroups = lib.flatten [
         "wheel"

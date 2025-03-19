@@ -5,13 +5,12 @@
 }:
 
 let
-  user = config.hostSpec.username;
-  home = config.hostSpec.home;
+  cfg = config.hostSpec;
 in
 {
   age = {
     identityPaths = [
-      "${home}/.ssh/id_ed25519"
+      "${cfg.home}/.ssh/id_ed25519"
     ];
 
     secrets = {
@@ -20,16 +19,16 @@ in
         path = "${home}/.ssh/id_github_ed25519";
         file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
-        owner = "${user}";
+        owner = "${cfg.username}";
         group = "wheel";
       };
 
       "github-signing-key" = {
         symlink = false;
-        path = "${home}/.ssh/pgp_github.key";
+        path = "${cfg.home}/.ssh/pgp_github.key";
         file = "${inputs.secrets}/github-signing-key.age";
         mode = "600";
-        owner = "${user}";
+        owner = "${cfg.username}";
         group = "wheel";
       };
     };

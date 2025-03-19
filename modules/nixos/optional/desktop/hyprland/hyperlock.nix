@@ -1,11 +1,11 @@
 { config, lib, ... }:
 
 let
-  user = config.hostSpec.username;
+  cfg = config.hostSpec;
 in
 {
   config = lib.mkIf (config.hyprland.enable) {
-    home-manager.users.${user} = {
+    home-manager.users.${cfg.username} = {
       programs.hyprlock = {
         enable = true;
       };
