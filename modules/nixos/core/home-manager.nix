@@ -32,7 +32,7 @@ in
         };
         imports = (
           map lib.custom.relativeToRoot [
-           (lib.custom.relativeToRoot "modules/common/core/host-spec.nix")
+            "modules/common/core/host-spec.nix"
             "home/common"
             "home/nixos"
           ]
