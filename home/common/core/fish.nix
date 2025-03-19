@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.bat = {
+  programs.fish = {
     enable = true;
   };
 }
