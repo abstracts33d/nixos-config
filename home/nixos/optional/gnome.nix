@@ -1,5 +1,4 @@
-{ config, lib,... }:
-
+{ config, lib, ... }:
 let
   hS = config.hostSpec;
 in

@@ -36,6 +36,19 @@ in
       share = true;
     };
 
+    sessionVariables = {
+      LANG="en_US.UTF-8";
+      LC_ALL="$LANG";
+      GPG_TTY="$(tty)";
+      EDITOR="nvim";
+      VISUAL="nvim";
+      BROWSER="firefox";
+      TERM="xterm-256color";
+      WORKSPACE="$HOME/Dev";
+      # PATH="$HOME/bin:$PATH";
+      GITHUB_USERNAME="abstracts33d";
+    };
+
     profileExtra = ''
       setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
       setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
