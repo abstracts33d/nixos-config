@@ -1,5 +1,4 @@
 {
-  config,
   name,
   lib,
   pkgs,
@@ -9,7 +8,6 @@
   imports = [
     ./hosts/nixos/${name}/disk-config.nix
     ./hosts/nixos/${name}/host-spec.nix
-    ./modules/common/core/host-spec.nix
     ./hosts/nixos/common/core
     # ./hosts/nixos/${name}/hardware-configuration.nix
   ];
