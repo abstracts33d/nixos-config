@@ -35,9 +35,9 @@
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
-            "${inputs.secrets}/hosts/nixos/${name}/disk-config.nix"
-            "${inputs.secrets}/hosts/nixos/${name}/hardware-configuration.nix"
-            "${inputs.secrets}/hosts/nixos/${name}/host-spec.nix"
+            "${inputs.parentDir}/hosts/nixos/${name}/disk-config.nix"
+            "${inputs.parentDir}/hosts/nixos/${name}/hardware-configuration.nix"
+            "${inputs.parentDir}/hosts/nixos/${name}/host-spec.nix"
             ./minimal-configuration.nix
           ];
         });
