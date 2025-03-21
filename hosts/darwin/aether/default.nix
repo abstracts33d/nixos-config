@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = lib.flatten [
-    ./host-spec
+    ./host-spec.nix
     (map lib.custom.relativeToRoot [
       "hosts/darwin"
     ])

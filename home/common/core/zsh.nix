@@ -37,16 +37,16 @@ in
     };
 
     sessionVariables = {
-      LANG="en_US.UTF-8";
-      LC_ALL="$LANG";
-      GPG_TTY="$(tty)";
-      EDITOR="nvim";
-      VISUAL="nvim";
-      BROWSER="firefox";
+      LANG = "en_US.UTF-8";
+      LC_ALL = "$LANG";
+      GPG_TTY = "$(tty)";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      BROWSER = "firefox";
       # TERM="xterm-256color";
-      WORKSPACE="$HOME/Dev";
+      WORKSPACE = "$HOME/Dev";
       # PATH="$HOME/bin:$PATH";
-      GITHUB_USERNAME="abstracts33d";
+      GITHUB_USERNAME = "abstracts33d";
     };
 
     profileExtra = ''

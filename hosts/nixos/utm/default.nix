@@ -2,7 +2,7 @@
 {
   imports = lib.flatten [
     ./disk-config.nix
-    ./host-spec
+    ./host-spec.nix
     (map lib.custom.relativeToRoot [
       "hosts/nixos"
     ])
