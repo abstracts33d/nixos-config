@@ -23,41 +23,6 @@ in
     ])
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 42;
-      };
-      efi.canTouchEfiVariables = true;
-    };
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "nvme"
-      "usbhid"
-      "usb_storage"
-      "sd_mod"
-    ];
-    # Uncomment for AMD GPU
-    # initrd.kernelModules = [ "amdgpu" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "uinput" ];
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking = {
-    hostName = hS.hostName; # Define your hostname.
-    useDHCP = false;
-    interfaces."${hS.networking.interface}".useDHCP = true;
-  };
-
   # Manages keys and such
   programs = {
     gnupg.agent.enable = true;
