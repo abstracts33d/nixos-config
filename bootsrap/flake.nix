@@ -30,7 +30,6 @@
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
-            ./modules/common/core/host-spec.nix
             ./minimal-configuration.nix { inherit name; }
           ];
         });

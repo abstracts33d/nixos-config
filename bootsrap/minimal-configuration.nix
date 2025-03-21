@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./modules/common/core/host-spec.nix
     ./hosts/nixos/${name}/disk-config.nix
     ./hosts/nixos/${name}/host-spec.nix
     ./hosts/nixos/common/core
