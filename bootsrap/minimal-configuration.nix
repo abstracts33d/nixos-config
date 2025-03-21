@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./modules/common/core/host-spec.nix
+#    ./modules/common/core/host-spec.nix
 #    ./hosts/nixos/common/core
   ];
 
