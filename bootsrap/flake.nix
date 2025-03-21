@@ -31,9 +31,8 @@
           modules = [
             inputs.disko.nixosModules.disko
             ./hosts/nixos/${name}/disk-config.nix
-            ./hosts/nixos/${name}/hardware-configuration.nix
             ./hosts/nixos/${name}/host-spec.nix
-            ./hosts/nixos/common/core
+            # ./hosts/nixos/${name}/hardware-configuration.nix
             ./minimal-configuration.nix
           ];
         });
