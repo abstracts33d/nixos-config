@@ -1,18 +1,8 @@
 {
-  name,
-  lib,
   pkgs,
   ...
 }:
 {
-  imports = [
-    ./modules/common/core/host-spec.nix
-    ./hosts/nixos/${name}/disk-config.nix
-    ./hosts/nixos/${name}/host-spec.nix
-    # ./hosts/nixos/common/core
-    # ./hosts/nixos/${name}/hardware-configuration.nix
-  ];
-
   # No matter what environment we are in we want these tools for root, and the user(s)
   programs.git.enable = true;
 
