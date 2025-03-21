@@ -13,7 +13,6 @@
     {
       self,
       nixpkgs,
-      parentDir,
       ...
     }@inputs:
     let
