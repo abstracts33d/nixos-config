@@ -5,8 +5,8 @@
 }:
 {
   imports = [
-    ./modules/common/core/host-spec.nix
-    ./hosts/nixos/common/core
+    ./bootsrap/modules/common/core/host-spec.nix
+    ./bootsrap/hosts/nixos/common/core
   ];
 
   # No matter what environment we are in we want these tools for root, and the user(s)
