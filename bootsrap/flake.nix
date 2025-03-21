@@ -13,6 +13,7 @@
     {
       self,
       nixpkgs,
+      parentDir,
       ...
     }@inputs:
     let
@@ -30,12 +31,10 @@
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
-#            ./modules/common/core/host-spec.nix
             ./hosts/nixos/${name}/disk-config.nix
-#            ./hosts/nixos/${name}/host-spec.nix
-#            ./hosts/nixos/common/core
 #            ./hosts/nixos/${name}/hardware-configuration.nix
-#            ./minimal-configuration.nix
+            ./hosts/nixos/${name}/host-spec.nix
+            ./minimal-configuration.nix
           ];
         });
     in
