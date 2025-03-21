@@ -5,7 +5,10 @@
 }:
 {
   imports = [
+    ./hosts/nixos/${name}/disk-config.nix
+    ./modules/common/core/host-spec.nix
     ./hosts/nixos/common/core
+    # ./hosts/nixos/${name}/hardware-configuration.nix
   ];
 
   # No matter what environment we are in we want these tools for root, and the user(s)

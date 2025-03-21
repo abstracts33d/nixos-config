@@ -30,9 +30,6 @@
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
-            ./hosts/nixos/${name}/disk-config.nix
-            ./modules/common/core/host-spec.nix
-            # ./hosts/nixos/${name}/hardware-configuration.nix
             ./minimal-configuration.nix
           ];
         });
