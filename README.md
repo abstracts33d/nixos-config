@@ -214,6 +214,17 @@ sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts
 sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- "HOSTNAME" "USERNAME"
 ```
 
+> [!NOTE]
+> Activate the swap device
+> ```sh
+> swapon /dev/swap-partition
+> ```
+> Then remount the store to increase its size:
+>
+> ```sh
+> mount -o remount,size=10G,noatime /nix/.rw-store
+> ```
+
 ### 4. Set user password
 On first boot at the login screen:
 - Use shortcut `Ctrl-Alt-F2` (or `Fn-Ctrl-Option-F2` if on a Mac) to move to a terminal session
