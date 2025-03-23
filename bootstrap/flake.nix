@@ -7,6 +7,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    parentFlake.url =  "path:./..";
   };
 
   outputs =
@@ -30,9 +31,9 @@
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
-            ../hosts/nixos/${name}/disk-config.nix
-            ../hosts/nixos/${name}/hardware-configuration.nix
-            ../hosts/nixos/${name}/host-spec.nix
+            "${inputs.parentFlake}/hosts/nixos/${name}/disk-config.nix"
+            "${inputs.parentFlake}/hosts/nixos/${name}/hardware-configuration.nix"
+            "${inputs.parentFlake}/hosts/nixos/${name}/host-spec.nix"
             ./minimal-configuration.nix
           ];
         });
