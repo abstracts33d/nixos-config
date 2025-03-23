@@ -62,7 +62,7 @@ link_home_dir() {
 install_or_nixos() {
   # HOST=$(uname -n)
 
-  echo -e "\e[1;33mInstalling.\e[0m" &&  sudo nixos-install --flake .#$HOST $@;;
+  sudo nixos-install --flake .#$HOST $@
 }
 
 prompt_reboot() {
