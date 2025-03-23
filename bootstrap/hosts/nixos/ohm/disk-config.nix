@@ -1,1 +1,0 @@
-../../../../hosts/nixos/ohm/disk-config.nix

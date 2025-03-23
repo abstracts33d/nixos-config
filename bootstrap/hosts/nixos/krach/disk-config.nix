@@ -1,1 +1,0 @@
-../../../../hosts/nixos/krach/disk-config.nix

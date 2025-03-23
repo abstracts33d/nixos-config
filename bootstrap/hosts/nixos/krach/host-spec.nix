@@ -1,1 +1,0 @@
-../../../../hosts/nixos/krach/host-spec.nix
