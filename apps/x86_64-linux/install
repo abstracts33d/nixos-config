@@ -59,7 +59,7 @@ link_home_dir() {
   ln -s /mnt/home/${USERNAME} /home/${USERNAME} # Used to grab initial secrets
 }
 
-install_or_nixos() {
+install_nixos() {
   # HOST=$(uname -n)
 
   sudo nixos-install --flake .#$HOST $@
@@ -80,6 +80,6 @@ run_disko
 setup_files
 setup_ssh_keys
 link_home_dir
-install_or_nixos
+install_nixos
 cleanup
 prompt_reboot
