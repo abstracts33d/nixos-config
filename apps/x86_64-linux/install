@@ -3,7 +3,6 @@ set -exu
 
 export HOST=$1
 export USERNAME=$2
-export BOOTSTRAP=$3
 
 check_installer() {
   if [ -e /etc/NIXOS ]; then
@@ -60,15 +59,10 @@ link_home_dir() {
   ln -s /mnt/home/${USERNAME} /home/${USERNAME} # Used to grab initial secrets
 }
 
-install_or_bootstrap_nixos() {
+install_or_nixos() {
   # HOST=$(uname -n)
 
-  case "$BOOTSTRAP" in
-  bootstrap|BOOTSTRAP )
-    echo -e "\e[1;32mBootsraping...\e[0m" && cd bootstrap && sudo nixos-install --impure --flake .#$HOST $@;;
-  * )
-    echo -e "\e[1;33mInstalling.\e[0m" &&  sudo nixos-install --flake .#$HOST $@;;
-  esac
+  echo -e "\e[1;33mInstalling.\e[0m" &&  sudo nixos-install --flake .#$HOST $@;;
 }
 
 prompt_reboot() {
@@ -86,6 +80,6 @@ run_disko
 setup_files
 setup_ssh_keys
 link_home_dir
-install_or_bootstrap_nixos
+install_or_nixos
 cleanup
 prompt_reboot
