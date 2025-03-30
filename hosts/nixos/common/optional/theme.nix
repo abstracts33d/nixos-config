@@ -21,7 +21,7 @@ in
 
     image = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/cool.jpg";
-      sha256 = "+gmixlxI+gTrWKq5Gnb7yaj/V0JWIO6dlk6uESeJ3ho=";
+      sha256 = "g6cFnOT4GICHD7xGy28lrr2GT4gE4q6mCtWqNCweP38=";
     };
 
     polarity = "dark";

@@ -18,6 +18,7 @@ _:
 
   # Utility Tools
   "syncthing"
+  "caffeine"
 
   # Entertainment Tools
   "vlc"

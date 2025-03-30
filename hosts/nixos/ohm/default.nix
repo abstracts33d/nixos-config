@@ -9,5 +9,8 @@
     ])
   ];
 
+  services.xserver.xkb.layout = "fr,us";
+  console.keyMap = "fr";
+
   nixpkgs.hostPlatform = "x86_64-linux";
 }
