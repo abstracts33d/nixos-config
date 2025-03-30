@@ -9,8 +9,8 @@
     ])
   ];
 
-  services.xserver.xkb.layout = "fr,us";
-  console.keyMap = "fr";
+  services.xserver.xkb.layout = lib.mkForce "fr,us";
+  console.keyMap = lib.mkForce "fr";
 
   nixpkgs.hostPlatform = "x86_64-linux";
 }
