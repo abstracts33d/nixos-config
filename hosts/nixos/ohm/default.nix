@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   imports = lib.flatten [
+    ./hardware-configuration.nix
     ./disk-config.nix
     ./host-spec.nix
     (map lib.custom.relativeToRoot [
