@@ -1,10 +1,10 @@
-{ config, pkgs }:
+{ hostSpec, pkgs }:
 
 with pkgs;
 let
-  hS = config.hostSpec;
-  commonPackages = import ../../../common/config/nix/packages.nix { inherit config pkgs; };
-  hostPackages = import "../../../../hosts/${hS.hostname}/packages.nix" { inherit config pkgs; };
+  hS = hostSpec;
+  commonPackages = import ../../../common/config/nix/packages.nix { inherit hostSpec pkgs; };
+  hostPackages = import "../../../../hosts/${hS.hostname}/packages.nix" { inherit hostSpec pkgs; };
 in
 commonPackages
 ++ hostPackages

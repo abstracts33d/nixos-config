@@ -1,8 +1,8 @@
-{ config, pkgs }:
+{ hostSpec, pkgs }:
 
 with pkgs;
 let
-  hS = config.hostSpec;
+  hS = hostSpec;
 in
 [
 
