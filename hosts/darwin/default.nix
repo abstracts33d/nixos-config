@@ -6,6 +6,9 @@
   ...
 }:
 
+let
+  hostSpec = config.hostSpec;
+in
 {
   imports = lib.flatten [
     inputs.home-manager.darwinModules.home-manager
@@ -25,7 +28,7 @@
   environment.systemPackages =
     import (lib.custom.relativeToRoot "modules/common/config/nix/packages.nix")
       {
-        inherit config pkgs;
+        inherit hostSpec config pkgs;
       };
 
   hostSpec = {
