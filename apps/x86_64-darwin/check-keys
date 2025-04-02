@@ -9,7 +9,7 @@ username=${USER}
 export SSH_DIR=/Users/${username}/.ssh
 
 lint_keys() {
-  if [[ -f "${SSH_DIR}/id_ed25519" && -f "${SSH_DIR}/id_ed25519.pub" && -f "${SSH_DIR}/id_ed25519_agenix" && -f "${SSH_DIR}/id_ed25519_agenix.pub" ]]; then
+  if [[ -f "${SSH_DIR}/id_ed25519" && -f "${SSH_DIR}/id_ed25519.pub" ]]; then
     echo -e "${GREEN}All SSH keys are present.${NC}"
   else
     echo -e "${RED}Some SSH keys are missing.${NC}"
@@ -18,12 +18,6 @@ lint_keys() {
     fi
     if [[ ! -f "${SSH_DIR}/id_ed25519.pub" ]]; then
       echo -e "${RED}Missing: id_ed25519.pub${NC}"
-    fi
-    if [[ ! -f "${SSH_DIR}/id_ed25519_agenix" ]]; then
-      echo -e "${RED}Missing: id_ed25519_agenix${NC}"
-    fi
-    if [[ ! -f "${SSH_DIR}/id_ed25519_agenix.pub" ]]; then
-      echo -e "${RED}Missing: id_ed25519_agenix.pub${NC}"
     fi
     echo -e "${GREEN}Run the createKeys command to generate the missing keys.${NC}"
     exit 1

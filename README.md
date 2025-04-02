@@ -92,16 +92,15 @@ find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name apply -o 
 #### Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
-| Key Name            | Platform         | Description                                        |
-|---------------------|------------------|----------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`.           |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. |
+| Key Name            | Platform         | Description                                 |
+|---------------------|------------------|---------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets` && Primary key for encrypting and decrypting secrets. |
 
 Run one of these commands:
 
 ##### Copy keys from USB drive
 This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_main` and `id_ed25519_agenix`.
+> Keys must be named `id_ed25519` .
 ```sh
 nix run .#copy-keys
 ```
@@ -177,16 +176,15 @@ Download and burn [the minimal ISO image](https://nixos.org/download.html) to a 
 #### Install keys
 Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
 
-| Key Name            | Platform         | Description                                                                             |
-|---------------------|------------------|-----------------------------------------------------------------------------------------|
-| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Copied over to host as `id_main`               |
-| id_ed25519_agenix   | macOS / NixOS    | Primary key for encrypting and decrypting secrets. Copied over to host as `id_ed25519`. |
+| Key Name            | Platform         | Description                                                                |
+|---------------------|------------------|----------------------------------------------------------------------------|
+| id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Primary key for encrypting and decrypting secrets. Copied over to host |
 
 Run one of these commands:
 
 ##### Copy keys from USB drive
 This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_main` and `id_ed25519_agenix`.
+> Keys must be named `id_ed25519`.
 ```sh
 sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#copy-keys
 ```
@@ -234,13 +232,7 @@ On first boot at the login screen:
 
 # Secrets managements
 
-From a mac from inside secrets repository
-```
-EDITOR="cp binary_file_path" agenix -i ~/.ssh/id_ed25519_agenix -e outptut.age
-EDITOR="nvim" agenix -i ~/.ssh/id_ed25519_agenix -e outptut.age
-```
-
-From a nix inside secrets repository
+From inside secrets repository
 ```
 EDITOR="cp binary_file_path" agenix -e outptut.age
 EDITOR="nvim" agenix -e outptut.age

@@ -40,7 +40,6 @@ generate_key() {
 
 setup_ssh_directory
 generate_key "id_ed25519"
-generate_key "id_ed25519_agenix"
 
 echo -e "${GREEN}SSH key setup complete.${NC}"
 echo -e "${GREEN}Remember to add the necessary keys to Github or other services as required.${NC}"

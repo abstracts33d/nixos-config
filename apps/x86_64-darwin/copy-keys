@@ -29,31 +29,19 @@ mount_usb() {
   fi
 }
 
-copy_keys() {
-  if [ -n "${MOUNT_PATH}" ]; then
-    cp "${MOUNT_PATH}/id_ed25519_agenix.pub" ${SSH_DIR}
-    cp "${MOUNT_PATH}/id_ed25519_agenix" ${SSH_DIR}
-    chmod 600 ${SSH_DIR}/id_ed25519_{agenix,agenix.pub}
-  else
-    echo -e "${RED}No USB drive found. Aborting.${NC}"
-    exit 1
-  fi
-}
-
 setup_ssh_directory() {
   mkdir -p ${SSH_DIR}
 }
 
 set_keys() {
-  cp ${MOUNT_PATH}/id_main.pub ${SSH_DIR}/id_ed25519.pub
-  cp ${MOUNT_PATH}/id_main ${SSH_DIR}/id_ed25519
+  cp ${MOUNT_PATH}/id_ed25519.pub ${SSH_DIR}/id_ed25519.pub
+  cp ${MOUNT_PATH}/id_ed25519 ${SSH_DIR}/id_ed25519
   chmod 600 ${SSH_DIR}/id_ed25519
   chmod 644 ${SSH_DIR}/id_ed25519.pub
 }
 
 change_ownership() {
   chown ${username}:staff ${SSH_DIR}/id_ed25519{,.pub}
-  chown ${username}:staff ${SSH_DIR}/id_ed25519_{agenix,agenix.pub}
 }
 
 setup_ssh_directory
@@ -62,7 +50,6 @@ mount_usb
 if [ -z "${MOUNT_PATH}" ]; then
   handle_no_usb
 else
-  copy_keys
   set_keys
   change_ownership
 fi

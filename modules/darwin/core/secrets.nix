@@ -10,7 +10,7 @@ in
 {
   age = {
     identityPaths = [
-      "${hS.home}/.ssh/id_ed25519_agenix"
+      "${hS.home}/.ssh/id_ed25519"
     ];
 
     secrets = {
