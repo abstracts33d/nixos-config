@@ -14,7 +14,6 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      # TODO do this
       settings = {
         "$mod" = "SUPER";
 

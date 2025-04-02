@@ -4,13 +4,6 @@
   programs = {
     kitty = {
       enable = true;
-      # Handled by the theme module
-      # theme = "Catppuccin-Macchiato";
-      # font = {
-      #  name = "MesloLG NF";
-      #  package = pkgs.nerd-fonts.meslo-lg;
-      #  size = 13;
-      # };
       extraConfig = "
         background_opacity 0.95
 

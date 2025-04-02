@@ -54,6 +54,22 @@ in
       setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
     '';
 
+
+    # plugins = [
+    #   {
+    #     name = "zsh-vi-mode";
+    #     src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
+    #   }
+    #   {
+    #     name = "fzf-tab";
+    #     src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+    #   }
+    #   {
+    #     name = "zsh-history-substring-search";
+    #     src = "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
+    #   }
+    # ];
+
     # TODO check if better imported via pkgs
     # TODO add fzf
     zplug = {
@@ -77,11 +93,6 @@ in
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
-      # Define variables for directories
-      export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
-      export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
-      export PATH=$HOME/.local/share/bin:$PATH
-
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
 
@@ -93,9 +104,6 @@ in
     '';
 
     initExtra = ''
-      # init zoxide
-      eval "$(zoxide init zsh)"
-
       # zsh-history-substring-search
       bindkey '^[[A' history-substring-search-up
       bindkey '^[OA' history-substring-search-up

@@ -6,10 +6,6 @@ shell() {
   nix-shell '<nixpkgs>' -A "$1"
 }
 
-# pnpm is a javascript package manager
-alias pn=pnpm
-alias px=pnpx
-
 # Use difftastic, syntax-aware diffing
 alias diff=difft
 

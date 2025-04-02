@@ -10,7 +10,6 @@
           path: _type:
           (
             (_type == "directory") # include directories
-            && (path != "home-manager") # ignore home-manager
             && (path != "config") # ignore config
           )
           || (

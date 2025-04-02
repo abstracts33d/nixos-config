@@ -4,9 +4,7 @@
   programs.bat = {
     enable = true;
     config = {
-      # Git modifications and file header (but no grid)
-      style = "changes,header";
-      # theme = "gruvbox-dark";
+      style = "changes,header"; # Git modifications and file header (but no grid)
     };
     extraPackages = builtins.attrValues {
       inherit (pkgs.bat-extras)

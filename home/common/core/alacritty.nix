@@ -9,21 +9,9 @@
       };
 
       window = {
-        opacity = 1.0;
-        padding = {
-          x = 24;
-          y = 24;
-        };
+        opacity = lib.mkForce 0.8;
       };
 
-      # Handled by the theme module
-      # font = {
-      #  normal = {
-      #    family = "MesloLGS NF";
-      #    style = "Monospace";
-      #  };
-      #  size = 13;
-      # };
       font.normal.family = lib.mkForce "MesloLGS NF";
     };
   };
