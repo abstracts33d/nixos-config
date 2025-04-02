@@ -12,7 +12,7 @@ commonPackages
   # Dev
   vscode
   # jetbrains.ruby-mine
-  slack
+  # slack
 
   # App and package management
   appimage-run
