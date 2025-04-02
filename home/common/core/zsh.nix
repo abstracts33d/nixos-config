@@ -54,24 +54,6 @@ in
       setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
     '';
 
-
-    # plugins = [
-    #   {
-    #     name = "zsh-vi-mode";
-    #     src = "${pkgs.zsh-vi-mode}/share/zsh-vi-mode";
-    #   }
-    #   {
-    #     name = "fzf-tab";
-    #     src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-    #   }
-    #   {
-    #     name = "zsh-history-substring-search";
-    #     src = "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
-    #   }
-    # ];
-
-    # TODO check if better imported via pkgs
-    # TODO add fzf
     zplug = {
       enable = true;
       plugins = [
