@@ -7,9 +7,9 @@ in
 commonPackages
 ++ [
   # Editors
-  libreoffice
+  # libreoffice
   vscode
-  jetbrains.ruby-mine
+  # jetbrains.ruby-mine
 
   # App and package management
   appimage-run
