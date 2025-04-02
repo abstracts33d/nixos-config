@@ -29,9 +29,10 @@ in
       };
     };
 
-    # Remove decorations for QT applications
     environment.sessionVariables = {
+      # Enable Ozone Wayland support
       NIXOS_OZONE_WL = "1";
+      # Remove decorations for QT applications
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
 

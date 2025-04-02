@@ -8,8 +8,11 @@ commonPackages
 ++ [
   # Editors
   libreoffice
+
+  # Dev
   vscode
-  jetbrains.ruby-mine
+  # jetbrains.ruby-mine
+  slack
 
   # App and package management
   appimage-run
