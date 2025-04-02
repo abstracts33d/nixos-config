@@ -3,8 +3,10 @@
 {
   homebrew = {
     enable = true;
-    brews = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/brews.nix") { };
-    casks = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/casks.nix") { };
+    brews = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/brews.nix") { }
+      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/${hS.hostname}/brews.nix") { };
+    casks = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/casks.nix") { }
+      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/${hS.hostname}/casks.nix") { };
     # onActivation.cleanup = "uninstall";
 
     # These app IDs are from using the mas CLI app

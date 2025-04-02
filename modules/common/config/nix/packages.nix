@@ -1,6 +1,9 @@
-{ pkgs }:
+{ config, pkgs }:
 
 with pkgs;
+let
+  hS = config.hostSpec;
+in
 [
   # General packages for development and system management
   act
@@ -8,22 +11,20 @@ with pkgs;
   aspellDicts.fr
   aspellDicts.en
   bash-completion
-  bat
   btop
   coreutils
   difftastic
-  du-dust
   gcc
   killall
-  fastfetch
-  openssh
-  pandoc
-  sqlite
-  zip
   uv
+
+  # Files
+  zip
 
   # Network
   nmap
+  openssh
+  rsync
   wakeonlan
   wget
 
@@ -31,53 +32,40 @@ with pkgs;
   age
   bitwarden-cli
   gnupg
-  libfido2
-
-  # Cloud-related tools and SDKs
-  docker
-  docker-compose
 
   # Media-related packages
   nerd-fonts.meslo-lg
   imagemagick
   dejavu_fonts
   ffmpeg
-  fd
   font-awesome
   hack-font
   meslo-lgs-nf
   noto-fonts
   noto-fonts-emoji
-  spotifyd
-
-  # Node.js development tools
-  nodePackages.live-server
-  nodePackages.nodemon
-  nodePackages.prettier
-  nodePackages.npm
-  nodejs
-  yarn
 
   # Source code management, Git, GitHub tools
   gh
 
-  # Text and terminal utilities
+  # Shell
   ack
   bat
   colordiff
-  coreutils
   duf
   eza
+  fastfetch
   fd
+  fish
   fzf
+  git
   htop
   hunspell
   iftop
   jetbrains-mono
   jq
+  neovim
   procs
   ripgrep
-  sesh
   shellcheck
   starship
   thefuck
@@ -91,20 +79,7 @@ with pkgs;
   zellij
   zoxide
 
-  # Python packages
-  black
-  python3
-  virtualenv
-
-  # To sort
-  chezmoi
-  fish
-  git
-  mise
-  redis
-  neovim
-
-  # nix stuff
+  # Nix stuff
   nix-tree
   nix-melt
   nh
@@ -115,12 +90,33 @@ with pkgs;
   helix
   newsboat
   neomutt
-
   cmus
   mpd
-
   pgcli
   iredis
-
   asciinema
+]
+++ [
+  mise
+  redis
+
+  # Node.js development tools
+  nodePackages.live-server
+  nodePackages.nodemon
+  nodePackages.prettier
+  nodePackages.npm
+  nodejs
+  yarn
+
+  # Python packages
+  black
+  python3
+  virtualenv
+
+  # Cloud-related tools and SDKs
+  docker
+  docker-compose
+]
+++ [
+  spotifyd
 ]

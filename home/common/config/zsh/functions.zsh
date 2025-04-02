@@ -1,15 +1,3 @@
-# Sesh function
-function s() {
-  {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-    [[ -z "$session" ]] && return
-    sesh connect $session
-  }
-}
-
 # yazi wrapper function to cd on exit
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

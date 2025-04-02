@@ -49,16 +49,6 @@
       default = false;
       description = "Used to indicate a minimal host";
     };
-    isExternal = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Used to indicate an external host";
-    };
-    isProduction = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Used to indicate a production host";
-    };
     isServer = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -72,7 +62,7 @@
     isGraphical = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Used to indicate a host that uses a window manager";
+      description = "Used to indicate a host that is graphical";
     };
     useGnome = lib.mkOption {
       type = lib.types.bool;

@@ -1,56 +1,42 @@
-{ pkgs }:
+{ config, pkgs }:
 
 with pkgs;
 let
-  commonPackages = import ../../../common/config/nix/packages.nix { inherit pkgs; };
+  hS = config.hostSpec;
+  commonPackages = import ../../../common/config/nix/packages.nix { inherit config pkgs; };
+  hostPackages = import "../../../../hosts/${hS.hostname}/packages.nix" { inherit config pkgs; };
 in
 commonPackages
+++ hostPackages
 ++ [
-  # Editors
-  libreoffice
-
-  # Dev
-  vscode
-  # jetbrains.ruby-mine
-  # slack
-
-  # App and package management
-  appimage-run
-  gnumake
-  cmake
-  home-manager
-
-  # Media and design tools
-  vlc
-  fontconfig
-  font-manager
-
-  # Audio tools
-  pavucontrol # Pulse audio controls
-
   # Testing and development tools
   direnv
   postgresql
 
-  # Screenshot and recording tools
-  flameshot
-
   # Text and terminal utilities
-  feh # Manage wallpapers
   tree
   unixtools.ifconfig
   unixtools.netstat
 
   # File and system utilities
-  sqlite
   xdg-utils
 
-  # Other utilities
-  xdotool
+]
+++ [
+  # Documents
+  libreoffice
 
-  # PDF viewer
-  zathura
+  # Audio
+  vlc
+  pavucontrol
 
-  # Music and entertainment
-  spotifyd
+  # Desktop
+  flameshot # Screenshot and recording tools
+  zathura # PDF viewer
+]
+++ [
+  # Dev
+  vscode
+  # jetbrains.ruby-mine
+  # slack
 ]

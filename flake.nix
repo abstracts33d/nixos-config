@@ -136,7 +136,7 @@
               lib = nixpkgs.lib.extend (_self: _super: { custom = import ./lib { inherit (nixpkgs) lib; }; });
 
             };
-            modules = [ ./hosts/${if isDarwin then "darwin" else "nixos"}/${host} ];
+            modules = [ ./hosts/${if isDarwin then "darwin" else "nixos"}/${host} ]; # TODO check if this is correct
           };
       };
       # Invoke mkHost for each host config that is declared for either nixos or darwin

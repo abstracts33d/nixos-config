@@ -10,6 +10,5 @@
     };
 
     useGnome = true;
-    isExternal = true;
   };
 }
