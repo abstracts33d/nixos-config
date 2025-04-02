@@ -28,7 +28,7 @@ in
   environment.systemPackages =
     import (lib.custom.relativeToRoot "modules/common/config/nix/packages.nix")
       {
-        inherit hostSpec config pkgs;
+        inherit hostSpec pkgs;
       };
 
   hostSpec = {
