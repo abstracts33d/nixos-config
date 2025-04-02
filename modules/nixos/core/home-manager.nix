@@ -26,7 +26,7 @@ in
           enableNixpkgsReleaseCheck = false;
           username = "${hS.username}";
           homeDirectory = "${hS.home}";
-          packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") { };
+          packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") { hostSpec = hostSpec; };
           stateVersion = "21.05";
         };
         imports = (

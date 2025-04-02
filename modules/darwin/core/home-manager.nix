@@ -27,7 +27,7 @@ in
         home = {
           enableNixpkgsReleaseCheck = false;
           packages =
-            pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/packages.nix") { };
+            pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/packages.nix") { hostSpec = hostSpec; };
           stateVersion = "23.11";
         };
         imports = (
