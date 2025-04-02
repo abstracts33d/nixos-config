@@ -87,6 +87,7 @@ with pkgs;
   unrar
   unzip
   yazi
+  yq
   zellij
   zoxide
 
@@ -102,4 +103,24 @@ with pkgs;
   mise
   redis
   neovim
+
+  # nix stuff
+  nix-tree
+  nix-melt
+  nh
+  alejandra
+  deadnix
+
+  # to test
+  helix
+  newsboat
+  neomutt
+
+  cmus
+  mpd
+
+  pgcli
+  iredis
+
+  asciinema
 ]

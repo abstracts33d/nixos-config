@@ -43,9 +43,7 @@ in
       EDITOR = "nvim";
       VISUAL = "nvim";
       BROWSER = "firefox";
-      # TERM="xterm-256color";
       WORKSPACE = "$HOME/Dev";
-      # PATH="$HOME/bin:$PATH";
       GITHUB_USERNAME = "abstracts33d";
     };
 

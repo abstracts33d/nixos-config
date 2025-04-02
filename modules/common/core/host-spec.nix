@@ -49,6 +49,11 @@
       default = false;
       description = "Used to indicate a minimal host";
     };
+    isExternal = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate an external host";
+    };
     isProduction = lib.mkOption {
       type = lib.types.bool;
       default = true;

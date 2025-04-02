@@ -7,12 +7,9 @@ in
 commonPackages
 ++ [
   # Editors
-  # libreoffice
+  libreoffice
   vscode
-  # jetbrains.ruby-mine
-
-  # Security and authentication
-  bitwarden-cli
+  jetbrains.ruby-mine
 
   # App and package management
   appimage-run
@@ -24,9 +21,6 @@ commonPackages
   vlc
   fontconfig
   font-manager
-
-  # Productivity tools
-  galculator
 
   # Audio tools
   pavucontrol # Pulse audio controls
@@ -50,10 +44,6 @@ commonPackages
 
   # Other utilities
   xdotool
-
-  # Browsers
-  google-chrome
-  firefox
 
   # PDF viewer
   zathura
