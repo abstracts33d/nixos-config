@@ -59,9 +59,14 @@
       default = false;
       description = "Used to indicate a host that is darwin";
     };
+    isDev = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Used to indicate a development host";
+    };
     isGraphical = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Used to indicate a host that is graphical";
     };
     useGnome = lib.mkOption {

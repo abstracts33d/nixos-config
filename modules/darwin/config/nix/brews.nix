@@ -3,7 +3,9 @@ _:
 [
   "pinentry-mac"
 
-  # TODO REMOVE added for mise ruby (PostgressApp installed manually)
+  # (PostgressApp installed manually)
+  # Bitwarden installed through mas
+  # TODO REMOVE added for mise ruby
   "gmp"
   "libyaml"
   "openssl"

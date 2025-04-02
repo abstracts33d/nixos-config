@@ -81,5 +81,5 @@ alias -s {md,markdown,rst,toml,json}=$EDITOR
 alias -s git="git clone" # Paste a repository URL in terminal, and have it cloned.
 
 # Linux specific
-alias keys='eval `keychain --eval --agents ssh,gpg ~/.keys/ssh/id_github_ed25519 77C21CC574933465`'
+alias keys='eval `keychain --eval --agents ssh,gpg ~/.keys/ssh/id_ed25519 77C21CC574933465`'
 alias k="keys"

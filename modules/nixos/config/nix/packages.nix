@@ -9,10 +9,6 @@ in
 commonPackages
 ++ hostPackages
 ++ [
-  # Testing and development tools
-  direnv
-  postgresql
-
   # Text and terminal utilities
   tree
   unixtools.ifconfig
@@ -20,9 +16,8 @@ commonPackages
 
   # File and system utilities
   xdg-utils
-
 ]
-++ [
+++ lib.optionals (hS.isGraphical) [
   # Documents
   libreoffice
 
@@ -34,7 +29,11 @@ commonPackages
   flameshot # Screenshot and recording tools
   zathura # PDF viewer
 ]
-++ [
+++ lib.optionals (hS.isDev) [
+  # Testing and development tools
+  direnv
+  postgresql
+
   # Dev
   vscode
   # jetbrains.ruby-mine

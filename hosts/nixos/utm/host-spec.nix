@@ -9,9 +9,9 @@
       interface = "enp0s1";
     };
 
-    useGnome = false;
+    isDev = false;
+
     useHyprland = true;
     useGdm = true;
-    useGreetd = false;
   };
 }

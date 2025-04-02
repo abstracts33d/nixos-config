@@ -9,6 +9,8 @@
       interface = "enp2s0";
     };
 
+    isDev = false;
+
     useGnome = true;
   };
 }

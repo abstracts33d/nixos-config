@@ -96,7 +96,7 @@ in
   iredis
   asciinema
 ]
-++ [
+++ lib.optionals (hS.isDev) [
   mise
   redis
 
@@ -117,6 +117,6 @@ in
   docker
   docker-compose
 ]
-++ [
+++ lib.optionals (hS.isGraphical) [
   spotifyd
 ]
