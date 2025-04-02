@@ -19,16 +19,10 @@ alias llt='ls -ahl --tree -I .git'
 # General
 alias ipv4="dig @resolver4.opendns.com myip.opendns.com +short -4"
 alias ipv6="dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6"
+
 alias vim='nvim'
 alias vi='nvim'
 alias v="nvim"
-
-# Chezmoi
-alias cmcd="cd $(chezmoi source-path)"
-alias cmed="chezmoi edit"
-alias cmdiff="chezmoi diff"
-alias cma="chezmoi apply"
-alias cmadd="chezmoi add"
 
 # Git
 alias gb="git branch -v"
