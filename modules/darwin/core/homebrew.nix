@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  hS = config.hostSpec;
+in
 {
   homebrew = {
     enable = true;
