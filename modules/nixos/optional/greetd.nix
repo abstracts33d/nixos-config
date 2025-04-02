@@ -3,13 +3,10 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-in
-{
+in {
   config = lib.mkIf (hS.useGreetd) {
     services.greetd = {
       enable = true;

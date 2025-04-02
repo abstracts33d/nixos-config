@@ -1,9 +1,8 @@
-{ hostSpec, pkgs }:
-
-with pkgs;
-let
+{
+  hostSpec,
+  pkgs,
+}:
+with pkgs; let
   hS = hostSpec;
-in
-[
-
+in [
 ]

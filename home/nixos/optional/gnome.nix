@@ -1,10 +1,13 @@
-{ config, lib, ... }:
-let
-  hS = config.hostSpec;
-in
 {
-  config = lib.mkIf (hS.useGnome) {
-  };
+  config,
+  lib,
+  ...
+}: let
+  hS = config.hostSpec;
+in {
+  config =
+    lib.mkIf (hS.useGnome) {
+    };
 }
 # TODO add what's needed to HM here
 #gtk = {
@@ -123,3 +126,4 @@ in
 #  gnomeExtensions.user-themes
 #  palenight-theme
 #];
+

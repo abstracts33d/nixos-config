@@ -1,6 +1,4 @@
-_:
-
-[
+_: [
   # Development Tools
   # "homebrew/cask/docker" # marked broken
   "visual-studio-code"

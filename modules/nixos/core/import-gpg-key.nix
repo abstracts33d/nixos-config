@@ -3,22 +3,20 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
   # These files are generated when secrets are decrypted at build time
   gpgKeys = [
     "${hS.home}/.ssh/pgp_github.key"
     "${hS.home}/.ssh/pgp_github.pub"
   ];
-in
-{
+in {
   home-manager.users.${hS.username} = {
     # This installs my GPG signing keys for Github
     systemd.user.services.gpg-import-keys = {
       Unit = {
         Description = "Import gpg keys";
-        After = [ "gpg-agent.socket" ];
+        After = ["gpg-agent.socket"];
       };
 
       Service = {
@@ -26,7 +24,7 @@ in
         ExecStart = toString (
           pkgs.writeScript "gpg-import-keys" ''
             #! ${pkgs.runtimeShell} -el
-            ${lib.optionalString (gpgKeys != [ ]) ''
+            ${lib.optionalString (gpgKeys != []) ''
               ${pkgs.gnupg}/bin/gpg --import ${lib.concatStringsSep " " gpgKeys}
             ''}
           ''
@@ -34,7 +32,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = ["default.target"];
       };
     };
   };

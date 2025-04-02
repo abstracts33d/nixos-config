@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   imports = lib.flatten [
     ./disk-config.nix
     ./host-spec.nix

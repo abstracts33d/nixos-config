@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Don't require password for users in `wheel` group for these commands
   security.sudo = {
     enable = true;
@@ -8,10 +7,10 @@
         commands = [
           {
             command = "${pkgs.systemd}/bin/reboot";
-            options = [ "NOPASSWD" ];
+            options = ["NOPASSWD"];
           }
         ];
-        groups = [ "wheel" ];
+        groups = ["wheel"];
       }
     ];
   };

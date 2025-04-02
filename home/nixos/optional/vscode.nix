@@ -1,12 +1,6 @@
-{
-  config,
-  ...
-}:
-
-let
+{config, ...}: let
   hS = config.hostSpec;
-in
-{
+in {
   config = lib.mkIf (hS.isGraphical) {
     programs.vscode = {
       enable = true;

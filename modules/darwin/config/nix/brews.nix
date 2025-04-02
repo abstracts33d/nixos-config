@@ -1,6 +1,4 @@
-_:
-
-[
+_: [
   "pinentry-mac"
 
   # (PostgressApp installed manually)

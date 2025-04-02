@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   options.hostSpec = {
     # Data variables that don't dictate configuration settings
     username = lib.mkOption {
@@ -16,7 +15,7 @@
       description = "The hostname of the host";
     };
     networking = lib.mkOption {
-      default = { };
+      default = {};
       type = lib.types.attrsOf lib.types.anything;
       description = "An attribute set of networking information";
     };
@@ -31,11 +30,12 @@
     home = lib.mkOption {
       type = lib.types.str;
       description = "The home directory of the user";
-      default =
-        let
-          hS = config.hostSpec;
-        in
-        if hS.isDarwin then "/Users/${hS.username}" else "/home/${hS.username}";
+      default = let
+        hS = config.hostSpec;
+      in
+        if hS.isDarwin
+        then "/Users/${hS.username}"
+        else "/home/${hS.username}";
     };
     persistFolder = lib.mkOption {
       type = lib.types.str;

@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   imports = lib.flatten [
     ./host-spec.nix
     (map lib.custom.relativeToRoot [

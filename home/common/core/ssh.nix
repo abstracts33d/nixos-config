@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   hS = config.hostSpec;
-in
-{
+in {
   programs.ssh = {
     enable = true;
     includes = [

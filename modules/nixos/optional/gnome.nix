@@ -3,12 +3,9 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   config = lib.mkIf (hS.useGnome) {
     services = {
       xserver = {
@@ -37,8 +34,7 @@ in
     };
 
     environment.gnome.excludePackages = (
-      with pkgs;
-      [
+      with pkgs; [
         gedit
         gnome-connections
         gnome-console

@@ -2,12 +2,9 @@
   config,
   inputs,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   age = {
     identityPaths = [
       "${hS.home}/.ssh/id_ed25519"

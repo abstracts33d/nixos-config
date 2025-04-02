@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   imports = lib.flatten [
     ./hardware-configuration.nix
     ./disk-config.nix

@@ -1,41 +1,44 @@
-{ hostSpec, pkgs }:
-
-with pkgs;
-let
+{
+  hostSpec,
+  pkgs,
+}:
+with pkgs; let
   hS = hostSpec;
-  commonPackages = import ../../../common/config/nix/packages.nix { inherit hostSpec pkgs; };
-  hostPackages = import ../../../../hosts/nixos/${hS.hostName}/packages.nix { inherit hostSpec pkgs; };
+  commonPackages = import ../../../common/config/nix/packages.nix {inherit hostSpec pkgs;};
+  hostPackages = import ../../../../hosts/nixos/${hS.hostName}/packages.nix {
+    inherit hostSpec pkgs;
+  };
 in
-commonPackages
-++ hostPackages
-++ [
-  # Text and terminal utilities
-  tree
-  unixtools.ifconfig
-  unixtools.netstat
+  commonPackages
+  ++ hostPackages
+  ++ [
+    # Text and terminal utilities
+    tree
+    unixtools.ifconfig
+    unixtools.netstat
 
-  # File and system utilities
-  xdg-utils
-]
-++ lib.optionals (hS.isGraphical) [
-  # Documents
-  libreoffice
+    # File and system utilities
+    xdg-utils
+  ]
+  ++ lib.optionals (hS.isGraphical) [
+    # Documents
+    libreoffice
 
-  # Audio
-  vlc
-  pavucontrol
+    # Audio
+    vlc
+    pavucontrol
 
-  # Desktop
-  flameshot # Screenshot and recording tools
-  zathura # PDF viewer
-]
-++ lib.optionals (hS.isDev) [
-  # Testing and development tools
-  direnv
-  postgresql
+    # Desktop
+    flameshot # Screenshot and recording tools
+    zathura # PDF viewer
+  ]
+  ++ lib.optionals (hS.isDev) [
+    # Testing and development tools
+    direnv
+    postgresql
 
-  # Dev
-  vscode
-  # jetbrains.ruby-mine
-  # slack
-]
+    # Dev
+    vscode
+    # jetbrains.ruby-mine
+    # slack
+  ]

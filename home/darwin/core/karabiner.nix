@@ -1,9 +1,11 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   hS = config.hostSpec;
   xdg_configHome = "${hS.home}/.config";
-in
-{
+in {
   home.file = lib.mkMerge [
     {
       "${xdg_configHome}/karabiner/karabiner.json" = {

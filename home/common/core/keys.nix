@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   home.file = lib.mkMerge [
     {
       "${hS.home}/.ssh/pgp_github.pub" = {

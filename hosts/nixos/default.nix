@@ -4,17 +4,15 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.agenix.nixosModules.default
     {
-      environment.systemPackages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+      environment.systemPackages = [inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default];
     }
     ./common
     (map lib.custom.relativeToRoot [

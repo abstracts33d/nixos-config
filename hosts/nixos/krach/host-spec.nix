@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   hostSpec = {
     hostName = "krach";
     username = "s33d";

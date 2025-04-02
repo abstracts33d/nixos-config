@@ -2,12 +2,10 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
   xdg_configHome = "${hS.home}/.config";
-in
-{
+in {
   home.file = lib.mkMerge [
     {
       "${xdg_configHome}/zsh/functions.zsh" = {
@@ -57,11 +55,11 @@ in
     zplug = {
       enable = true;
       plugins = [
-        { name = "Aloxaf/fzf-tab"; }
-        { name = "jeffreytse/zsh-vi-mode"; }
+        {name = "Aloxaf/fzf-tab";}
+        {name = "jeffreytse/zsh-vi-mode";}
         {
           name = "zsh-users/zsh-history-substring-search";
-          tags = [ "as:plugin" ];
+          tags = ["as:plugin"];
         }
       ];
     };

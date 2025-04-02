@@ -2,12 +2,9 @@
   config,
   lib,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   config = lib.mkIf (hS.useAerospace) {
     services.aerospace = {
       enable = true;

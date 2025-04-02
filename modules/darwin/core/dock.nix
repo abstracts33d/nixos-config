@@ -4,15 +4,11 @@
   lib,
   ...
 }:
-
 # Original source: https://gist.github.com/antifuchs/10138c4d838a63c0a05e725ccd7bccdd
-
-with lib;
-let
+with lib; let
   hS = config.local.dock;
   inherit (pkgs) dockutil;
-in
-{
+in {
   options = {
     local.dock.enable = mkOption {
       description = "Enable dock";
@@ -22,11 +18,10 @@ in
 
     local.dock.entries = mkOption {
       description = "Entries on the Dock";
-      type =
-        with types;
+      type = with types;
         listOf (submodule {
           options = {
-            path = lib.mkOption { type = str; };
+            path = lib.mkOption {type = str;};
             section = lib.mkOption {
               type = str;
               default = "apps";
@@ -43,11 +38,14 @@ in
 
   config = mkIf hS.enable (
     let
-      normalize = path: if hasSuffix ".app" path then path + "/" else path;
-      entryURI =
-        path:
+      normalize = path:
+        if hasSuffix ".app" path
+        then path + "/"
+        else path;
+      entryURI = path:
         "file://"
-        + (builtins.replaceStrings
+        + (
+          builtins.replaceStrings
           [
             " "
             "!"
@@ -75,12 +73,12 @@ in
           (normalize path)
         );
       wantURIs = concatMapStrings (entry: "${entryURI entry.path}\n") hS.entries;
-      createEntries = concatMapStrings (
-        entry:
-        "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}\n"
-      ) hS.entries;
-    in
-    {
+      createEntries =
+        concatMapStrings (
+          entry: "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}\n"
+        )
+        hS.entries;
+    in {
       system.activationScripts.postUserActivation.text = ''
         echo >&2 "Setting up the Dock..."
         haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2)"

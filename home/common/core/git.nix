@@ -1,12 +1,9 @@
-{ config, ... }:
-
-let
+{config, ...}: let
   hS = config.hostSpec;
-in
-{
+in {
   programs.git = {
     enable = true;
-    ignores = [ "*.swp" ];
+    ignores = ["*.swp"];
     userName = hS.githubUser;
     userEmail = hS.githubEmail;
     signing = {

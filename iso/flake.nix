@@ -1,18 +1,18 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
-  outputs =
-    { self, nixpkgs }:
-    let
-      linuxSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems) f;
-    in
-    {
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
-        system:
+  outputs = {
+    self,
+    nixpkgs,
+  }: let
+    linuxSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+    forAllSystems = f: nixpkgs.lib.genAttrs linuxSystems f;
+  in {
+    nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
+      system:
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
@@ -20,8 +20,9 @@
             ./additional-config.nix
           ];
         }
-      );
-    };
+    );
+  };
 }
 #nix build .#nixosConfigurations.x86_64-linux.config.system.build.isoImage
 #nix build .#nixosConfigurations.aarch64-linux.config.system.build.isoImage
+

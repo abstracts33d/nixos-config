@@ -1,26 +1,27 @@
-{ config, pkgs, ... }:
-
-let
-  hS = config.hostSpec;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  hS = config.hostSpec;
+in {
   # Fully declarative dock using the latest from Nix Store
   local = {
     dock = {
       enable = true;
       entries = [
-        { path = "/Applications/Slack.app/"; }
-        { path = "/Applications/Notion.app/"; }
-        { path = "/Applications/Obsidian.app/"; }
-        { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-        { path = "/Applications/Kitty.app/"; }
-        { path = "/Applications/Visual Studio Code.app/"; }
-        { path = "/Applications/RubyMine.app/"; }
-        { path = "/Applications/Safari.app/"; }
-        { path = "/Applications/Google Chrome.app/"; }
-        { path = "/Applications/Zen Browser.app/"; }
-        { path = "/System/Applications/System Settings.app/"; }
-        { path = "/Applications/UTM.app/"; }
+        {path = "/Applications/Slack.app/";}
+        {path = "/Applications/Notion.app/";}
+        {path = "/Applications/Obsidian.app/";}
+        {path = "${pkgs.alacritty}/Applications/Alacritty.app/";}
+        {path = "/Applications/Kitty.app/";}
+        {path = "/Applications/Visual Studio Code.app/";}
+        {path = "/Applications/RubyMine.app/";}
+        {path = "/Applications/Safari.app/";}
+        {path = "/Applications/Google Chrome.app/";}
+        {path = "/Applications/Zen Browser.app/";}
+        {path = "/System/Applications/System Settings.app/";}
+        {path = "/Applications/UTM.app/";}
         {
           path = "${config.users.users.${hS.username}.home}/.config/";
           section = "others";

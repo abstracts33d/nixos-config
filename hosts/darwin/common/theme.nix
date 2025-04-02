@@ -3,11 +3,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   imports = [
     inputs.stylix.darwinModules.stylix
   ];
@@ -20,5 +18,5 @@ in
     # If stylix.base16Scheme is undeclared, Stylix generates a color scheme based on the wallpaper
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
   };
-  home-manager.users.${hS.username} = { };
+  home-manager.users.${hS.username} = {};
 }

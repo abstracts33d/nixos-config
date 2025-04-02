@@ -1,10 +1,11 @@
-{ inputs, config, ... }:
-
-let
+{
+  inputs,
+  config,
+  ...
+}: let
   hS = config.hostSpec;
   user = hS.username;
-in
-{
+in {
   nix-homebrew = {
     inherit user;
     enable = true;

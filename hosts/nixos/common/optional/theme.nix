@@ -3,11 +3,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
@@ -58,10 +56,10 @@ in
         firefox = {
           colorTheme.enable = true;
           firefoxGnomeTheme.enable = true;
-          profileNames = [ "my-profile" ];
+          profileNames = ["my-profile"];
         };
 
-        vscode.profileNames = [ "my-profile" ];
+        vscode.profileNames = ["my-profile"];
       };
     };
   };

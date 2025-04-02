@@ -3,12 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   config = lib.mkIf (hS.useHyprland) {
     programs = {
       hyprland = {

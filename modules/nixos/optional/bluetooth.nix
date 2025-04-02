@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  hS = config.hostSpec;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  hS = config.hostSpec;
+in {
   config = lib.mkIf (hS.hasBluetooth) {
     # Enables support for Bluetooth
     hardware.bluetooth = {

@@ -1,15 +1,19 @@
-{ config, pkgs, lib, ... }:
-
-let
-  hS = config.hostSpec;
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  hS = config.hostSpec;
+in {
   homebrew = {
     enable = true;
-    brews = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/brews.nix") { }
-      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/darwin/${hS.hostName}/brews.nix") { };
-    casks = pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/casks.nix") { }
-      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/darwin/${hS.hostName}/casks.nix") { };
+    brews =
+      pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/brews.nix") {}
+      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/darwin/${hS.hostName}/brews.nix") {};
+    casks =
+      pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/casks.nix") {}
+      ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/darwin/${hS.hostName}/casks.nix") {};
     # onActivation.cleanup = "uninstall";
 
     # These app IDs are from using the mas CLI app

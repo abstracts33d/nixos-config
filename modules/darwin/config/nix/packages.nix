@@ -1,14 +1,17 @@
-{ hostSpec, pkgs }:
-
-with pkgs;
-let
+{
+  hostSpec,
+  pkgs,
+}:
+with pkgs; let
   hS = hostSpec;
-  commonPackages = import ../../../common/config/nix/packages.nix { inherit hostSpec pkgs; };
-  hostPackages = import ../../../../hosts/darwin/${hS.hostName}/packages.nix { inherit hostSpec pkgs; };
+  commonPackages = import ../../../common/config/nix/packages.nix {inherit hostSpec pkgs;};
+  hostPackages = import ../../../../hosts/darwin/${hS.hostName}/packages.nix {
+    inherit hostSpec pkgs;
+  };
 in
-commonPackages
-++ hostPackages
-++ [
-  dockutil
-  mas
-]
+  commonPackages
+  ++ hostPackages
+  ++ [
+    dockutil
+    mas
+  ]

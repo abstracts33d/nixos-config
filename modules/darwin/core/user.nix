@@ -2,12 +2,9 @@
   config,
   pkgs,
   ...
-}:
-
-let
+}: let
   hS = config.hostSpec;
-in
-{
+in {
   users.users.${hS.username} = {
     name = "${hS.username}";
     home = "${hS.home}";
