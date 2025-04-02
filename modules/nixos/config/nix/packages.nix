@@ -7,7 +7,7 @@ in
 commonPackages
 ++ [
   # Editors
-  libreoffice
+  # libreoffice
   vscode
   # jetbrains.ruby-mine
 
