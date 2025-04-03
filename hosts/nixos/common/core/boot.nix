@@ -1,4 +1,7 @@
-{pkgs, lib,...}: {
+{pkgs, lib,...}:
+let
+  hS = config.hostSpec;
+in{
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
@@ -43,7 +46,7 @@
         delete_subvolume_recursively "$i"
     done
 
-    btrfs subvolume create /btrfs_tmp/root
+    btrfs subvolume create /btrfs_tmp/@root
     umount /btrfs_tmp
   '';
 }
