@@ -22,7 +22,7 @@ in
   ]
   ++ lib.optionals (hS.isGraphical) [
     # Documents
-    libreoffice
+    # libreoffice
 
     # Audio
     vlc
@@ -36,7 +36,8 @@ in
     # Testing and development tools
     direnv
     postgresql
-
+  ]
+  ++ lib.optionals (hS.isDev && hS.isGraphical) [
     # Dev
     vscode
     # jetbrains.ruby-mine
