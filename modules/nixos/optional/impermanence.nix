@@ -8,7 +8,7 @@
   hS = config.hostSpec;
 in {
   imports = [
-    imputs.impermanence.nixosModules.impermanence;
+    imputs.impermanence.nixosModules.impermanence
   ];
 
   config = lib.mkIf (hS.isImpermanent) {
