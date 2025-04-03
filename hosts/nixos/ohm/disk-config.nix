@@ -17,6 +17,7 @@ _: {
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [ "umask=0077" ];
+                extraArgs = ["-L" "boot"];
               };
             };
             root = {
@@ -25,6 +26,7 @@ _: {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
+                extraArgs = ["-L" "root"];
               };
             };
             swap = {
