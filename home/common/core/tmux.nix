@@ -8,6 +8,7 @@
       vim-tmux-navigator
       yank
       prefix-highlight
+      better-mouse-mode
       # must be before continuum edits right status bar
       {
           plugin = catppuccin;
@@ -46,6 +47,8 @@
     mouse = true;
     focusEvents = true;
     extraConfig = ''
+      set-option -g status-position top
+
       #
       # Mappings
       #
@@ -54,11 +57,9 @@
       bind C-l send-keys 'C-l'
 
       # Reload tmux configuration
-      unbind r
       bind r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
       # Fix home and end keys
-
       bind-key -n Home send Escape "OH"
       bind-key -n End send Escape "OF"
 
