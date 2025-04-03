@@ -31,7 +31,7 @@ in
 
     # Encryption and security tools
     age
-    bitwarden-cli
+    # bitwarden-cli # BROKEN
     gnupg
 
     # Media-related packages
