@@ -6,6 +6,13 @@
       vim-tmux-navigator
       yank
       prefix-highlight
+      # must be before continuum edits right status bar
+      {
+          plugin = catppuccin;
+          extraConfig = ''
+          set -g @catppuccin_flavour 'mocha'
+          '';
+      }
       {
         plugin = resurrect; # Used by tmux-continuum
 

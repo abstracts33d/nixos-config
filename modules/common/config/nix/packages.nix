@@ -64,6 +64,7 @@ in
     iftop
     jetbrains-mono
     jq
+    neovide
     procs
     ripgrep
     shellcheck
