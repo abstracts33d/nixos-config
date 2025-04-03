@@ -53,6 +53,7 @@ in {
 
     stylix = {
       targets = {
+        halloy.enable = true;
         firefox = {
           colorTheme.enable = true;
           firefoxGnomeTheme.enable = true;

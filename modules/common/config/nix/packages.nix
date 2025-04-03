@@ -93,9 +93,6 @@ in
     neomutt
     cmus
     mpd
-    pgcli
-    iredis
-    asciinema
   ]
   ++ lib.optionals (hS.isDev) [
     mise
@@ -117,7 +114,12 @@ in
     # Cloud-related tools and SDKs
     docker
     docker-compose
+
+    pgcli
+    iredis
   ]
   ++ lib.optionals (hS.isGraphical) [
+    asciinema
+    halloy
     spotifyd
   ]
