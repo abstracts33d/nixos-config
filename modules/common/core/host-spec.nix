@@ -76,7 +76,7 @@
     };
     useGnome = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
       description = "Used to indicate a host that uses a Gnome";
     };
     useHyprland = lib.mkOption {
