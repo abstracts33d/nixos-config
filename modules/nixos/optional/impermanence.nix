@@ -1,11 +1,16 @@
 {
   pkgs,
   config,
+  inputs,
   lib,
   ...
 }: let
   hS = config.hostSpec;
 in {
+  imports = [
+    imputs.impermanence.nixosModules.impermanence;
+  ];
+
   config = lib.mkIf (hS.isImpermanent) {
     environment.persistence."/nix/persist" = {
       hideMounts = true;
@@ -20,7 +25,7 @@ in {
         # previous boots.
         "/etc/machine-id"
       ];
-      users.will = {
+      users.${hS.userName} = {
         directories = [
           ".local/share/zoxide"
           "Downloads"
