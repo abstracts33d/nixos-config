@@ -3,7 +3,7 @@ _: {
     disk = {
       disk0 = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/vda";
         content = {
           type = "gpt";
           partitions = {
