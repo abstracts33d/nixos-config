@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    # shell = "${pkgs.fish}/bin/fish";
     sensibleOnTop = true;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
