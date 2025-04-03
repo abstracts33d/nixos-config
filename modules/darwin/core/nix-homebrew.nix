@@ -4,7 +4,7 @@
   ...
 }: let
   hS = config.hostSpec;
-  user = hS.username;
+  user = hS.userName;
 in {
   nix-homebrew = {
     inherit user;

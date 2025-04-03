@@ -11,7 +11,7 @@ in {
     settings = {
       trusted-users = [
         "@admin"
-        "${hS.username}"
+        "${hS.userName}"
       ];
       substituters = [
         "https://nix-community.cachix.org"

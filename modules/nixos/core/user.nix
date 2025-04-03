@@ -9,7 +9,7 @@
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   users.users = {
-    ${hS.username} = {
+    ${hS.userName} = {
       isNormalUser = true;
       extraGroups = lib.flatten [
         "wheel"

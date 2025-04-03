@@ -16,7 +16,7 @@ in {
         path = "${hS.home}/.ssh/pgp_github.key";
         file = "${inputs.secrets}/github-signing-key.age";
         mode = "600";
-        owner = "${hS.username}";
+        owner = "${hS.userName}";
         group = "wheel";
       };
     };

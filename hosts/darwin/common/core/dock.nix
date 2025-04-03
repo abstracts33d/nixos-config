@@ -23,17 +23,17 @@ in {
         {path = "/System/Applications/System Settings.app/";}
         {path = "/Applications/UTM.app/";}
         {
-          path = "${config.users.users.${hS.username}.home}/.config/";
+          path = "${config.users.users.${hS.userName}.home}/.config/";
           section = "others";
           options = "--sort name --view grid --display folder";
         }
         {
-          path = "${config.users.users.${hS.username}.home}/.local/share/";
+          path = "${config.users.users.${hS.userName}.home}/.local/share/";
           section = "others";
           options = "--sort name --view grid --display folder";
         }
         {
-          path = "${config.users.users.${hS.username}.home}/Downloads";
+          path = "${config.users.users.${hS.userName}.home}/Downloads";
           section = "others";
           options = "--sort name --view grid --display stack";
         }

@@ -11,7 +11,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "_nbkp";
-    users.${hS.username} = {...}: {
+    users.${hS.userName} = {...}: {
       inherit hostSpec;
 
       # Nicely reload system units when changing configs
@@ -19,7 +19,7 @@ in {
 
       home = {
         enableNixpkgsReleaseCheck = false;
-        username = "${hS.username}";
+        username = "${hS.userName}";
         homeDirectory = "${hS.home}";
         packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") {
           hostSpec = hostSpec;

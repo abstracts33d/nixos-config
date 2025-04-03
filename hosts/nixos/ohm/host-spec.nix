@@ -1,7 +1,7 @@
 {...}: {
   hostSpec = {
     hostName = "ohm";
-    username = "sabrina";
+    userName = "sabrina";
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
