@@ -1,4 +1,4 @@
-{config, ...}: let
+{config, lib, ...}: let
   hS = config.hostSpec;
 in {
   config = lib.mkIf (hS.isGraphical) {
