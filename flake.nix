@@ -47,7 +47,6 @@
     };
     impermanence = {
       url = "github:nix-community/impermanence";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets = {
       url = "git+ssh://git@github.com/abstracts33d/nix-secrets.git";
