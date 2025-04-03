@@ -1,4 +1,4 @@
-{pkgs, lib,...}:
+{pkgs, config, lib,...}:
 let
   hS = config.hostSpec;
 in{
