@@ -1,4 +1,17 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  hS = config.hostSpec;
+in {
+  # link tmux file for darwin
+  home = {
+    file = {
+      ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${hS.home}/.config/tmux/tmux.conf";
+    };
+  };
+
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
@@ -9,15 +22,16 @@
       yank
       prefix-highlight
       better-mouse-mode
+      cpu
       # must be before continuum edits right status bar
       {
-          plugin = catppuccin;
-          extraConfig = ''
+        plugin = catppuccin;
+        extraConfig = ''
           set -g @catppuccin_flavor 'macchiato'
           set -g @catppuccin_window_status_style "rounded"
           set -g @catppuccin_window_default_text "#W"
           set -g @catppuccin_window_current_text " #W" #"#T"
-          '';
+        '';
       }
       {
         plugin = resurrect; # Used by tmux-continuum
@@ -50,70 +64,45 @@
     mouse = true;
     focusEvents = true;
     extraConfig = ''
-      set -g status-position top
+            #
+            # Make the status line pretty and add some modules
+            #
 
-      #
-      # Mappings
-      #
+            set -g status-position top
+            set -g status-right-length 100
+            set -g status-left-length 100
+            set -g status-left ""
+            set -g status-right "#{E:@catppuccin_status_application}"
+            set -agF status-right "#{E:@catppuccin_status_cpu}"
+            set -ag status-right "#{E:@catppuccin_status_session}"
+            set -ag status-right "#{E:@catppuccin_status_uptime}"
 
-      # Map prefix C-l to clear-screen
-      bind C-l send-keys 'C-l'
+            #
+            # Mappings
+            #
 
-      # Reload tmux configuration
-      bind r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+            # Map prefix C-l to clear-screen
+            bind C-l send-keys 'C-l'
 
-      # Fix home and end keys
-      bind-key -n Home send Escape "OH"
-      bind-key -n End send Escape "OF"
+            # Reload tmux configuration
+            unbind r
+            bind r source-file ~/.config/tmux/tmux.conf \; display-message "~/.config/tmux/tmux.conf reloaded"
 
-      # Split panes like vim
-      unbind %
-      unbind '"'
-      bind s split-window -h -c "#{pane_current_path}"
-      bind v split-window -v -c "#{pane_current_path}"
+            # Fix home and end keys
+            bind-key -n Home send Escape "OH"
+            bind-key -n End send Escape "OF"
 
-      # Map resize panes
-      bind -r H resize-pane -L 5
-      bind -r J resize-pane -D 5
-      bind -r K resize-pane -U 5
-      bind -r L resize-pane -R 5
+            # Split panes like vim
+            unbind %
+            unbind '"'
+            bind s split-window -h -c "#{pane_current_path}"
+            bind v split-window -v -c "#{pane_current_path}"
 
-
-
-      #
-      # ████████╗███╗   ███╗██╗   ██╗██╗  ██╗
-      # ╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝
-      #    ██║   ██╔████╔██║██║   ██║ ╚███╔╝
-      #    ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗
-      #    ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗
-      #    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝
-      #
-
-      bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
-      # Resize to largest window
-      setw -g aggressive-resize
-      setw -g window-size largest
-
-      # Renumber panes and index from 1
-      set -g base-index 1
-      setw -g pane-base-index 1
-      set -g renumber-windows on
-      # Status bar options
-
-      # Mouse focus and visual activity
-      setw -g monitor-activity on
-      set -g visual-activity on
-      setw -g mouse on
-      set-option -g focus-events on
-
-      # Make the status line pretty and add some modules
-      set -g status-right-length 100
-      set -g status-left-length 100
-      set -g status-left ""
-      set -g status-right "#{E:@catppuccin_status_application}"
-      set -agF status-right "#{E:@catppuccin_status_cpu}"
-      set -ag status-right "#{E:@catppuccin_status_session}"
-      set -ag status-right "#{E:@catppuccin_status_uptime}"
+            # Map resize panes
+            bind -r H resize-pane -L 5
+            bind -r J resize-pane -D 5
+            bind -r K resize-pane -U 5
+            bind -r L resize-pane -R 5
     '';
   };
 }
