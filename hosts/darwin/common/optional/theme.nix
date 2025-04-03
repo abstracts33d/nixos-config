@@ -11,7 +11,8 @@ in {
   ];
 
   stylix = {
-    enable = true;
+    enable = hS.useTheme;
+
     # prevent error on release check
     enableReleaseChecks = false;
 

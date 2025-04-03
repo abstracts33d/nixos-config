@@ -51,6 +51,7 @@ in
     # Shell
     ack
     bat
+    btop
     colordiff
     duf
     eza
@@ -59,12 +60,10 @@ in
     fish
     fzf
     git
-    htop
     hunspell
     iftop
     jetbrains-mono
     jq
-    neovim
     procs
     ripgrep
     shellcheck

@@ -51,7 +51,7 @@ alias grep='grep --color=auto'
 alias diff="colordiff -ru"
 alias dmesg="dmesg --color"
 alias ccat='pygmentize -g'
-alias top="htop"
+alias top="btop"
 alias gr='grep -RIi --no-messages'
 alias rg='rg -uuu'
 alias g="git"

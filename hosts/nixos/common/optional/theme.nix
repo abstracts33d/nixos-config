@@ -11,7 +11,7 @@ in {
   ];
 
   stylix = {
-    enable = true;
+    enable = hS.useTheme;
     # autoEnable = false;
 
     # If stylix.base16Scheme is undeclared, Stylix generates a color scheme based on the wallpaper

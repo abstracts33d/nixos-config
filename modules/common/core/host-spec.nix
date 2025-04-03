@@ -69,6 +69,11 @@
       default = true;
       description = "Used to indicate a host that is graphical";
     };
+    useTheme = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Used to indicate a host that uses a stylix";
+    };
     useGnome = lib.mkOption {
       type = lib.types.bool;
       default = true;
