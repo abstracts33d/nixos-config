@@ -83,7 +83,7 @@ in {
       source ~/.config/zsh/functions.zsh
     '';
 
-    initExtra = ''
+    initContent = ''
       # zsh-history-substring-search
       bindkey '^[[A' history-substring-search-up
       bindkey '^[OA' history-substring-search-up

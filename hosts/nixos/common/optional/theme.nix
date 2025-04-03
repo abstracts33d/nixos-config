@@ -46,13 +46,14 @@ in {
       };
     };
   };
-  home-manager.users.${hS.username} = {
+  home-manager.users.${hS.userName} = {
     programs.firefox.profiles = {
       my-profile.extensions.force = true;
     };
 
     stylix = {
       targets = {
+        halloy.enable = true;
         firefox = {
           colorTheme.enable = true;
           firefoxGnomeTheme.enable = true;

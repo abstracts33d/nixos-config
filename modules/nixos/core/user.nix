@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   hS = config.hostSpec;
@@ -9,7 +10,7 @@
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   users.users = {
-    ${hS.username} = {
+    ${hS.userName} = {
       isNormalUser = true;
       extraGroups = lib.flatten [
         "wheel"
@@ -23,10 +24,12 @@ in {
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = keys;
+      hashedPasswordFile = lib.mkIf (hS.isImpermanent) "${inputs.secrets}/${hS.userName}-hashed-password-file";
     };
 
     root = {
       openssh.authorizedKeys.keys = keys;
+      hashedPasswordFile = lib.mkIf (hS.isImpermanent) "${inputs.secrets}/hashed-password-file";
     };
   };
 }

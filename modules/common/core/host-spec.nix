@@ -6,7 +6,7 @@
 }: {
   options.hostSpec = {
     # Data variables that don't dictate configuration settings
-    username = lib.mkOption {
+    userName = lib.mkOption {
       type = lib.types.str;
       description = "The username of the host";
     };
@@ -34,13 +34,8 @@
         hS = config.hostSpec;
       in
         if hS.isDarwin
-        then "/Users/${hS.username}"
-        else "/home/${hS.username}";
-    };
-    persistFolder = lib.mkOption {
-      type = lib.types.str;
-      description = "The folder to persist data if impermenance is enabled";
-      default = "";
+        then "/Users/${hS.userName}"
+        else "/home/${hS.userName}";
     };
 
     # Configuration Settings
@@ -58,6 +53,11 @@
       type = lib.types.bool;
       default = false;
       description = "Used to indicate a host that is darwin";
+    };
+    isImpermanent = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Used to indicate an impermanent host";
     };
     isDev = lib.mkOption {
       type = lib.types.bool;
@@ -92,7 +92,12 @@
     useGreetd = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Used to indicate a host that uses a Ggreetd";
+      description = "Used to indicate a host that uses a Greetd";
+    };
+    useSddm = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a SDDM";
     };
     useAerospace = lib.mkOption {
       type = lib.types.bool;

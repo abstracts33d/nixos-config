@@ -9,7 +9,8 @@ in {
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${hostSpec.username} = {
+    backupFileExtension = "_nbkp";
+    users.${hostSpec.userName} = {
       pkgs,
       lib,
       ...

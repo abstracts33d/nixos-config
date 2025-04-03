@@ -11,7 +11,7 @@
     "${hS.home}/.ssh/pgp_github.pub"
   ];
 in {
-  home-manager.users.${hS.username} = {
+  home-manager.users.${hS.userName} = {
     # This installs my GPG signing keys for Github
     systemd.user.services.gpg-import-keys = {
       Unit = {

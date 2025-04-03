@@ -8,10 +8,10 @@ in {
   nix = {
     nixPath = ["nixos-config=${hS.home}/.local/share/src/nixos-config:/etc/nixos"];
     settings = {
-      allowed-users = ["${hS.username}"];
+      allowed-users = ["${hS.userName}"];
       trusted-users = [
         "@admin"
-        "${hS.username}"
+        "${hS.userName}"
       ];
       substituters = [
         "https://nix-community.cachix.org"

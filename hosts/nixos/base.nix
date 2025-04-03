@@ -4,9 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-  hS = config.hostSpec;
-in {
+}: {
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager

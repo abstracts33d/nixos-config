@@ -1,16 +1,21 @@
 {...}: {
   hostSpec = {
     hostName = "utm";
-    username = "s33d";
+    userName = "s33d";
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
       interface = "enp0s1";
     };
 
+    isMinimal = false;
+    isImpermanent = false;
     isDev = false;
 
+    isGraphical = true;
     useHyprland = true;
-    useGdm = true;
+    useSddm = true;
+
+    useTheme = true;
   };
 }
