@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   hS = config.hostSpec;
@@ -23,10 +24,12 @@ in {
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = keys;
+      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
     };
 
     root = {
       openssh.authorizedKeys.keys = keys;
+      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
     };
   };
 }
