@@ -6,7 +6,7 @@
 }: let
   hS = config.hostSpec;
 in {
-  home = {
+  home = lib.mkIf (hS.isImpermanent) {
     persistence = {
       "/persist/${hS.home}" = {
         defaultDirectoryMethod = "symlink";
