@@ -16,7 +16,7 @@ in {
         path = "${hS.home}/.ssh/id_ed25519";
         file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
-        owner = "${hS.username}";
+        owner = "${hS.userName}";
         group = "staff";
       };
 
