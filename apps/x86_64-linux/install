@@ -69,7 +69,7 @@ check_installer
 download_config
 run_disko
 setup_files
-setup_ssh_keys
+# setup_ssh_keys
 link_home_dir
 install_nixos
 cleanup
