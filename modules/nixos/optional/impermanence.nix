@@ -9,7 +9,6 @@
 in {
   imports = [
     inputs.impermanence.nixosModules.impermanence
-    inputs.impermanence.nixosModules.home-manager.impermanence # TODO move this to home when refatoring to use standalone home-manager
   ];
 
   config = lib.mkIf (hS.isImpermanent) {

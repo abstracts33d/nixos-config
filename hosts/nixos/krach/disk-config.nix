@@ -1,17 +1,18 @@
 _: {
-  # This formats the disk with the ext4 filesystem
-  # Other examples found here: https://github.com/nix-community/disko/tree/master/example
   disko.devices = {
     disk = {
       disk0 = {
-        device = "/dev/sda";
         type = "disk";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "512M";
               type = "EF00";
-              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -22,10 +23,33 @@ _: {
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-                extraArgs = ["-L" "root"];
+                type = "btrfs";
+                extraArgs = ["-L" "root" "-f"];
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
+                subvolumes = {
+                  "@root" = {
+                    mountpoint = "/";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "@persist" = {
+                    mountpoint = "/persist";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                };
               };
             };
           };

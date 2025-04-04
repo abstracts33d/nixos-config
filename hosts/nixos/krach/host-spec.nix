@@ -8,6 +8,8 @@
       interface = "enp0s3";
     };
 
+    isImpermanent = true;
+
     useHyprland = true;
     useGdm = true;
   };
