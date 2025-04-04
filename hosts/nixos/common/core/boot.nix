@@ -53,4 +53,6 @@ in {
     btrfs subvolume create /btrfs_tmp/@root
     umount /btrfs_tmp
   '';
+
+  fileSystems."/persist".neededForBoot = true;
 }
