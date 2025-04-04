@@ -16,9 +16,6 @@ in {
           "Pictures"
           "Videos"
         ];
-        files = [
-          ".zsh_history"
-        ];
         allowOther = true;
       };
     };
