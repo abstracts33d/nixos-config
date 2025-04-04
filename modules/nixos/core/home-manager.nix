@@ -14,7 +14,7 @@ in {
     backupFileExtension = "_nbkp";
     users.root = {
       hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
-      stateVersion = "21.05";
+      home.stateVersion = "21.05";
     };
     users.${hS.userName} = {...}: {
       inherit hostSpec;
