@@ -14,10 +14,11 @@ in {
     environment.persistence."/persist/system" = {
       hideMounts = true;
       directories = [
-        "/var/log"
-        "/var/lib/nixos"
-        "/var/lib/systemd/coredump"
+        "/etc/nixos"
         "/etc/NetworkManager/system-connections"
+        "/var/lib/systemd"
+        "/var/lib/nixos"
+        "/var/log"
       ];
       files = [
         # machine-id is used by systemd for the journal, if you don't persist this
