@@ -14,13 +14,6 @@ check_installer() {
 }
 
 cleanup() {
-  cat /etc/passwd | grep ${USERNAME} >/dev/null 2>&1
-  if [ $? -eq 0 ] ; then
-      echo "User Exists"
-  else
-      echo "Creating User"
-      useradd ${USERNAME}
-  fi
   rm -rf nixos-config-main.zip nixos-config-main nixos-config
 }
 
@@ -53,6 +46,13 @@ setup_ssh_keys() {
   cp --preserve=all /root/.ssh/id_ed25519 /mnt/home/${USERNAME}/.ssh/id_ed25519
   cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/home/${USERNAME}/.ssh/id_ed25519.pub
 
+  cat /etc/passwd | grep ${USERNAME} >/dev/null 2>&1
+  if [ $? -eq 0 ] ; then
+      echo -e "\e[1;32mUser Exists.\e[0m"
+  else
+      echo -e "\e[1;32mCreating User.\e[0m"
+      useradd ${USERNAME}
+  fi
   chown ${USERNAME}:users /mnt/home/${USERNAME}/.ssh
   chmod 600 /mnt/home/${USERNAME}/.ssh/id_ed25519{,.pub}
 }
