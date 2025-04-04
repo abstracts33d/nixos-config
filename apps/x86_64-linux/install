@@ -41,12 +41,10 @@ setup_files() {
 
 setup_ssh_keys() {
   mkdir -p /mnt/home/${USERNAME}/.ssh
-  chown nixos /mnt/home/${USERNAME}/.ssh
-
   cp --preserve=all /root/.ssh/id_ed25519 /mnt/home/${USERNAME}/.ssh/id_ed25519
   cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/home/${USERNAME}/.ssh/id_ed25519.pub
 
-  chown nixos /mnt/home/${USERNAME}/.ssh
+  chown nixos:users /mnt/home/${USERNAME}/.ssh
   chmod 600 /mnt/home/${USERNAME}/.ssh/id_ed25519{,.pub}
 }
 
