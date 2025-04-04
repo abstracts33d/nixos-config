@@ -14,8 +14,13 @@ check_installer() {
 }
 
 cleanup() {
-  userdel ${USERNAME}
-  useradd ${USERNAME}
+  cat /etc/passwd | grep ${USERNAME} >/dev/null 2>&1
+  if [ $? -eq 0 ] ; then
+      echo "User Exists"
+  else
+      echo "Creating User"
+      useradd ${USERNAME}
+  fi
   rm -rf nixos-config-main.zip nixos-config-main nixos-config
 }
 
