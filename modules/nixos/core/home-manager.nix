@@ -27,14 +27,14 @@ in {
         };
         stateVersion = "21.05";
       };
-      imports = (
+      imports = lib.flatten [
         inputs.impermanence.nixosModules.home-manager.impermanence
-        map lib.custom.relativeToRoot [
+        (map lib.custom.relativeToRoot [
           "modules/common/core/host-spec.nix"
           "home/common"
           "home/nixos"
-        ]
-      );
+        ])
+      ];
     };
   };
 }
