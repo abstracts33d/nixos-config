@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf (hS.isImpermanent) {
     environment.persistence."/persist/system" = {
-      hideMounts = true;
+      # hideMounts = true;
       directories = [
         "/etc/nixos"
         "/etc/NetworkManager/system-connections"
@@ -32,6 +32,7 @@ in {
            "Downloads"
            "Pictures"
            "Videos"
+           ".ssh"
         ];
       };
     };
