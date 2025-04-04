@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   hS = config.hostSpec;
 in {
   programs.neovim = {

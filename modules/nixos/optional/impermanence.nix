@@ -11,7 +11,7 @@ in {
   ];
 
   config = lib.mkIf (hS.isImpermanent) {
-    environment.persistence."/persist" = {
+    environment.persistence."/persist/system" = {
       hideMounts = true;
       directories = [
         "/var/log"
@@ -25,18 +25,6 @@ in {
         # previous boots.
         "/etc/machine-id"
       ];
-      users.${hS.userName} = {
-        directories = [
-          ".local/share/zoxide"
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Videos"
-        ];
-        files = [
-          ".zsh_history"
-        ];
-      };
     };
 
     boot.initrd.postResumeCommands = lib.mkAfter ''
