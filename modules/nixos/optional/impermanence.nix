@@ -29,7 +29,10 @@ in {
       users.${hS.userName} = {
         directories = [
           ".local/share/zoxide"
+          "Documents"
           "Downloads"
+          "Pictures"
+          "Videos"
         ];
         files = [
           ".zsh_history"
