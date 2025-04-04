@@ -48,6 +48,7 @@ setup_ssh_keys() {
   cp --preserve=all /root/.ssh/id_ed25519 /mnt/home/${USERNAME}/.ssh/id_ed25519
   cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/home/${USERNAME}/.ssh/id_ed25519.pub
 
+  useradd ${USERNAME}
   chown ${USERNAME}:users /mnt/home/${USERNAME}/.ssh
   chmod 600 /mnt/home/${USERNAME}/.ssh/id_ed25519{,.pub}
 }
