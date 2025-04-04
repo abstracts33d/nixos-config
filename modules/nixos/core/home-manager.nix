@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   hS = config.hostSpec;
@@ -11,6 +12,9 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "_nbkp";
+    users.root = {
+      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
+    };
     users.${hS.userName} = {...}: {
       inherit hostSpec;
 
@@ -33,6 +37,8 @@ in {
           "home/nixos"
         ]
       );
+
+      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
     };
   };
 }
