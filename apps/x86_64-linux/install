@@ -14,7 +14,7 @@ check_installer() {
 }
 
 cleanup() {
-  rm -rf nixos-config-main.zip nixos-config-main nixos-config .ssh
+  rm -rf nixos-config-main.zip nixos-config-main nixos-config
 }
 
 download_config() {
@@ -45,6 +45,7 @@ link_home_dir() {
 
 install_nixos() {
   sudo nixos-install --flake .#$HOST $@
+  rm -rf /mnt/home/${USERNAME}/.ssh # Clean ssh folder
 }
 
 prompt_reboot() {
