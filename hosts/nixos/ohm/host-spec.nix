@@ -8,6 +8,7 @@
       interface = "enp2s0";
     };
 
+    isImpermanent = true;
     isDev = false;
 
     useGnome = true;
