@@ -26,6 +26,14 @@ in {
         # previous boots.
         "/etc/machine-id"
       ];
+      users.${hS.userName} = {
+        directories = [
+          "Documents"
+           "Downloads"
+           "Pictures"
+           "Videos"
+        ];
+      };
     };
 
     boot.initrd.postResumeCommands = lib.mkAfter ''
