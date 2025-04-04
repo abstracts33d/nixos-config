@@ -81,6 +81,7 @@ in
     zoxide
 
     # Nix stuff
+    home-manager
     nix-tree
     nix-melt
     nh

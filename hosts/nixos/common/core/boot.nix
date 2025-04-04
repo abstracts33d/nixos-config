@@ -1,7 +1,11 @@
-{pkgs, config, lib,...}:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   hS = config.hostSpec;
-in{
+in {
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {

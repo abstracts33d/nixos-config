@@ -9,7 +9,7 @@ in {
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${hostSpec.username} = {
+    users.${hostSpec.userName} = {
       pkgs,
       lib,
       ...

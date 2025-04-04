@@ -12,7 +12,7 @@ in {
   ];
 
   config = lib.mkIf (hS.isImpermanent) {
-    environment.persistence."/nix/persist" = {
+    environment.persistence."/persist" = {
       hideMounts = true;
       directories = [
         "/var/log"
