@@ -12,10 +12,6 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "_nbkp";
-    users.root = {
-      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
-      home.stateVersion = "21.05";
-    };
     users.${hS.userName} = {...}: {
       inherit hostSpec;
 
