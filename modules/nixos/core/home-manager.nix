@@ -34,8 +34,6 @@ in {
           "home/nixos"
         ]
       );
-
-      hashedPasswordFile = "${inputs.secrets}/hashed-password-file";
     };
   };
 }
