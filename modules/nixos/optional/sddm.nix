@@ -21,6 +21,9 @@ in {
 
   config = lib.mkIf (hS.useSddm) {
     services.displayManager.sddm = {
+      wayland = {
+        enable = true;
+      };
       enable = true;
       sugarCandyNix = {
         enable = true;
