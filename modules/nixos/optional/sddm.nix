@@ -28,7 +28,7 @@ in {
       sugarCandyNix = {
         enable = true;
         settings = {
-          Background = lib.cleanSource pkgs.fetchurl {
+          Background = pkgs.fetchurl {
             url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/refs/heads/master/cool.jpg";
             sha256 = "g6cFnOT4GICHD7xGy28lrr2GT4gE4q6mCtWqNCweP38=";
           };
