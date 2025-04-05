@@ -3,7 +3,7 @@
     ./disk-config.nix
     ./host-spec.nix
     (map lib.custom.relativeToRoot [
-      "hosts/nixos"
+      "hosts/nixos/base.nix"
     ])
   ];
 

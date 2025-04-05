@@ -12,6 +12,6 @@
     isDev = false;
 
     useHyprland = true;
-    useGdm = true;
+    useSddm = true;
   };
 }

@@ -29,10 +29,12 @@ in {
       users.${hS.userName} = {
         directories = [
           "Documents"
-           "Downloads"
-           "Pictures"
-           "Videos"
-           ".ssh"
+          "Downloads"
+          "Pictures"
+          "Videos"
+          ".ssh"
+          ".local/share/src/"
+          ".zplug"
         ];
       };
     };

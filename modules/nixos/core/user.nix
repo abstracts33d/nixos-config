@@ -24,7 +24,7 @@ in {
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = keys;
-      hashedPasswordFile = lib.mkIf (hS.isImpermanent) "${inputs.secrets}/hashed-password-file";
+      hashedPasswordFile = lib.mkIf (hS.isImpermanent) "${inputs.secrets}/${hS.userName}-hashed-password-file";
     };
 
     root = {

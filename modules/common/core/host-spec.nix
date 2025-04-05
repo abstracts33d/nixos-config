@@ -92,7 +92,12 @@
     useGreetd = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Used to indicate a host that uses a Ggreetd";
+      description = "Used to indicate a host that uses a Greetd";
+    };
+    useSddm = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Used to indicate a host that uses a SDDM";
     };
     useAerospace = lib.mkOption {
       type = lib.types.bool;
