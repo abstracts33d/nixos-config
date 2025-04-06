@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exu
+set -ex
 
 usage() { echo "Usage: $0 [-h <hostname>] [-u <username>] [-i <username>]" 1>&2; exit 1; }
 
