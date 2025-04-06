@@ -13,7 +13,7 @@ in {
 
     secrets = {
       "github-ssh-key" = {
-        symlink = false;
+        symlink = true;
         path = "${hS.home}/.ssh/id_ed25519";
         file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
@@ -22,7 +22,7 @@ in {
       };
 
       "github-signing-key" = {
-        symlink = false;
+        symlink = true;
         path = "${hS.home}/.ssh/pgp_github.key";
         file = "${inputs.secrets}/github-signing-key.age";
         mode = "600";
