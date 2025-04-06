@@ -2,7 +2,7 @@
   lib,
   disk ? "/dev/vda",
   withSwap ? false,
-  swapSize,
+  swapSize ? 8,
   config,
   ...
 }: {
