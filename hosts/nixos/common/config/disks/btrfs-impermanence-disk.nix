@@ -29,7 +29,7 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"]; # Override existing partition
+              extraArgs = ["-L" "root" "-f"];
               subvolumes = {
                 "@root" = {
                   mountpoint = "/";
