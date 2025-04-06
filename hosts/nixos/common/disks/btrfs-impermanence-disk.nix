@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   disk ? "/dev/vda",
   withSwap ? false,
   swapSize ? 8,
@@ -54,7 +53,7 @@
                   ];
                 };
                 "@ssh" = {
-                  mountpoint = "${config.hostSpec.home}";
+                  mountpoint = "${config.hostSpec.home}/.ssh";
                   mountOptions = [
                     "compress=zstd"
                     "noatime"
