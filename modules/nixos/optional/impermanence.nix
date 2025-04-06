@@ -35,7 +35,7 @@ in {
             "Downloads"
             "Pictures"
             "Videos"
-            ".ssh"
+#            ".ssh"
             ".local/share/src/"
             ".zplug"
           ];
