@@ -12,5 +12,5 @@ in {
     ../../modules/common/core/host-spec.nix
     ./host-spec.nix
   ];
-  disko.devices = diskConfig {inherit config;};
+  disko.devices = diskConfig;
 }
