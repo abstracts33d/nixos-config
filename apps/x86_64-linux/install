@@ -71,8 +71,8 @@ install_nixos() {
 
 setup_impermanent_ssh_keys() {
   if ${IMPERMANENT}; then
-    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/id_ed25519
-    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/id_ed25519.pub
+    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/home/${USERNAME}/id_ed25519
+    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/home/${USERNAME}/id_ed25519.pub
 
     chmod 600 /mnt/persist/id_ed25519{,.pub}
   fi

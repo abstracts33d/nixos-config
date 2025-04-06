@@ -8,7 +8,7 @@
       interface = "enp0s1";
     };
 
-    isImpermanent = true;
+    isImpermanent = false;
     isDev = false;
 
     useHyprland = true;
