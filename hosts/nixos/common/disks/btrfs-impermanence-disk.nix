@@ -5,7 +5,7 @@
   swapSize ? 8,
   ...
 }: {
-  disko.devices = {
+  config.disko.devices = {
     disk = {
       disk0 = {
         type = "disk";
