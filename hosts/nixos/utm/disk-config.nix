@@ -1,8 +1,8 @@
-{config, lib, ...}: let
+{lib, ...}: let
   diskConfig =
     import ../common/disks/btrfs-impermanence-disk.nix
     {
-      inherit lib config;
+      inherit lib;
       _module.args = {
         withSwap = false;
       };
@@ -12,5 +12,5 @@ in {
     ../../modules/common/core/host-spec.nix
     ./host-spec.nix
   ];
-  disko.devices = diskConfig;
+  disko.devices = diskConfig {inherit config;};
 }
