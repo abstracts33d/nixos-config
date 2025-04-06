@@ -1,8 +1,25 @@
 #!/usr/bin/env bash
 set -exu
 
-export HOST=$1
-export USERNAME=$2
+usage() { echo "Usage: $0 [-h <hostname>] [-u <username>] [-i <username>]" 1>&2; exit 1; }
+
+while getopts ":h:u:i" o; do
+    case "${o}" in
+        h)
+            HOST=${OPTARG}
+            ;;
+        u)
+            USERNAME=${OPTARG}
+            ;;
+        i)
+            IMPERMANENT='true'
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
 
 check_installer() {
   if [ -e /etc/NIXOS ]; then
@@ -52,6 +69,15 @@ install_nixos() {
   sudo nixos-install --flake .#$HOST $@
 }
 
+setup_impermanent_ssh_keys() {
+  if ${IMPERMANENT}; then
+    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/id_ed25519
+    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/id_ed25519.pub
+
+    chmod 600 /mnt/persist/id_ed25519{,.pub}
+  fi
+}
+
 prompt_reboot() {
   read -p "Do you want to reboot now? (y/yes) " choice
   case "$choice" in
@@ -67,5 +93,6 @@ run_disko
 setup_files
 setup_ssh_keys
 install_nixos
+setup_impermanent_ssh_keys
 cleanup
 prompt_reboot

@@ -7,7 +7,7 @@
 in {
   age = {
     identityPaths = [
-      "/persist/system/.ssh/id_ed25519"
+      "/persist/id_ed25519"
       "${hS.home}/.ssh/id_ed25519"
     ];
 

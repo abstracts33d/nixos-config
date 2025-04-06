@@ -163,7 +163,9 @@ Before generating your first build, these keys must exist in your `~/.ssh` direc
 > Running this will reformat your drive.
 
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- "HOSTNAME" "USERNAME"
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- -h HOSTNAME -u USERNAME
+
+add -i for impermanence setup
 ```
 
 > [!NOTE]
