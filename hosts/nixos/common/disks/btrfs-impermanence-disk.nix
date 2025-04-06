@@ -52,13 +52,6 @@
                     "noatime"
                   ];
                 };
-                "@ssh" = {
-                  mountpoint = "${config.hostSpec.home}/.ssh";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
                 "@swap" = lib.mkIf withSwap {
                   mountpoint = "/.swapvol";
                   swap.swapfile.size = "${swapSize}G";
