@@ -1,7 +1,7 @@
 _: [
   # Development Tools
   # "homebrew/cask/docker" # marked broken
-  "visual-studio-code"
+  # "visual-studio-code"
   "rubymine"
 
   # Communication Tools
