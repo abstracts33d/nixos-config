@@ -68,9 +68,9 @@ setup_ssh_keys() {
   chmod 600 /mnt/home/${USERNAME}/.ssh/id_ed25519{,.pub}
 }
 
-link_home_dir() {
-  ln -s /mnt/home/${USERNAME} /home/${USERNAME} # Used to grab initial secrets
-}
+#link_home_dir() {
+#  ln -s /mnt/home/${USERNAME} /home/${USERNAME} # Used to grab initial secrets
+#}
 
 install_nixos() {
   sudo nixos-install --flake .#$HOST $@
@@ -99,7 +99,7 @@ download_config
 run_disko
 setup_files
 setup_ssh_keys
-link_home_dir
+#link_home_dir
 install_nixos
 setup_impermanent_ssh_keys
 cleanup
