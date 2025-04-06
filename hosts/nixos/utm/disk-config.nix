@@ -3,7 +3,6 @@
   disk ? "/dev/vda",
   withSwap ? false,
   swapSize ? 8,
-  config,
   ...
 }: {
   imports = [
