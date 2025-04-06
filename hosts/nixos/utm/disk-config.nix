@@ -1,4 +1,4 @@
-_: let
+{lib, ...}: let
   diskConfig =
     import ../common/disks/btrfs-impermanence-disk.nix
     {
