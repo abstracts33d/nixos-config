@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   disk ? "/dev/vda",
   withSwap ? false,
   swapSize ? 8,
