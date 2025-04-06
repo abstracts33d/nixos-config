@@ -24,7 +24,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["defaults"];
+                mountOptions = ["umask=0077"];
               };
             };
             root = {
