@@ -28,16 +28,18 @@ in {
           "/etc/machine-id"
         ];
       };
-      users.${hS.userName} = {
-        directories = [
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Videos"
-          ".ssh"
-          ".local/share/src/"
-          ".zplug"
-        ];
+      "/persist" = {
+        users.${hS.userName} = {
+          directories = [
+            "Documents"
+            "Downloads"
+            "Pictures"
+            "Videos"
+            ".ssh"
+            ".local/share/src/"
+            ".zplug"
+          ];
+        };
       };
     };
 
