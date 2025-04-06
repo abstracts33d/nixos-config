@@ -5,7 +5,6 @@
   swapSize ? 8,
   ...
 }: {
-  disko.devices = {
     disk = {
       disk0 = {
         type = "disk";
@@ -64,5 +63,4 @@
         };
       };
     };
-  };
 }
