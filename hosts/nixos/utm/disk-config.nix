@@ -1,10 +1,10 @@
-_: {
-  imports = [
-    "../common/disks/btrfs-impermanence-disk.nix"
-    {
-      _module.args = {
-        withSwap = false;
-      };
-    }
-  ];
+_: let
+  diskConfig = import ../common/disks/btrfs-impermanence-disk.nix
+                        {
+                          _module.args = {
+                            withSwap = false;
+                          };
+                        };
+in{
+  config = diskConfig;
 }
