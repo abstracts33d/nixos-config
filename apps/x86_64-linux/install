@@ -70,7 +70,7 @@ setup_ssh_keys() {
 }
 
 setup_impermanent_ssh_keys() {
-  if ${IMPERMANENT}; then
+  if [ -n "$IMPERMANENT" ]; then
     mkdir -p /mnt/persist/home/${USERNAME}/.keys
     chown nixos /mnt/persist/home/${USERNAME}/.keys
     cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/home/${USERNAME}/.keys/id_ed25519
