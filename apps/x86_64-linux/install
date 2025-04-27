@@ -1,8 +1,28 @@
 #!/usr/bin/env bash
-set -exu
+set -ex
 
-export HOST=$1
-export USERNAME=$2
+usage() { echo "Usage: $0 [-h <string:hostname>] [-u <string:username>] [-i <boolean:impermanence>]" 1>&2; exit 1; }
+
+HOST=$(uname -n)
+USERNAME="s33d"
+
+while getopts ":h:u:i" o; do
+    case "${o}" in
+        h)
+            HOST=${OPTARG}
+            ;;
+        u)
+            USERNAME=${OPTARG}
+            ;;
+        i)
+            IMPERMANENT='true'
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
 
 check_installer() {
   if [ -e /etc/NIXOS ]; then
@@ -25,8 +45,6 @@ download_config() {
 }
 
 run_disko() {
-   # HOST=$(uname -n)
-
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes \
     github:nix-community/disko -- --mode zap_create_mount ./hosts/nixos/$HOST/disk-config.nix
 }
@@ -42,13 +60,23 @@ setup_files() {
 }
 
 setup_ssh_keys() {
-  mkdir -p /mnt/home/${USERNAME}/.ssh
-  chown nixos /mnt/home/${USERNAME}/.ssh
+  chown nixos /root/.ssh/id_ed25519{,.pub}
 
-  cp --preserve=all /root/.ssh/id_ed25519 /mnt/home/${USERNAME}/.ssh/id_ed25519
-  cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/home/${USERNAME}/.ssh/id_ed25519.pub
+  mkdir -p /mnt/home/${USERNAME}/.keys
+  chown nixos /mnt/home/${USERNAME}/.keys
+  cp --preserve=all /root/.ssh/id_ed25519 /mnt/home/${USERNAME}/.keys/id_ed25519
+  cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/home/${USERNAME}/.keys/id_ed25519.pub
+  chmod 600 /mnt/home/${USERNAME}/.keys/id_ed25519{,.pub}
+}
 
-  chmod 600 /mnt/home/${USERNAME}/.ssh/id_ed25519{,.pub}
+setup_impermanent_ssh_keys() {
+  if ${IMPERMANENT}; then
+    mkdir -p /mnt/persist/home/${USERNAME}/.keys
+    chown nixos /mnt/persist/home/${USERNAME}/.keys
+    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/home/${USERNAME}/.keys/id_ed25519
+    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/home/${USERNAME}/.keys/id_ed25519.pub
+    chmod 600 /mnt/persist/home/${USERNAME}/.keys/id_ed25519{,.pub}
+  fi
 }
 
 link_home_dir() {
@@ -56,8 +84,6 @@ link_home_dir() {
 }
 
 install_nixos() {
-  # HOST=$(uname -n)
-
   sudo nixos-install --flake .#$HOST $@
 }
 
@@ -75,6 +101,7 @@ download_config
 run_disko
 setup_files
 setup_ssh_keys
+setup_impermanent_ssh_keys
 link_home_dir
 install_nixos
 cleanup
