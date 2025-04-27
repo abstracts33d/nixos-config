@@ -9,7 +9,7 @@
     };
 
     isMinimal = false;
-    isImpermanent = false;
+    isImpermanent = true;
     isDev = false;
 
     isGraphical = true;

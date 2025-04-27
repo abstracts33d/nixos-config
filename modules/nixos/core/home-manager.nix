@@ -28,7 +28,7 @@ in {
         stateVersion = "21.05";
       };
       imports = lib.flatten [
-        inputs.impermanence.nixosModules.home-manager.impermanence
+        inputs.impermanence.nixosModules.home-manager.impermanence # TODO
         (map lib.custom.relativeToRoot [
           "modules/common/core/host-spec.nix"
           "home/common"
