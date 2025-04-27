@@ -6,7 +6,7 @@ usage() { echo "Usage: $0 [-h <string:hostname>] [-u <string:username>] [-i <boo
 HOST=$(uname -n)
 USERNAME="s33d"
 
-while getopts ":h:u:i" o; do
+while getopts "h:u:i" o; do
     case "${o}" in
         h)
             HOST=${OPTARG}
@@ -72,16 +72,6 @@ setup_ssh_keys() {
   chmod 600 /mnt/home/${USERNAME}/.keys/id_ed25519{,.pub}
 }
 
-setup_impermanent_ssh_keys() {
-  if [ -n "$IMPERMANENT" ]; then
-    mkdir -p /mnt/persist/home/${USERNAME}/.keys
-    chown nixos /mnt/persist/home/${USERNAME}/.keys
-    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/home/${USERNAME}/.keys/id_ed25519
-    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/home/${USERNAME}/.keys/id_ed25519.pub
-    chmod 600 /mnt/persist/home/${USERNAME}/.keys/id_ed25519{,.pub}
-  fi
-}
-
 link_home_dir() {
   ln -s /mnt/home/${USERNAME} /home/${USERNAME} # Used to grab initial secrets
 }
@@ -89,6 +79,17 @@ link_home_dir() {
 install_nixos() {
   sudo nixos-install --flake .#$HOST $@
   rm -rf /mnt/home/${USERNAME}/${USERNAME} || true # Remove the home dir symlink
+}
+
+setup_impermanent_ssh_keys() {
+  if [ -n "$IMPERMANENT" ]; then
+    cp --preserve=all /root/.ssh/id_ed25519 /mnt/persist/home/${USERNAME}/.keys/id_ed25519
+    cp --preserve=all /root/.ssh/id_ed25519.pub /mnt/persist/home/${USERNAME}/.keys/id_ed25519.pub
+    chmod 600 /mnt/persist/home/${USERNAME}/.keys/id_ed25519{,.pub}
+
+    chown nixos:users /mnt/persist/home/${USERNAME}
+    chown nixos:users /mnt/persist/home/${USERNAME}/.ssh
+  fi
 }
 
 prompt_reboot() {
@@ -105,8 +106,8 @@ download_config
 run_disko
 setup_files
 setup_ssh_keys
-setup_impermanent_ssh_keys
 link_home_dir
 install_nixos
+setup_impermanent_ssh_keys
 cleanup
 prompt_reboot

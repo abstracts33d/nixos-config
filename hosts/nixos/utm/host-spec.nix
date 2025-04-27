@@ -8,14 +8,14 @@
       interface = "enp0s1";
     };
 
-    isMinimal = true;
-    isImpermanent = false;
+    isMinimal = false;
+    isImpermanent = true;
     isDev = false;
 
-    isGraphical = false;
-    useHyprland = false;
-    useSddm = false;
+    isGraphical = true;
+    useHyprland = true;
+    useSddm = true;
 
-    useTheme = false;
+    useTheme = true;
   };
 }

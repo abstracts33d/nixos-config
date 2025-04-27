@@ -166,8 +166,8 @@ Before generating your first build, these keys must exist in your `~/.ssh` direc
 # Upgrade nix
 nix-env --install --file '<nixpkgs>' --attr nix cacert -I nixpkgs=channel:nixpkgs-unstable
 
-# Install (add -i for impermanence setup)
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- -h HOSTNAME -u USERNAME
+# Install (-h HOST -u USERNAME -i for IMPERMANENCE)
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- -h utm -u s33d -i
 ```
 
 > [!NOTE]

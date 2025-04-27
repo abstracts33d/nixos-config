@@ -14,7 +14,7 @@ in {
     secrets = {
       "github-ssh-key" = {
         symlink = true;
-        path = "${hS.home}/.ssh/id_ed25519";
+        path = if (hS.isImpermanent) then "/persist${hS.home}/.ssh/id_ed25519" else "${hS.home}/.ssh/id_ed25519";
         file = "${inputs.secrets}/github-ssh-key.age";
         mode = "600";
         owner = "${hS.userName}";
@@ -23,7 +23,7 @@ in {
 
       "github-signing-key" = {
         symlink = true;
-        path = "${hS.home}/.ssh/pgp_github.key";
+        path =  if (hS.isImpermanent) then "/persist${hS.home}/.ssh/pgp_github.key" else "${hS.home}/.ssh/pgp_github.key";
         file = "${inputs.secrets}/github-signing-key.age";
         mode = "600";
         owner = "${hS.userName}";
