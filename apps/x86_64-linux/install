@@ -85,6 +85,8 @@ link_home_dir() {
 
 install_nixos() {
   sudo nixos-install --flake .#$HOST $@
+  rm -rf /mnt/home/${USERNAME}/${USERNAME} # Remove the home dir symlink
+  chown nixos /mnt/home/${USERNAME}/.ssh # Chown .ssh folder
 }
 
 prompt_reboot() {
