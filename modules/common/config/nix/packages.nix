@@ -5,7 +5,8 @@
 with pkgs; let
   hS = hostSpec;
 in
-  [
+  []
+  ++ lib.optionals (!hS.isMinimal) [
     # General packages for development and system management
     act
     aspell
@@ -81,6 +82,7 @@ in
     zoxide
 
     # Nix stuff
+    home-manager
     nix-tree
     nix-melt
     nh

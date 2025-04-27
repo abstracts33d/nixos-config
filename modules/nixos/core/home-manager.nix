@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }: let
@@ -11,7 +12,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "_nbkp";
-    users.${hS.username} = {...}: {
+    users.${hS.userName} = {...}: {
       inherit hostSpec;
 
       # Nicely reload system units when changing configs
@@ -19,20 +20,21 @@ in {
 
       home = {
         enableNixpkgsReleaseCheck = false;
-        username = "${hS.username}";
+        username = "${hS.userName}";
         homeDirectory = "${hS.home}";
         packages = pkgs.callPackage (lib.custom.relativeToRoot "modules/nixos/config/nix/packages.nix") {
           hostSpec = hostSpec;
         };
         stateVersion = "21.05";
       };
-      imports = (
-        map lib.custom.relativeToRoot [
+      imports = lib.flatten [
+        inputs.impermanence.nixosModules.home-manager.impermanence
+        (map lib.custom.relativeToRoot [
           "modules/common/core/host-spec.nix"
           "home/common"
           "home/nixos"
-        ]
-      );
+        ])
+      ];
     };
   };
 }

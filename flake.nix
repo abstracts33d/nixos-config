@@ -2,27 +2,30 @@
   description = "General Purpose Nix Config for macOS + NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # agenix.url = "github:ryantm/agenix";
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
       inputs.darwin.follows = "darwin";
     };
-    # home-manager.url = "github:nix-community/home-manager";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # stylix.url = "github:danth/stylix";
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    darwin = {
-      url = "github:LnL7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+    secrets = {
+      url = "git+ssh://git@github.com/abstracts33d/nix-secrets.git";
+      flake = false;
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
@@ -41,13 +44,14 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    disko = {
-      url = "github:nix-community/disko";
+    stylix = {
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
-    secrets = {
-      url = "git+ssh://git@github.com/abstracts33d/nix-secrets.git";
-      flake = false;
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
@@ -96,17 +100,11 @@
     };
     mkLinuxApps = system: {
       "build-switch" = mkApp "build-switch" system;
-      "copy-keys" = mkApp "copy-keys" system;
-      "create-keys" = mkApp "create-keys" system;
-      "check-keys" = mkApp "check-keys" system;
       "install" = mkApp "install" system;
     };
     mkDarwinApps = system: {
       "build" = mkApp "build" system;
       "build-switch" = mkApp "build-switch" system;
-      "copy-keys" = mkApp "copy-keys" system;
-      "create-keys" = mkApp "create-keys" system;
-      "check-keys" = mkApp "check-keys" system;
       "rollback" = mkApp "rollback" system;
     };
 

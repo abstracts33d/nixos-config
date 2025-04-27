@@ -346,11 +346,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1743686603,
-        "narHash": "sha256-2t9/WGIkenaJ6JzPs5FuUEugL1RTr0j0FOMJbbcMivE=",
+        "lastModified": 1743707675,
+        "narHash": "sha256-J8Y1ANxo48Lm1p3dDGwFgKAzqSey+lm7T/4abymiIiA=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "8f76f2f0c3037e6a39bdef428d816e00631d353f",
+        "rev": "96fa5f80183ecfe698c2a9ec29a1ad21ceb9d43c",
         "type": "github"
       },
       "original": {
@@ -362,16 +362,31 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1743685114,
-        "narHash": "sha256-IKfcqQSUhpqYyI6reahYHbpxS4BSpLmfg8wE838oBzI=",
+        "lastModified": 1743709809,
+        "narHash": "sha256-zGs9I47geBt8ArqbVdZ6XpyeZjrWsB1odcRApe1otEU=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "4e327304d3b404da7135d69e39933b33a1f20c2c",
+        "rev": "a72b83eaf0af68b03953f1010b38691080039d91",
         "type": "github"
       },
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1737831083,
+        "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
         "type": "github"
       }
     },
@@ -447,20 +462,42 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "impermanence": "impermanence",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "sddm-sugar-candy-nix": "sddm-sugar-candy-nix",
         "secrets": "secrets",
         "stylix": "stylix"
+      }
+    },
+    "sddm-sugar-candy-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737388276,
+        "narHash": "sha256-X1HgQ8MiVe+9OG9POa7pK7c0m19EWSzUn8Udi3ozfRE=",
+        "owner": "Zhaith-Izaliel",
+        "repo": "sddm-sugar-candy-nix",
+        "rev": "323588a3182b70d4db15547b6399fc66e342f849",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "Zhaith-Izaliel",
+        "repo": "sddm-sugar-candy-nix",
+        "type": "gitlab"
       }
     },
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1743618985,
-        "narHash": "sha256-HGtCoZZqFpFjOYTvoUoCsNZ+PgWVzNhXm/eMnLBAsXs=",
+        "lastModified": 1743873587,
+        "narHash": "sha256-fAIbyHtx9fZdj3+tTrFGyOic6tHJ/Z2S/MfzK+P/Pck=",
         "ref": "refs/heads/main",
-        "rev": "0d6fa8b502d4218ca3cdd29ad09da7ee9623d503",
-        "revCount": 11,
+        "rev": "75a881e6bdb5e852ea56508466475adaf350c9ed",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/abstracts33d/nix-secrets.git"
       },
@@ -495,11 +532,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1743630094,
-        "narHash": "sha256-irmHQhaHgq6iwHAuexgdqPA4X/254ss00zXPRcc8sZw=",
+        "lastModified": 1743701771,
+        "narHash": "sha256-fmAOyD6iCS0jqcoUL4lxuUApSmjXbRcm6e94J/j2wNA=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "194a91d0018daaf5bcfcea4702e6800426a82445",
+        "rev": "f32b1c0875ee573ecf5967a76e125317e1f202a2",
         "type": "github"
       },
       "original": {

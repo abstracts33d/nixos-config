@@ -90,37 +90,11 @@ find apps/$(uname -m | sed 's/arm64/aarch64/')-darwin -type f \( -name apply -o 
 ### 5. Setup secrets
 
 #### Install keys
-Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
+Before generating your first build, these keys must exist in your `~/.ssh` directory.
 
 | Key Name            | Platform         | Description                                 |
 |---------------------|------------------|---------------------------------------------|
 | id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets` && Primary key for encrypting and decrypting secrets. |
-
-Run one of these commands:
-
-##### Copy keys from USB drive
-This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_ed25519` .
-```sh
-nix run .#copy-keys
-```
-
-##### Create new keys
-```sh
-nix run .#create-keys
-```
-> [!NOTE]
-> If you choose this option, make sure to [save the value](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) of `id_ed25519.pub` to Github.
->
-> ```sh
-> cat /Users/$USER/.ssh/id_ed25519.pub | pbcopy # Copy key to clipboard
-> ```
-
-##### Check existing keys
-If you're rolling your own, just check they are installed correctly.
-```sh
-nix run .#check-keys
-```
 
 > [!NOTE]
 > Upon updating the nix-secrets repository you should update your secret flake input with
@@ -174,31 +148,11 @@ Download and burn [the minimal ISO image](https://nixos.org/download.html) to a 
 ### 2. Setup secrets
 
 #### Install keys
-Before generating your first build, these keys must exist in your `~/.ssh` directory. Don't worry, I provide a few commands to help you.
+Before generating your first build, these keys must exist in your `~/.ssh` directory.
 
 | Key Name            | Platform         | Description                                                                |
 |---------------------|------------------|----------------------------------------------------------------------------|
 | id_ed25519          | macOS / NixOS    | Github key with access to `nix-secrets`. Primary key for encrypting and decrypting secrets. Copied over to host |
-
-Run one of these commands:
-
-##### Copy keys from USB drive
-This command auto-detects a USB drive connected to the current system.
-> Keys must be named `id_ed25519`.
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#copy-keys
-```
-
-##### Create new keys
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#create-keys
-```
-
-##### Check existing keys
-If you're rolling your own, just check they are installed correctly.
-```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#check-keys
-```
 
 ### 3. Install configuration
 
@@ -206,10 +160,14 @@ sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts
 > For Nvidia cards, select the second option, `nomodeset`, when booting the installer, or you will see a blank screen.
 
 > [!CAUTION]
-> Running this will reformat your drive to the `ext4` filesystem.
+> Running this will reformat your drive.
 
 ```sh
-sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- "HOSTNAME" "USERNAME"
+# Upgrade nix
+nix-env --install --file '<nixpkgs>' --attr nix cacert -I nixpkgs=channel:nixpkgs-unstable
+
+# Install (add -i for impermanence setup)
+sudo nix run --extra-experimental-features 'nix-command flakes' github:abstracts33d/nixos-config#install -- -h HOSTNAME -u USERNAME
 ```
 
 > [!NOTE]
