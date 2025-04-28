@@ -3,7 +3,7 @@
   lib,
   disk ? "/dev/vda",
   withSwap ? false,
-  swapSize ? 8,
+  swapSize ? "8",
   ...
 }: {
   disko.devices = {

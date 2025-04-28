@@ -3,10 +3,9 @@
     import ../common/config/disks/btrfs-impermanence-disk.nix
     {
       inherit lib;
-      _module.args = {
-        disk = "/dev/sda";
-        withSwap = true;
-      };
+      disk = "/dev/sda";
+      withSwap = true;
+      swapSize = "8";
     };
 in {
   disko.devices = diskConfig;
