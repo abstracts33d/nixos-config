@@ -5,7 +5,7 @@
     githubUser = "abstracts33d";
     githubEmail = "abstract.s33d@gmail.com";
     networking = {
-      interface = "enp0s3";
+      interface = "enp6s0";
     };
 
     isImpermanent = true;
