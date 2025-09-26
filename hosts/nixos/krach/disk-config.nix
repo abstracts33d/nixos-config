@@ -3,7 +3,7 @@
     import ../common/config/disks/btrfs-impermanence-disk.nix
     {
       inherit lib;
-      disk = "/dev/sda";
+      disk = "/dev/nvme0n1";
     };
 in {
   disko.devices = diskConfig;
