@@ -39,6 +39,14 @@ in {
             ".keys"
             ".local/share/src/"
             ".zplug"
+            "nixos-config"
+            ".config/google-chrome"
+            ".config/Slack"
+            ".config/JetBrains"
+            ".cache/JetBrains"
+          ];
+          files = [
+            ".zsh_history"
           ];
         };
       };
