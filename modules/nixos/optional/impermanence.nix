@@ -38,11 +38,12 @@ in {
             ".ssh"
             ".keys"
             ".local/share/src/"
-            ".zplug"
             "nixos-config"
+            ".zplug"
             ".config/google-chrome"
             ".config/Slack"
             ".config/JetBrains"
+            ".local/share/JetBrains"
             ".cache/JetBrains"
           ];
           files = [
