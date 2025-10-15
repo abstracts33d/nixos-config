@@ -1,6 +1,6 @@
 _: [
   # Development Tools
-  # "homebrew/cask/docker" # marked broken
+  "homebrew/cask/docker"
   "visual-studio-code"
   "rubymine"
 
