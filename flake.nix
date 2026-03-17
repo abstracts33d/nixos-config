@@ -29,8 +29,8 @@
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nix-darwin.follows = "darwin";
+      #      inputs.nixpkgs.follows = "nixpkgs";
+      #      inputs.nix-darwin.follows = "darwin";
     };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
@@ -47,7 +47,7 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      #      inputs.home-manager.follows = "home-manager";
     };
     sddm-sugar-candy-nix = {
       url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";

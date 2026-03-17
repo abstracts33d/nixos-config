@@ -64,45 +64,45 @@ in {
     mouse = true;
     focusEvents = true;
     extraConfig = ''
-            #
-            # Make the status line pretty and add some modules
-            #
+      #
+      # Make the status line pretty and add some modules
+      #
 
-            set -g status-position top
-            set -g status-right-length 100
-            set -g status-left-length 100
-            set -g status-left ""
-            set -g status-right "#{E:@catppuccin_status_application}"
-            set -agF status-right "#{E:@catppuccin_status_cpu}"
-            set -ag status-right "#{E:@catppuccin_status_session}"
-            set -ag status-right "#{E:@catppuccin_status_uptime}"
+      set -g status-position top
+      set -g status-right-length 100
+      set -g status-left-length 100
+      set -g status-left ""
+      set -g status-right "#{E:@catppuccin_status_application}"
+      set -agF status-right "#{E:@catppuccin_status_cpu}"
+      set -ag status-right "#{E:@catppuccin_status_session}"
+      set -ag status-right "#{E:@catppuccin_status_uptime}"
 
-            #
-            # Mappings
-            #
+      #
+      # Mappings
+      #
 
-            # Map prefix C-l to clear-screen
-            bind C-l send-keys 'C-l'
+      # Map prefix C-l to clear-screen
+      bind C-l send-keys 'C-l'
 
-            # Reload tmux configuration
-            unbind r
-            bind r source-file ~/.config/tmux/tmux.conf \; display-message "~/.config/tmux/tmux.conf reloaded"
+      # Reload tmux configuration
+      unbind r
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "~/.config/tmux/tmux.conf reloaded"
 
-            # Fix home and end keys
-            bind-key -n Home send Escape "OH"
-            bind-key -n End send Escape "OF"
+      # Fix home and end keys
+      bind-key -n Home send Escape "OH"
+      bind-key -n End send Escape "OF"
 
-            # Split panes like vim
-            unbind %
-            unbind '"'
-            bind s split-window -h -c "#{pane_current_path}"
-            bind v split-window -v -c "#{pane_current_path}"
+      # Split panes like vim
+      unbind %
+      unbind '"'
+      bind s split-window -h -c "#{pane_current_path}"
+      bind v split-window -v -c "#{pane_current_path}"
 
-            # Map resize panes
-            bind -r H resize-pane -L 5
-            bind -r J resize-pane -D 5
-            bind -r K resize-pane -U 5
-            bind -r L resize-pane -R 5
+      # Map resize panes
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
     '';
   };
 }

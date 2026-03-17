@@ -14,7 +14,7 @@ in {
     casks =
       pkgs.callPackage (lib.custom.relativeToRoot "modules/darwin/config/nix/casks.nix") {}
       ++ pkgs.callPackage (lib.custom.relativeToRoot "hosts/darwin/${hS.hostName}/casks.nix") {};
-    # onActivation.cleanup = "uninstall";
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     # These app IDs are from using the mas CLI app
     # mas = mac app store
@@ -28,6 +28,11 @@ in {
     # This message is safe to ignore.
     masApps = {
       # "bitwarden" = 1352778147;
+    };
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
     };
   };
 }

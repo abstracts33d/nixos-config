@@ -44,7 +44,7 @@ in
     hack-font
     meslo-lgs-nf
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
 
     # Source code management, Git, GitHub tools
     gh
@@ -70,7 +70,6 @@ in
     ripgrep
     shellcheck
     starship
-    thefuck
     tldr
     tmux
     tree
@@ -91,7 +90,6 @@ in
 
     # to test
     helix
-    newsboat
     neomutt
     cmus
     mpd
@@ -101,7 +99,6 @@ in
     redis
 
     # Node.js development tools
-    nodePackages.live-server
     nodePackages.nodemon
     nodePackages.prettier
     nodePackages.npm

@@ -64,46 +64,48 @@ in {
       ];
     };
 
-    initExtraFirst = ''
-      # Profiling
-      # zmodload zsh/zprof
+    initContent = let
+      zshConfigEarlyInit = lib.mkBefore ''
+        # Profiling
+        # zmodload zsh/zprof
 
-      if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
-        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-        . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-      fi
+        if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
+          . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+          . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+        fi
 
-      # Remove history data we don't want to see
-      export HISTIGNORE="pwd:ls:cd"
+        # Remove history data we don't want to see
+        export HISTIGNORE="pwd:ls:cd"
 
-      # Set editor default keymap to emacs (`-e`) or vi (`-v`)
-      bindkey -v
+        # Set editor default keymap to emacs (`-e`) or vi (`-v`)
+        bindkey -v
 
-      source ~/.config/zsh/aliases.zsh
-      source ~/.config/zsh/functions.zsh
-    '';
+        source ~/.config/zsh/aliases.zsh
+        source ~/.config/zsh/functions.zsh
+      '';
+      zshConfig = lib.mkOrder 1000 ''
+        # zsh-history-substring-search
+        bindkey '^[[A' history-substring-search-up
+        bindkey '^[OA' history-substring-search-up
+        bindkey '^[[B' history-substring-search-down
+        bindkey '^[OB' history-substring-search-down
 
-    initContent = ''
-      # zsh-history-substring-search
-      bindkey '^[[A' history-substring-search-up
-      bindkey '^[OA' history-substring-search-up
-      bindkey '^[[B' history-substring-search-down
-      bindkey '^[OB' history-substring-search-down
+        # zsh-autosuggestions
+        # set Autosuggestions key binging to alt-enter
+        bindkey '\e\r' autosuggest-accept
 
-      # zsh-autosuggestions
-      # set Autosuggestions key binging to alt-enter
-      bindkey '\e\r' autosuggest-accept
+        # Greetings
+        if [ -z "$TMUX" ]
+        then
+          fastfetch
+        else
+          echo ' ☠ Loaded ☠ '
+        fi
 
-      # Greetings
-      if [ -z "$TMUX" ]
-      then
-        fastfetch
-      else
-        echo ' ☠ Loaded ☠ '
-      fi
-
-      # Profiling
-      # zprof
-    '';
+        # Profiling
+        # zprof
+      '';
+    in
+      lib.mkMerge [zshConfigEarlyInit zshConfig];
   };
 }

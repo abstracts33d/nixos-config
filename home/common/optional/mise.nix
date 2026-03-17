@@ -9,7 +9,7 @@ in {
     programs.mise = {
       enable = true;
       enableBashIntegration = false;
-      enableZshIntegration = false;
+      enableZshIntegration = true;
       enableFishIntegration = false;
     };
   };

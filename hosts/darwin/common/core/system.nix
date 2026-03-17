@@ -1,4 +1,6 @@
-{...}: {
+{config, ...}: let
+  hS = config.hostSpec;
+in {
   system = {
     stateVersion = 4;
 
@@ -6,7 +8,7 @@
     checks.verifyNixPath = false;
 
     startup.chime = false;
-
+    primaryUser = "${hS.userName}";
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;

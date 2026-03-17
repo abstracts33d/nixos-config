@@ -1,6 +1,6 @@
 _: [
   # Development Tools
-  "homebrew/cask/docker"
+  "homebrew/cask/docker-desktop"
   "visual-studio-code"
   "rubymine"
 
@@ -15,7 +15,7 @@ _: [
   "obsidian"
 
   # Utility Tools
-  "syncthing"
+  "syncthing-app"
   "caffeine"
 
   # Entertainment Tools
@@ -31,7 +31,7 @@ _: [
 
   # Browsers
   "google-chrome"
-  "zen-browser"
+  "zen"
 
   # Term
   "iterm2"
